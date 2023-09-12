@@ -36,7 +36,7 @@ The Car Selection Chatbot is your futuristic co-pilot in the quest for the perfe
 
 ## Get in the Driver's Seat 🚀
 
-1. Clone the repo: `git clone https://github.com/your-username/car-selection-chatbot.git`
+1. Clone the repo: `git clone https://github.com/CSC-4350-FL2023/CyberPunk.git`
 
 2. Set up the backend - Python with Flask or Node.js with Express.js, your choice!
 
