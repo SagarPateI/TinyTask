@@ -3,13 +3,12 @@ import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 
 const Task = (props) => {
-    const { text, backgroundColor } = props; // added prop for customizable background color
+    const { text, backgroundColor } = props; // Added prop for customizable background color
 
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <View style={[styles.square, { backgroundColor }]}></View>{" "}
-                {/* Use the custom background color */}
+                <View style={[styles.square, { backgroundColor }]}></View> {/* Use the custom background color */}
                 <Text style={styles.itemText}>{text}</Text>
             </View>
             <View style={styles.circular}></View>
@@ -19,11 +18,11 @@ const Task = (props) => {
 
 Task.propTypes = {
     text: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string, // define prop types
+    backgroundColor: PropTypes.string, // Define prop types
 };
 
 Task.defaultProps = {
-    backgroundColor: "#55BCF6", // default background color
+    backgroundColor: "#55BCF6", // Default background color
 };
 
 const styles = StyleSheet.create({
