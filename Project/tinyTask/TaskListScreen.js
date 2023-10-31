@@ -19,7 +19,6 @@ export default function TaskListScreen() {
   const handleAddTask = () => {
     Keyboard.dismiss();
     if (task.trim() !== "") {
-      // Add a check to prevent adding empty tasks
       setTaskItems([...taskItems, task]);
       setTask("");
     }
@@ -34,7 +33,7 @@ export default function TaskListScreen() {
   return (
     <View style={styles.container}>
       <ScrollView
-        contentContainerStyle={styles.scrollContainer} // Renamed to improve readability
+        contentContainerStyle={styles.scrollContainer}
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.tasksWrapper}>
