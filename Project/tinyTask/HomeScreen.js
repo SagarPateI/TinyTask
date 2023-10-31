@@ -26,18 +26,7 @@ const HomeScreen = () => {
 
       <View style={styles.section}></View>
       <View style={styles.section}></View>
-
-      <View style={styles.navigationBar}>
-        <TouchableOpacity onPress={handleHomeIconPress}>
-          <MaterialIcons name="home" size={30} color="#555" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleTasksNavigationPress}>
-          <MaterialIcons name="check" size={30} color="#555" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleCalendarNavigationPress}>
-          <MaterialIcons name="date-range" size={30} color="#555" />
-        </TouchableOpacity>
-      </View>
+      
     </View>
   );
 };
