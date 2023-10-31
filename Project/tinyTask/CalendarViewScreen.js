@@ -1,84 +1,95 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { View, Text, StyleSheet } from "react-native";
+import { Calendar } from "react-native-calendars";
 
-const HomeScreen = () => {
-  const currentDate = new Date().toDateString();
-
-  const handleProfileIconPress = () => { };
-
-  const handleHomeIconPress = () => { };
-
-  const handleTasksNavigationPress = () => { };
-
-  const handleCalendarNavigationPress = () => { };
+const CalendarViewScreen = () => {
+  const currentMonth = "October 2023";
+  const activities = {
+    "2023-10-05": [{ time: "08:00 AM", title: "Meeting", type: "work" }],
+    "2023-10-10": [{ time: "10:30 AM", title: "Gym", type: "personal" }],
+    // ... (other activities for respective dates)
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.welcomeSection}>
-        <Text style={styles.welcomeText}>Welcome, User</Text>
-        <Text style={styles.dateText}>{currentDate}</Text>
-      </View>
-
-      <TouchableOpacity style={styles.profileIcon} onPress={handleProfileIconPress}>
-        <MaterialIcons name="account-circle" size={30} color="#555" />
-      </TouchableOpacity>
-
-      <View style={styles.section}></View>
-
-      <View style={styles.section}></View>
-
-      <View style={styles.navigationBar}>
-        <TouchableOpacity onPress={handleHomeIconPress}>
-          <MaterialIcons name="home" size={30} color="#555" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleTasksNavigationPress}>
-          <MaterialIcons name="check" size={30} color="#555" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleCalendarNavigationPress}>
-          <MaterialIcons name="date-range" size={30} color="#555" />
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.currentMonth}>{currentMonth}</Text>
+      <Calendar
+        markedDates={markActivities(activities)}
+      />
+      {renderActivities(activities)}
     </View>
   );
+};
+
+const markActivities = (activities) => {
+  let markedDates = {};
+
+  for (const date in activities) {
+    if (activities.hasOwnProperty(date)) {
+      markedDates[date] = { marked: true };
+    }
+  }
+
+  return markedDates;
+};
+
+const renderActivities = (activities) => {
+  return Object.entries(activities).map(([date, events]) => {
+    return (
+      <View key={date} style={styles.activitiesOverlay}>
+        {events.map((activity, index) => (
+          <View
+            key={`${date}-${index}`}
+            style={[
+              styles.activityBlock,
+              { backgroundColor: getColorForType(activity.type) },
+            ]}
+          >
+            <Text>{activity.time}</Text>
+            <Text>{activity.title}</Text>
+          </View>
+        ))}
+      </View>
+    );
+  });
+};
+
+const getColorForType = (type) => {
+  switch (type) {
+    case "work":
+      return "#FF6347";
+    case "personal":
+      return "#66CDAA";
+    default:
+      return "#6495ED";
+  }
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     padding: 20,
   },
-  welcomeSection: {
-    alignItems: "center",
-    marginTop: 20,
-  },
-  welcomeText: {
-    fontSize: 24,
+  currentMonth: {
+    fontSize: 20,
     fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 15,
   },
-  dateText: {
-    fontSize: 16,
-    color: "#555",
-  },
-  profileIcon: {
+  activitiesOverlay: {
     position: "absolute",
-    top: 10,
-    right: 10,
-  },
-  section: {
-    marginTop: 20,
-  },
-  navigationBar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    position: "absolute",
+    top: 0,
     bottom: 0,
-    width: "100%",
-    backgroundColor: "#eee",
-    paddingVertical: 10,
+    left: 0,
+    right: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  activityBlock: {
+    padding: 10,
+    margin: 5,
+    borderRadius: 5,
   },
 });
 
-export default HomeScreen;
+export default CalendarViewScreen;
