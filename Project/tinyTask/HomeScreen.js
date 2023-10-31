@@ -1,56 +1,32 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons"; // Import icons from Expo package
+import { MaterialIcons } from "@expo/vector-icons";
 
 const HomeScreen = () => {
-  const currentDate = new Date().toDateString(); // Get the current date
+  const currentDate = new Date().toDateString();
 
-  // Placeholder event handlers for icon press
-  const handleProfileIconPress = () => {
-    // Handle profile icon press
-  };
+  const handleProfileIconPress = () => { };
 
-  const handleHomeIconPress = () => {
-    // Handle Home icon press
-  };
+  const handleHomeIconPress = () => { };
 
-  const handleTasksNavigationPress = () => {
-    // Handle Tasks navigation press
-  };
+  const handleTasksNavigationPress = () => { };
 
-  const handleCalendarNavigationPress = () => {
-    // Handle Calendar navigation press
-  };
+  const handleCalendarNavigationPress = () => { };
 
   return (
     <View style={styles.container}>
-      {/* Welcoming Interface */}
       <View style={styles.welcomeSection}>
         <Text style={styles.welcomeText}>Welcome, User</Text>
         <Text style={styles.dateText}>{currentDate}</Text>
       </View>
 
-      {/* Profile Icon */}
-      <TouchableOpacity
-        style={styles.profileIcon}
-        onPress={handleProfileIconPress}
-      >
+      <TouchableOpacity style={styles.profileIcon} onPress={handleProfileIconPress}>
         <MaterialIcons name="account-circle" size={30} color="#555" />
       </TouchableOpacity>
 
-      {/* Events Section */}
-      <View style={styles.section}>
-        {/* Display upcoming events */}
-        {/* ... (code for displaying events) */}
-      </View>
+      <View style={styles.section}></View>
+      <View style={styles.section}></View>
 
-      {/* Tasks Section */}
-      <View style={styles.section}>
-        {/* Display tasks with checkboxes */}
-        {/* ... (code for displaying tasks) */}
-      </View>
-
-      {/* Navigation Bar */}
       <View style={styles.navigationBar}>
         <TouchableOpacity onPress={handleHomeIconPress}>
           <MaterialIcons name="home" size={30} color="#555" />
@@ -91,7 +67,6 @@ const styles = StyleSheet.create({
   },
   section: {
     marginTop: 20,
-    // Add styles for event and tasks sections
   },
   navigationBar: {
     flexDirection: "row",
