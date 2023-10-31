@@ -1,25 +1,84 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, Text } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-export default function CalendarViewScreen() {
+const HomeScreen = () => {
+  const currentDate = new Date().toDateString();
+
+  const handleProfileIconPress = () => { };
+
+  const handleHomeIconPress = () => { };
+
+  const handleTasksNavigationPress = () => { };
+
+  const handleCalendarNavigationPress = () => { };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.h1}>Calendar View Screen</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <View style={styles.welcomeSection}>
+        <Text style={styles.welcomeText}>Welcome, User</Text>
+        <Text style={styles.dateText}>{currentDate}</Text>
+      </View>
+
+      <TouchableOpacity style={styles.profileIcon} onPress={handleProfileIconPress}>
+        <MaterialIcons name="account-circle" size={30} color="#555" />
+      </TouchableOpacity>
+
+      <View style={styles.section}></View>
+
+      <View style={styles.section}></View>
+
+      <View style={styles.navigationBar}>
+        <TouchableOpacity onPress={handleHomeIconPress}>
+          <MaterialIcons name="home" size={30} color="#555" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleTasksNavigationPress}>
+          <MaterialIcons name="check" size={30} color="#555" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleCalendarNavigationPress}>
+          <MaterialIcons name="date-range" size={30} color="#555" />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#ecf0f1",
-    padding: 8,
+    backgroundColor: "#fff",
+    padding: 20,
   },
-  h1: {
-    margin: 28,
-    fontSize: 36,
+  welcomeSection: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  welcomeText: {
+    fontSize: 24,
     fontWeight: "bold",
-    textAlign: "center",
+  },
+  dateText: {
+    fontSize: 16,
+    color: "#555",
+  },
+  profileIcon: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+  },
+  section: {
+    marginTop: 20,
+  },
+  navigationBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "#eee",
+    paddingVertical: 10,
   },
 });
+
+export default HomeScreen;
