@@ -15,22 +15,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.sagarpat.tinytask"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.sagarpat.tinytask"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "3c4a4bb8-40f8-4978-854f-6b74cf8afd29"
+        "projectId": "07a43e7a-7910-4c56-b18e-82f76a3067bd"
       }
     },
     "owner": "sagarpat"
