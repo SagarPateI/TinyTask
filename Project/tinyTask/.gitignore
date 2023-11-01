@@ -37,6 +37,7 @@ yarn-error.*
 #app.json config, maybe it's not necessary to hide the ID's
 Project/tinyTask/app.json
 Project/tinyTask/app2.json
+Project/tinyTask/generateAppJson.js
 
 # Enviornment variables
 .env
