@@ -34,5 +34,8 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-#app.json config
-Project/tinyTask/app.json
+#app.json config, maybe it's not necessary to hide the ID's
+#Project/tinyTask/app.json
+
+# Enviornment variables
+#.env
