@@ -35,7 +35,3 @@ yarn-error.*
 *.tsbuildinfo
 
 #app.json config, maybe it's not necessary to hide the ID's
-#roject/tinytask/app.json
-
-# Enviornment variables
-.env
