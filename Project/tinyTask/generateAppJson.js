@@ -1,3 +1,5 @@
+require('dotenv').config(); // Load environment variables from .env file
+
 const fs = require('fs');
 
 // Read the template file
