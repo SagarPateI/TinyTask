@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "REPLACE_NAME",                             /*Ex: tinyTask*/
+    "slug": "REPLACE_SLUG",                             /*Ex: tinytask*/
+    "version": "REPLACE_VERSION",                       /*Ex: 1.0.0*/
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "REPLACE_BUNDLE_IDENTIFIER"   /*Ex: com.sagarpat.tinytask*/
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "REPLACE_PACKAGE_NAME"                 /*Ex: com.sagarpat.tinytask*/
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "REPLACE_PROJECT_ID"               /*Ex: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx*/
+      }
+    },
+    "owner": "REPLACE_OWNER_NAME"                       /*Ex: sagarpat*/
+  }
+}
