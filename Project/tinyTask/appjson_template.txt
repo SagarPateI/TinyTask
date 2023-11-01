@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "REPLACE_NAME",                             /*Ex: "tinyTask"*/
+    "name": "REPLACE_NAME",                             /*Ex: "tinytask"*/
     "slug": "REPLACE_SLUG",                             /*Ex: "tinytask"*/
     "version": "REPLACE_VERSION",                       /*Ex: "1.0.0"*/
     "orientation": "portrait",
