@@ -33,5 +33,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-#app.json config, maybe it's not necessary to hide the ID's
