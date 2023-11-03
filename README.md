@@ -42,10 +42,10 @@
 
 ## The Cyberpunk Crew 🕶️
 
-- [Alexis Cruz-Aboytes](https://github.com/your-username)
-- [Cristal Cervantes](https://github.com/team-member-3)
-- [Joseph Paxton](https://github.com/team-member-1)
-- [Kyle Laxamana](https://github.com/team-member-2)
+- [Alexis Cruz-Aboytes](https://github.com/ChicoQuemador1)
+- [Cristal Cervantes](https://github.com/cristalc13)
+- [Joseph Paxton](https://github.com/jpaxton7)
+- [Kyle Laxamana](https://github.com/kyleLaxamana)
 - [Sagar Patel](https://github.com/SagarPateI)
 
 ## Legal Vibes 🔒
