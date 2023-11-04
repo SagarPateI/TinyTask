@@ -22,8 +22,8 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
     <td style="text-align: center; width: 25%;">
       <text>Calendar View</text>
       <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
-    </td>
-  </tr>-->
+    </td>-->
+  </tr>
 </table>
 
 ## Version 0.1 - Alpha release [DOWNLOAD NOW](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1)
