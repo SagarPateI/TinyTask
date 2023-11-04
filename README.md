@@ -2,6 +2,28 @@
 
 Welcome to TinyTask, where productivity meets simplicity! Our minimalist task management application is your go-to solution for organizing daily chores, essential appointments, and everything in between. With a focus on user-friendly functionality and efficiency, TinyTask streamlines your day with a sleek and intuitive design.
 
+## Version 0.1 - Alpha release [DOWNLOAD NOW](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1)
+<table style="width: 100%;">
+  <tr>
+    <td style="text-align: center; width: 25%;">
+      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/edit/main/README/1_navbar.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+      <text>Navbar</text>
+    </td>
+    <td style="text-align: center; width: 25%;">
+      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/edit/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">
+      <text>Home Screen</text>
+    </td>
+    <td style="text-align: center; width: 25%;">
+      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/edit/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+      <text>Task List</text>
+    </td>
+    <td style="text-align: center; width: 25%;">
+      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/edit/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+      <text>Calendar View</text>
+    </td>
+  </tr>
+</table>
+
 ## 🚀 Key Features
 
 - **Simplified Task Management**: Seamlessly organize your tasks without the hassle—effortless entry and easy management for your to-do lists. ✔️
