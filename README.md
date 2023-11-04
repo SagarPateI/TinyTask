@@ -99,7 +99,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ## Licensing Information 🔒
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE). But please give us credit if you use our work. 😄
 
 ---
 
