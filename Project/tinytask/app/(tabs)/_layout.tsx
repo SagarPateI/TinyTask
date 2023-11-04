@@ -22,7 +22,7 @@ export default function TabLayout() {
         name="HomeScreen"
         options={{
           title: 'Home Screen',
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />, // Updated icon for Home
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -43,14 +43,14 @@ export default function TabLayout() {
         name="TaskListScreen"
         options={{
           title: 'Task List',
-          tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />, // Updated icon for Task List
+          tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
         }}
       />
       <Tabs.Screen
         name="CalendarScreen"
         options={{
           title: 'Calendar View',
-          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />, // Updated icon for Calendar
+          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
         }}
       />
     </Tabs>
