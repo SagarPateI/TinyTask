@@ -9,7 +9,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tr>
     <td style="text-align: center; width: 25%;">
       <text>Introducing the brand new automatic dark mode/light mode!</text>
-      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+      <br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
     </td>
     <!--<td style="text-align: center; width: 25%;">-->
     <!--  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">-->
