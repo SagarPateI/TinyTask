@@ -79,7 +79,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 android {
     ndkVersion rootProject.ext.ndkVersion
 
-    compileSdkVersion 31 // Change '31' to the appropriate version you're targeting
+    compileSdkVersion 30 // Change '31' to the appropriate version you're targeting
     
     namespace "com.tinytask"
     defaultConfig {
@@ -89,7 +89,7 @@ android {
         versionCode 1
         versionName "1.0.0"
 
-        compileSdkVersion 31 // Change '31' to the appropriate version
+        compileSdkVersion 30 // Change '31' to the appropriate version
 
         buildConfigField("boolean", "REACT_NATIVE_UNSTABLE_USE_RUNTIME_SCHEDULER_ALWAYS", (findProperty("reactNative.unstable_useRuntimeSchedulerAlways") ?: true).toString())
     }
