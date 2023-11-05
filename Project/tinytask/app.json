@@ -34,6 +34,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2475caa0-d41d-4679-895f-924a21aa12e8"
+      }
+    },
+    "owner": "sagarpat"
   }
 }
