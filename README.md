@@ -64,10 +64,10 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 ## 🛠️ Technologies
 
 - **Mobile App**: Developed with React Native for a seamless cross-platform experience, catering to both iOS and Android users.
-- **Data Storage**: Utilizes Google Cloud SQL for robust and reliable data storage.
-- **Authentication**: Ensures secure access using Google Cloud Identity Platform for user authentication.
-- **Animations**: Enhanced with Lottie for a touch of visual delight and cyberpunk aesthetics.
-- **Notifications**: Powered by Google Cloud Functions to keep users connected to their tasks.
+- **Data Storage**: Utilizes MongoDB Realm for robust and reliable data storage.
+- **Authentication**: Ensures secure access using Google Cloud Identity Platform for user authentication (subject to change).
+- **Animations**: Enhanced with Lottie for a touch of visual delight and cyberpunk aesthetics (subject to change).
+- **Notifications**: Powered by Google Cloud Functions to keep users connected to their tasks (planning phase).
 
 ## 🚀 Roadmap
 
