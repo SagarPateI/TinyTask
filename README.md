@@ -4,7 +4,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ***
 
-## Version 0.1.1 - Migration to Typescript 
+## Version 0.1.1 - Migration to Typescript [DOWNLOAD NOW](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1)
 <table style="width: 100%;">
   <tr>
     <td style="text-align: center; width: 25%;">
