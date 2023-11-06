@@ -14,8 +14,8 @@ interface TaskProps {
 const Task: React.FC<TaskProps> = ({ text }) => {
   const backgroundColor = useThemeColor(
     {
-      light: "#f0f0f0",
-      dark: "#333333",
+      light: "#ffffff",
+      dark: "#000000",
     },
     "background"
   );

@@ -1,23 +1,32 @@
 // app/tabs/HomeScreen.tsx
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { Text, View } from '../../components/Themed';
+import { Text, ScrollView, StyleSheet } from 'react-native';
+import { View as ThemedView, useThemeColor, Text as ThemedText, View } from "../../components/Themed";
 
 const HomeScreen = () => {
+  const backgroundColor = useThemeColor(
+    {
+      light: "#f0f0f0", // Light gray background color
+      dark: "#333333", // Dark gray background color
+    },
+    "background"
+  );
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       paddingHorizontal: 20,
       paddingTop: 20,
+      backgroundColor,
     },
     sectionTitle: {
       fontSize: 24,
-      fontWeight: 'bold',
+      fontWeight: "bold",
       marginBottom: 10,
     },
     dateText: {
       fontSize: 18,
-      fontStyle: 'italic',
+      fontStyle: "italic",
       marginBottom: 10,
     },
     eventContainer: {
@@ -27,8 +36,8 @@ const HomeScreen = () => {
       marginBottom: 20,
     },
     taskItem: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: "row",
+      alignItems: "center",
       marginBottom: 10,
     },
     taskText: {
@@ -37,7 +46,7 @@ const HomeScreen = () => {
     },
     separator: {
       borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
+      borderBottomColor: "#ccc",
       marginVertical: 15,
     },
   });
@@ -65,33 +74,37 @@ const HomeScreen = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.sectionTitle}>Welcome, User</Text>
-      <Text style={styles.dateText}>{`${dayOfWeek}, ${month} ${dayOfMonth}`}</Text>
+    <ThemedView style={styles.container}>
+      <ScrollView style={styles.container}>
+        <ThemedText style={styles.sectionTitle}>Welcome, User</ThemedText>
+        <ThemedText
+          style={styles.dateText}
+        >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>
 
-      <View style={styles.separator} />
+        <View style={styles.separator} />
 
-      <View style={styles.eventContainer}>
-        <Text style={styles.sectionTitle}>Upcoming Events</Text>
-        {events.map(event => (
-          <View key={event.id} style={styles.taskItem}>
-            <Text>{`${event.title} - ${event.time}`}</Text>
-          </View>
-        ))}
-      </View>
+        <View style={styles.eventContainer}>
+          <ThemedText style={styles.sectionTitle}>Upcoming Events</ThemedText>
+          {events.map((event) => (
+            <View key={event.id} style={styles.taskItem}>
+              <ThemedText>{`${event.title} - ${event.time}`}</ThemedText>
+            </View>
+          ))}
+        </View>
 
-      <View style={styles.separator} />
+        <View style={styles.separator} />
 
-      <View style={styles.taskContainer}>
-        <Text style={styles.sectionTitle}>Tasks</Text>
-        {tasks.map(task => (
-          <View key={task.id} style={styles.taskItem}>
-            <Text>{task.completed ? '✅' : '◻️'}</Text>
-            <Text style={styles.taskText}>{task.task}</Text>
-          </View>
-        ))}
-      </View>
-    </ScrollView>
+        <View style={styles.taskContainer}>
+          <ThemedText style={styles.sectionTitle}>Tasks</ThemedText>
+          {tasks.map((task) => (
+            <View key={task.id} style={styles.taskItem}>
+              <ThemedText>{task.completed ? "✅" : "◻️"}</ThemedText>
+              <ThemedText style={styles.taskText}>{task.task}</ThemedText>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+    </ThemedView>
   );
 };
 
