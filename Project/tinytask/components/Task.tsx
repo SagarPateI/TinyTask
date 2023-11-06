@@ -1,17 +1,28 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { useThemeColor, Text as ThemedText } from "./Themed";
+import {
+  useThemeColor,
+  Text as ThemedText,
+  View as ThemedView,
+} from "./Themed";
 
 interface TaskProps {
   text: string;
   backgroundColor?: string;
 }
 
-const Task: React.FC<TaskProps> = ({ text, backgroundColor = "#55BCF6" }) => {
-  const textColor = useThemeColor({}, "text");
+const Task: React.FC<TaskProps> = ({ text }) => {
+  const backgroundColor = useThemeColor(
+    {
+      light: "#f0f0f0",
+      dark: "#333333",
+    },
+    "background"
+  );
 
   const styles = StyleSheet.create({
     item: {
+      backgroundColor,
       padding: 15,
       borderRadius: 10,
       flexDirection: "row",
@@ -27,19 +38,18 @@ const Task: React.FC<TaskProps> = ({ text, backgroundColor = "#55BCF6" }) => {
     square: {
       width: 24,
       height: 24,
-      backgroundColor: backgroundColor,
+      backgroundColor: "#55BCF6",
       opacity: 0.4,
       borderRadius: 5,
       marginRight: 15,
     },
     itemText: {
       maxWidth: "80%",
-      color: textColor, // Applying Themed text color
     },
     circular: {
       width: 12,
       height: 12,
-      borderColor: backgroundColor,
+      borderColor: "#55BCF6",
       borderWidth: 2,
       borderRadius: 5,
     },
@@ -48,7 +58,7 @@ const Task: React.FC<TaskProps> = ({ text, backgroundColor = "#55BCF6" }) => {
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
-        <View style={[styles.square, { backgroundColor }]}></View>
+        <View style={styles.square}></View>
         <ThemedText style={styles.itemText}>{text}</ThemedText>
       </View>
       <View style={styles.circular}></View>
