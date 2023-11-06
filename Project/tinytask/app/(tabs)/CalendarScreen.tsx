@@ -12,7 +12,7 @@ const CalendarScreen = () => {
   );
 
   const onDayPress = (day: any) => {
-    console.log("selected day", day);
+    console.log("selected day", day.dateString);
     // perform actions when a day is selected
   };
 
