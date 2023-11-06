@@ -1,31 +1,44 @@
 // app/tabs/HomeScreen.tsx
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import EditScreenInfo from '../../components/EditScreenInfo';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Text, View } from '../../components/Themed';
 
 const HomeScreen = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingHorizontal: 20, // Added for a bit of padding
+      paddingHorizontal: 20,
+      paddingTop: 20,
     },
-    welcomeText: {
+    sectionTitle: {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 10,
-      textAlign: 'center',
     },
     dateText: {
       fontSize: 18,
-      textAlign: 'center',
+      fontStyle: 'italic',
+      marginBottom: 10,
+    },
+    eventContainer: {
+      marginBottom: 20,
+    },
+    taskContainer: {
+      marginBottom: 20,
+    },
+    taskItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    taskText: {
+      marginLeft: 10,
+      fontSize: 16,
     },
     separator: {
-      marginVertical: 30,
-      height: 1,
-      width: '80%',
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+      marginVertical: 15,
     },
   });
 
@@ -40,15 +53,45 @@ const HomeScreen = () => {
   const month = months[currentDate.getMonth()];
   const dayOfMonth = currentDate.getDate();
 
+  // Mock data for events and tasks
+  const events = [
+    { id: 1, title: 'Meeting', time: '10:00 AM' },
+    { id: 2, title: 'Gym', time: '5:00 PM' },
+  ];
+
+  const tasks = [
+    { id: 1, task: 'Task 1', completed: false },
+    { id: 2, task: 'Task 2', completed: true },
+  ];
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome, User</Text>
-      <Text style={styles.dateText}>
-        {`${dayOfWeek}, ${month} ${dayOfMonth}`}
-      </Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
+    <ScrollView style={styles.container}>
+      <Text style={styles.sectionTitle}>Welcome, User</Text>
+      <Text style={styles.dateText}>{`${dayOfWeek}, ${month} ${dayOfMonth}`}</Text>
+
+      <View style={styles.separator} />
+
+      <View style={styles.eventContainer}>
+        <Text style={styles.sectionTitle}>Upcoming Events</Text>
+        {events.map(event => (
+          <View key={event.id} style={styles.taskItem}>
+            <Text>{`${event.title} - ${event.time}`}</Text>
+          </View>
+        ))}
+      </View>
+
+      <View style={styles.separator} />
+
+      <View style={styles.taskContainer}>
+        <Text style={styles.sectionTitle}>Tasks</Text>
+        {tasks.map(task => (
+          <View key={task.id} style={styles.taskItem}>
+            <Text>{task.completed ? '✅' : '◻️'}</Text>
+            <Text style={styles.taskText}>{task.task}</Text>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
