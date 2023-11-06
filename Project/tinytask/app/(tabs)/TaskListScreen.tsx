@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import {
+  Keyboard,
   KeyboardAvoidingView,
   StyleSheet,
-  SafeAreaView,
   Text,
   View,
   TextInput,
   TouchableOpacity,
-  Keyboard,
-  ScrollView,
   Platform,
+  ScrollView,
 } from "react-native";
-import Task from '../../components/Task';
+import Task from "../../components/Task";
+import {
+  Text as ThemedText,
+  View as ThemedView,
+  useThemeColor,
+} from "../../components/Themed";
 
 const TaskListScreen: React.FC = () => {
   const [task, setTask] = useState<string>("");
@@ -31,14 +35,66 @@ const TaskListScreen: React.FC = () => {
     setTaskItems(itemsCopy);
   };
 
+  const textColor = useThemeColor({}, "text");
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingHorizontal: 20,
+    },
+    tasksWrapper: {
+      paddingTop: 80,
+    },
+    sectionTitle: {
+      fontSize: 24,
+      fontWeight: "bold",
+      color: textColor, // Applying Themed color
+    },
+    items: {
+      marginTop: 30,
+    },
+    writeTaskWrapper: {
+      position: "absolute",
+      bottom: 60,
+      width: "100%",
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
+    },
+    input: {
+      paddingVertical: 15,
+      paddingHorizontal: 15,
+      borderRadius: 60,
+      borderColor: "#C0C0C0",
+      borderWidth: 1,
+      width: 250,
+      color: textColor, // Applying Themed color
+    },
+    addWrapper: {
+      width: 60,
+      height: 60,
+      borderRadius: 60,
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: "#C0C0C0",
+      borderWidth: 1,
+    },
+    addText: {
+      color: textColor,
+    },
+    scrollContainer: {
+      flexGrow: 1,
+    },
+  });
+
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.tasksWrapper}>
-          <Text style={styles.sectionTitle}>Today's tasks</Text>
+          <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
           <View style={styles.items}>
             {taskItems.map((item, index) => (
               <TouchableOpacity key={index} onPress={() => completeTask(index)}>
@@ -56,6 +112,7 @@ const TaskListScreen: React.FC = () => {
         <TextInput
           style={styles.input}
           placeholder={"Write a task"}
+          placeholderTextColor={textColor} // Applying Themed text color to the placeholder
           value={task}
           onChangeText={(text) => setTask(text)}
         />
@@ -65,57 +122,8 @@ const TaskListScreen: React.FC = () => {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-    </View>
+    </ThemedView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#E8EAED",
-  },
-  scrollContainer: {
-    flexGrow: 1,
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  items: {
-    marginTop: 30,
-  },
-  writeTaskWrapper: {
-    position: "absolute",
-    bottom: 60,
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-  input: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-    width: 250,
-  },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-  },
-  addText: {},
-});
 
 export default TaskListScreen;
