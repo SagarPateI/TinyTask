@@ -16,7 +16,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
     <td style="text-align: center; width: 50%;">
       <text style="font-size: 24px;"><b>📝 Introducing an improved task list screen! Lots of small changes under the hood as we build this screen out. 📚</b></text>
       <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_tasklist.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
-    </td>-->
+    </td>
     <!--<td style="text-align: center; width: 25%;">
       <text>Task List</text>
       <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
