@@ -1,10 +1,10 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
-import Colors from '../../constants/Colors';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Link, Tabs } from "expo-router";
+import { Pressable, useColorScheme } from "react-native";
+import Colors from "../../constants/Colors";
 
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
@@ -15,13 +15,15 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      initialRouteName="index"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+      }}
+    >
       <Tabs.Screen
-        name="HomeScreen"
+        name="index"
         options={{
-          title: 'Home Screen',
+          title: "Home Screen",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -30,7 +32,7 @@ export default function TabLayout() {
                   <FontAwesome
                     name="info-circle"
                     size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
+                    color={Colors[colorScheme ?? "light"].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -42,15 +44,17 @@ export default function TabLayout() {
       <Tabs.Screen
         name="TaskListScreen"
         options={{
-          title: 'Task List',
+          title: "Task List",
           tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
         }}
       />
       <Tabs.Screen
         name="CalendarScreen"
         options={{
-          title: 'Calendar View',
-          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+          title: "Calendar View",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="calendar" color={color} />
+          ),
         }}
       />
     </Tabs>

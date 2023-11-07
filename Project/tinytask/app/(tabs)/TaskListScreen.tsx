@@ -21,13 +21,13 @@ const TaskListScreen: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [taskItems, setTaskItems] = useState<string[]>([]);
 
-    const backgroundColor = useThemeColor(
-      {
-        light: "#f0f0f0", // Light gray background color
-        dark: "#333333", // Dark gray background color
-      },
-      "background"
-    );
+  const backgroundColor = useThemeColor(
+    {
+      light: "#FFFFFF", // Light gray background color
+      dark: "#121212", // Dark gray background color
+    },
+    "background"
+  );
 
   const handleAddTask = () => {
     Keyboard.dismiss();
@@ -97,44 +97,41 @@ const TaskListScreen: React.FC = () => {
   });
 
   return (
-      <ThemedView style={styles.container}>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          keyboardShouldPersistTaps="handled"
-        >
-          <View style={styles.tasksWrapper}>
-            <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
-            <View style={styles.items}>
-              {taskItems.map((item, index) => (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => completeTask(index)}
-                >
-                  <Task text={item} />
-                </TouchableOpacity>
-              ))}
-            </View>
+    <ThemedView style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={styles.tasksWrapper}>
+          <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
+          <View style={styles.items}>
+            {taskItems.map((item, index) => (
+              <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+                <Task text={item} />
+              </TouchableOpacity>
+            ))}
           </View>
-        </ScrollView>
+        </View>
+      </ScrollView>
 
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          style={styles.writeTaskWrapper}
-        >
-          <TextInput
-            style={styles.input}
-            placeholder={"Write a task"}
-            placeholderTextColor={textColor}
-            value={task}
-            onChangeText={(text) => setTask(text)}
-          />
-          <TouchableOpacity onPress={handleAddTask}>
-            <View style={styles.addWrapper}>
-              <Text style={styles.addText}>+</Text>
-            </View>
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
-      </ThemedView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.writeTaskWrapper}
+      >
+        <TextInput
+          style={styles.input}
+          placeholder={"Write a task"}
+          placeholderTextColor={textColor}
+          value={task}
+          onChangeText={(text) => setTask(text)}
+        />
+        <TouchableOpacity onPress={handleAddTask}>
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+    </ThemedView>
   );
 };
 
