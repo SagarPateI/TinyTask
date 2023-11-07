@@ -6,17 +6,17 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ***
 
-## Version 0.1.1 - Migration to Typescript [DOWNLOAD NOW](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1)
+## Version 0.1.2 - Bugfixes and UI improvements! [DOWNLOAD HERE](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1)
 <table style="width: 100%;">
   <tr>
-    <td style="text-align: center; width: 25%;">
-      <text>Introducing the brand new automatic dark mode/light mode!</text>
-      <br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+    <td style="text-align: center; width: 50%;">
+      <text style="font-size: 24px;"><b>🌞 Introducing a more comprehensive automatic dark mode and light mode (compared to v0.1.1) 🌓</b></text>
+      <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
     </td>
-    <!--<td style="text-align: center; width: 25%;">-->
-    <!--  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">-->
-    <!--  <text>Home Screen</text>-->
-    <!--</td>-->
+    <td style="text-align: center; width: 50%;">
+      <text style="font-size: 24px;"><b>📝 Introducing an improved task list screen! Lots of small changes under the hood as we build this screen out. 📚</b></text>
+      <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_tasklist.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
+    </td>-->
     <!--<td style="text-align: center; width: 25%;">
       <text>Task List</text>
       <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
@@ -28,27 +28,9 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   </tr>
 </table>
 
-## Version 0.1 - Alpha release [DOWNLOAD NOW](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1)
-<table style="width: 100%;">
-  <tr>
-    <td style="text-align: center; width: 25%;">
-      <text>Navbar</text>
-      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_navbar.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
-    </td>
-    <!--<td style="text-align: center; width: 25%;">-->
-    <!--  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">-->
-    <!--  <text>Home Screen</text>-->
-    <!--</td>-->
-    <td style="text-align: center; width: 25%;">
-      <text>Task List</text>
-      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
-    </td>
-    <td style="text-align: center; width: 25%;">
-      <text>Calendar View</text>
-      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
-    </td>
-  </tr>
-</table>
+## Version 0.1.1 - Migration to Typescript [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1)
+
+## Version 0.1 - Alpha release [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1)
 
 ***
 
