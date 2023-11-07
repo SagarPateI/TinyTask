@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="Home">
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="TaskList" component={TaskListScreen} />
       <Tab.Screen name="Calendar" component={CalendarScreen} />
