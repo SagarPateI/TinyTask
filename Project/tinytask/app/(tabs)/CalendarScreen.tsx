@@ -5,8 +5,8 @@ import { useThemeColor, View } from "../../components/Themed";
 const CalendarScreen = () => {
   const backgroundColor = useThemeColor(
     {
-      light: "#f0f0f0", // Light gray background color
-      dark: "#333333", // Dark gray background color
+      light: "#FFFFFF", // Light gray background color
+      dark: "#000000", // Dark gray background color
     },
     "background"
   );
@@ -16,13 +16,13 @@ const CalendarScreen = () => {
     // perform actions when a day is selected
   };
 
-return (
+  return (
     <View style={{ flex: 1, backgroundColor }}>
       <Calendar
         onDayPress={onDayPress}
         markedDates={{
           // mark a specific date
-          '2023-11-08': { selected: true, marked: true, selectedColor: 'blue' },
+          "2023-11-08": { selected: true, marked: true, selectedColor: "blue" },
         }}
       />
     </View>
