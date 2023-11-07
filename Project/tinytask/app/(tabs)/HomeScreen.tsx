@@ -2,6 +2,7 @@
 import React from 'react';
 import { Text, ScrollView, StyleSheet } from 'react-native';
 import { View as ThemedView, useThemeColor, Text as ThemedText, View } from "../../components/Themed";
+import EditScreenInfo from "../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 
 const HomeScreen = () => {
   const backgroundColor = useThemeColor(
@@ -43,6 +44,10 @@ const HomeScreen = () => {
     taskText: {
       marginLeft: 10,
       fontSize: 16,
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: "bold",
     },
     separator: {
       borderBottomWidth: 1,
@@ -104,6 +109,17 @@ const HomeScreen = () => {
           ))}
         </View>
       </ScrollView>
+
+      <View style={styles.container}>
+        <ThemedText style={styles.title}>Tab One</ThemedText>
+        <View
+          style={styles.separator}
+          lightColor="#eee"
+          darkColor="rgba(255,255,255,0.1)"
+        />
+        <EditScreenInfo path="app/(tabs)/HomeScreen.tsx" />
+      </View>
+
     </ThemedView>
   );
 };
