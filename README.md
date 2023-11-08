@@ -4,6 +4,8 @@
 
 Welcome to TinyTask, where productivity meets simplicity! Our minimalist task management application is your go-to solution for organizing daily chores, essential appointments, and everything in between. With a focus on user-friendly functionality and efficiency, TinyTask streamlines your day with a sleek and intuitive design.
 
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Realm](https://img.shields.io/badge/Realm-39477F?style=for-the-badge&logo=realm&logoColor=white)
+
 ***
 
 ## Version 0.1.2 - Bugfixes and UI improvements! [DOWNLOAD HERE](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2)
