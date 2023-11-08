@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tinytask",
+    "name": "Tiny Task",
     "slug": "tinytask",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -41,9 +41,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "2475caa0-d41d-4679-895f-924a21aa12e8"
+        "projectId": "84d3cf7a-1bf9-49bf-adc5-e32ecc25a4a1"
       }
     },
-    "owner": "sagarpat"
+    "owner": "teamcyberpunk"
   }
 }
