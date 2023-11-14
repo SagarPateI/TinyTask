@@ -38,7 +38,7 @@ const handleSubmit = async () => {
 
         //ENTER URL HERE
         //URL NEEDS TO BE CHANGED EVERYTIME THE SERVER IS RESTARTED 
-        const {data} = await instance.post('/login', {
+        const { data } = await instance.post('https://short-ants-take.loca.lt/login', {
             email,
             password,
         });
