@@ -4,15 +4,17 @@
 4. run `npm start` inside the server folder to start the api server
 5. to run localtunnel so that you can use the app on your phone
 
-    a. globally install `npm install -g localtunnel`
+    a. globally install `npm install -g localtunnel` (this command can be run anywhere in the terminal)
     
     b. make sure server is running first: `npm start`
     
-    c. generate a url by running `lt --port 8000`
+    c. generate a url by running `lt --port 8000` inside the client folder 
     
     d. click on the url in the terminal, click the ipv4 link, copy/paste the public IP address into the box on the first webpage
+
+    e. copy the url you clicked on in step d
     
-    e. change the url inside screens/Login.js and screens/Signup.js (keep the /login and /signup part)
+    f. change the url inside screens/Login.js and screens/Signup.js (keep the /login and /signup part)
 
 ex. 
 ``` Typescript
