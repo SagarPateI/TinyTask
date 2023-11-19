@@ -10,17 +10,21 @@ import {
 {
   /* ACCESSING AND SENDING VALUES TO TEXT INPUT*/
 }
-interface UserInputProps extends TextInputProps {
+interface UserInputProps
+  extends Omit<TextInputProps, "autoCompleteType" | "keyboardType"> {
   name: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  autoCompleteType?: string;
+  keyboardType?: string;
+  secureTextEntry?: boolean;
 }
 
 const UserInput: FC<UserInputProps> = ({
   name,
   value,
   setValue,
-  autoCapitalize = "none",
+  autoCompleteType = "off",
   keyboardType = "default",
   secureTextEntry = false,
 }) => {
@@ -29,14 +33,13 @@ const UserInput: FC<UserInputProps> = ({
       <Text style={styles.label}>{name}</Text>
       <TextInput
         autoCorrect={false}
-        autoCapitalize={autoCapitalize}
-        keyboardType={keyboardType}
+        keyboardType={keyboardType as any}
         secureTextEntry={secureTextEntry}
         style={styles.input}
         value={value}
         onChangeText={(text) => setValue(text)}
       />
-      {/* USER INPUT (TEXT) WILL BE SENT TO SETVALUE FUNCTION TO SET VALUE FOR THE STATE*/}
+      {/* USER INPUT (TEXT) WILL BE SENT TO setValue FUNCTION TO SET VALUE FOR THE STATE */}
     </View>
   );
 };
