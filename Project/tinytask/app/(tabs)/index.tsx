@@ -8,6 +8,7 @@ import {
   View,
 } from "../../components/Themed";
 import EditScreenInfo from "../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
+import { MONGO_URL } from "@env";
 
 const HomeScreen = () => {
   const backgroundColor = useThemeColor(

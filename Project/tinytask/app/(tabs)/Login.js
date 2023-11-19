@@ -5,7 +5,7 @@ import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from 'axios';
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-
+import { MONGO_URL } from "@env";
 
 
 const Login =  ({navigation}) => {
@@ -38,7 +38,7 @@ const handleSubmit = async () => {
 
         //ENTER URL HERE
         //URL NEEDS TO BE CHANGED EVERYTIME THE SERVER IS RESTARTED 
-        const { data } = await instance.post('https://short-ants-take.loca.lt/login', {
+        const { data } = await instance.post('${MONGO_URL}/login', {
             email,
             password,
         });
