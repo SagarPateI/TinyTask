@@ -1,26 +1,54 @@
-1. run `npm install` inside the client (tinytask) folder
-2. run `npx expo start` inside the client folder to run metro
-3. run `npm install` inside the server folder
-4. run `npm start` inside the server folder to start the api server
-5. to run localtunnel so that you can use the app on your phone
+### Quick Start Instructions
 
-    a. globally install `npm install -g localtunnel` (this command can be run anywhere in the terminal)
-    
-    b. make sure server is running first: `npm start`
-    
-    c. generate a url by running `lt --port 8000` inside the client folder 
-    
-    d. click on the url in the terminal, click the ipv4 link, copy/paste the public IP address into the box on the first webpage
+#### Client Setup:
+1. Inside the client (`tinytask`) folder, run:
+   ```bash
+   npm install
+   ```
+2. To run Metro, execute:
+   ```bash
+   npm start
+   ```
+   ### or
+   ```
+   npx expo start
+   ```
 
-    e. copy the url you clicked on in step d
-    
-    f. change the url inside screens/Login.js and screens/Signup.js (keep the /login and /signup part)
+#### Server Setup:
+3. Inside the server folder, install dependencies with:
+   ```bash
+   npm install
+   ```
+4. Start the API server by running:
+   ```bash
+   npm start
+   ```
 
-ex. 
-``` Typescript
-    const { data } = await instance.post('https://short-ants-take.loca.lt/login', {
-            email,
-            password,
-        });
-```
-    f. run the client: `npm start`
+#### Running Locally:
+
+To access the app on your phone:
+1. Globally install `localtunnel` by running:
+   ```bash
+   npm install -g localtunnel
+   ```
+2. Ensure the server is running with:
+   ```bash
+   npm start
+   ```
+3. Generate a URL by executing the following command inside the client folder:
+   ```bash
+   lt --port 8000
+   ```
+4. Click on the generated URL in the terminal, then click the IPv4 link. Copy and paste the public IP address into the input box on the first webpage.
+5. Copy the URL you clicked in the previous step.
+6. Update the URL inside `screens/Login.js` and `screens/Signup.js` (keeping the `/login` and `/signup` parts). For example:
+   ```typescript
+   const { data } = await instance.post('https://short-ants-take.loca.lt/login', {
+       email,
+       password,
+   });
+   ```
+7. Run the client:
+   ```bash
+   npm start
+   ```
