@@ -31,7 +31,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
       // ENTER URL HERE
       // URL NEEDS TO BE CHANGED EVERY TIME THE SERVER IS RESTARTED
       const { data } = await instance.post(
-        "https://dry-shrimps-tan.loca.lt/signup",
+        "https://green-boxes-battle.loca.lt/signup",
         {
           name,
           email,
