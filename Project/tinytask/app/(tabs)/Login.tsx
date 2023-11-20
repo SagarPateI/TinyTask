@@ -31,7 +31,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
 
     try {
       const { data } = await instance.post(
-        "https://dry-shrimps-tan.loca.lt/login",
+        "https://green-boxes-battle.loca.lt/login",
         {
           email,
           password,
