@@ -12,12 +12,12 @@ const jwt = require('jsonwebtoken');
 
 
 //handles the creation of new users
-exports.createUser = async (req,res) => {
-   
+exports.createUser = async (req, res) => {
+
     console.log('User hit sign up button');
 
     try {
-        const {name, email, password} = req.body;
+        const { name, email, password } = req.body;
 
         if (!name) {
             return res.json({
@@ -37,37 +37,37 @@ exports.createUser = async (req,res) => {
             });
         }
 
-    //searching if the email has already been used
-    const isNewUser = await User.isEmailInUse(email);
-    if(!isNewUser) {
-        return res.json({
-            success: false,
-            message: 'Email is taken',
-        
-        });
-    }
+        //searching if the email has already been used
+        const isNewUser = await User.isEmailInUse(email);
+        if (!isNewUser) {
+            return res.json({
+                success: false,
+                message: 'Email is taken',
+
+            });
+        }
 
         try {
-            
-    //saves user sign-up information to the database 
-        const user = await new User ({
-            name,
-            email,
-            password,
-        });
 
-        await user.save();
-        const token = jwt.sign({_id: user._id}, process.env.JWT_TOKEN, {
-            expiresIn: "7d",
-        });
+            //saves user sign-up information to the database 
+            const user = await new User({
+                name,
+                email,
+                password,
+            });
 
-        const {password: userPassword, ...rest } = user._doc;
+            await user.save();
+            const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, {
+                expiresIn: "7d",
+            });
 
-        //sends user a token as response 
-        return res.json({
-            token,
-            user: rest,
-        });
+            const { password: userPassword, ...rest } = user._doc;
+
+            //sends user a token as response 
+            return res.json({
+                token,
+                user: rest,
+            });
         } catch (err) {
             console.log(err);
         }
@@ -77,30 +77,30 @@ exports.createUser = async (req,res) => {
 };
 
 //handles user logins 
-exports.userLogin = async (req,res) => {
-    const {email, password} = req.body
-    const user = await User.findOne({email})
+exports.userLogin = async (req, res) => {
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
 
-        if(!user) {
+    if (!user) {
 
-            return res.json({
+        return res.json({
             success: false, message: 'user not found with given email'
         });
     }
 
     const passwordMatch = await user.comparePassword(password)
-        if (!passwordMatch) {
-            return res.json({
-                success:false, message: 'email/password is incorrect'
-            });
-        }
+    if (!passwordMatch) {
+        return res.json({
+            success: false, message: 'email/password is incorrect'
+        });
+    }
 
-    const token = jwt.sign({userId: user._id}, process.env.JWT_TOKEN, {
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
         expiresIn: "7d",
     });
 
     user.password = undefined;
     user.token = undefined;
-    res.json({user, token});
+    res.json({ user, token });
 }
 
