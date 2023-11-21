@@ -77,14 +77,14 @@ exports.createUser = async (req,res) => {
 };
 
 //handles user logins 
-exports.userLogin = async (req,res) => {
-    const {email, password} = req.body
-    const user = await User.findOne({email})
+exports.userLogin = async (req, res) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email }).lean().exec();
 
-        if(!user) {
-
-            return res.json({
-            success: false, message: 'user not found with given email'
+    if (!user) {
+        return res.json({
+            success: false,
+            message: 'user not found with given email',
         });
     }
 
@@ -95,12 +95,12 @@ exports.userLogin = async (req,res) => {
             });
         }
 
-    const token = jwt.sign({userId: user._id}, process.env.JWT_TOKEN, {
-        expiresIn: "7d",
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
+        expiresIn: '7d',
     });
 
-    user.password = undefined;
-    user.token = undefined;
-    res.json({user, token});
-}
+    delete user.password;
+    delete user.token;
 
+    res.json({ user, token });
+};
