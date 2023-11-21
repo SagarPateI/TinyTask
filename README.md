@@ -71,6 +71,25 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ## 🏃‍ Quick Start
 
+### Pre-requisites:
+
+1. **Install Microsoft Visual Studio Code:**
+   - Download and install Visual Studio Code from [here](https://code.visualstudio.com/Download).
+   
+2. **Install Node.js:**
+   - Download and install Node.js from [here](https://nodejs.org/en/download).
+   
+3. **Open Terminal in Visual Studio Code:**
+   - Open Visual Studio Code.
+   - Press `Ctrl + \` or click on View -> Terminal to open a terminal.
+   - Make sure the terminal is set to use PowerShell.
+   
+4. **Install Expo CLI:**
+   - Install Expo CLI globally by running the following command in the terminal:
+     ```bash
+     npm install -g expo-cli
+     ```
+
 #### Client Setup:
 1. **Install Git Bash:**
    Download and install Git Bash from [here](https://git-scm.com/downloads).
