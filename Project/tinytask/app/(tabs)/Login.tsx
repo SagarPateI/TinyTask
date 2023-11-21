@@ -30,13 +30,10 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
     }
 
     try {
-      const { data } = await instance.post(
-        "https://dry-shrimps-tan.loca.lt/login",
-        {
-          email,
-          password,
-        }
-      );
+      const { data } = await instance.post("https://tinytask.loca.lt/login", {
+        email,
+        password,
+      });
 
       if (data.error) {
         Alert.alert(data.error);

@@ -161,7 +161,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 12. **Start Localtunnel:**
     Start localtunnel with port 8000:
     ```bash
-    lt --port 8000
+    lt --port 8000 -s tinytask
     ```
 
 13. **Access App on Phone:**
@@ -172,7 +172,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 14. **Update URL in Code:**
     Update the URL inside `screens/Login.tsx` and `screens/Signup.tsx` (keeping the `/login` and `/signup` parts). For example:
     ```typescript
-    const { data } = await instance.post('https://short-ants-take.loca.lt/login', {
+    const { data } = await instance.post('https://tinytask.loca.lt/login', {
         email,
         password,
     });
