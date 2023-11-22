@@ -49,11 +49,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="CalendarScreen"
+             name="CalendarScreen"
         options={{
-          title: "Calendar View",
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="calendar" color={color} />
+               title: '',
+               tabBarIcon: ({ color }) => (
+                 <TabBarIcon name="calendar" color={color} />
           ),
         }}
       />
