@@ -29,13 +29,34 @@ const TaskListScreen: React.FC = () => {
     "background"
   );
 
-  const handleAddTask = () => {
-    Keyboard.dismiss();
-    if (task.trim() !== "") {
-      setTaskItems([...taskItems, task]);
-      setTask("");
+const handleAddTask = async () => {
+  Keyboard.dismiss();
+  if (task.trim() !== "") {
+    try {
+      const response = await fetch("https://tinytask.loca.lt/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: task,
+          description: "Your task description here", // Add description as needed
+        }),
+      });
+
+      if (response.ok) {
+        const newTask = await response.json();
+        setTaskItems([...taskItems, newTask.title]); // Update taskItems with the new task
+        setTask("");
+      } else {
+        // Handle errors if needed
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle errors if needed
     }
-  };
+  }
+};
 
   const completeTask = (index: number) => {
     let itemsCopy = [...taskItems];
