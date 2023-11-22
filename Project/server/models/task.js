@@ -15,9 +15,4 @@ const taskSchema = new mongoose.Schema({
     },
 });
 
-// Create indexes
-taskSchema.index({ title: 'text', description: 'text' });
-
-const Task = mongoose.model('Task', taskSchema);
-
-module.exports = Task;
+module.exports = mongoose.model('Task', taskSchema);
