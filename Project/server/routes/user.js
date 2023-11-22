@@ -1,3 +1,12 @@
+/*
+handles user signup and login API endpoints
+
+*/
+
+
+
+
+
 const express = require('express');
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 

@@ -1,8 +1,16 @@
+/*
+
+    MAIN SERVER SETUP
+
+*/ 
+
+
 require('dotenv').config();
 require('./models/database');
 const cors = require("cors");
 const express = require('express');
-const User = require('./models/user');
+const jwt = require('jsonwebtoken');
+//const User = require('./models/user');
 const app = express();
 const authRouter = require('./routes/user');
 const http = require("http").createServer(app);

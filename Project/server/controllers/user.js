@@ -5,6 +5,14 @@
         - if no duplicate email is found, user's name, email, and password are stored in db
         -when user tries to login, request is sent to db for email and password validaion
 
+
+        1. Validates input
+        2. checks for duplicate emails on signup
+        3. saves new users to DB
+        4. on login, gets user from DB
+        5. compares login pw to hashed pw
+        6. sends back authentication tokens on success
+
 */
 
 const User = require('../models/user');
@@ -58,7 +66,7 @@ exports.createUser = async (req, res) => {
 
             await user.save();
             const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, {
-                expiresIn: "7d",
+                expiresIn: "1h",
             });
 
             const { password: userPassword, ...rest } = user._doc;
