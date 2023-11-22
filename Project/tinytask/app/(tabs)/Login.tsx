@@ -30,10 +30,13 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
     }
 
     try {
-      const { data } = await instance.post("https://tinytask.loca.lt/login", {
-        email,
-        password,
-      });
+      const { data } = await instance.post(
+        "https://tinytask.loca.lt/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
       if (data.error) {
         Alert.alert(data.error);
