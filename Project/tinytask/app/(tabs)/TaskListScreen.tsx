@@ -114,6 +114,7 @@ const TaskListScreen: React.FC = () => {
         </View>
       </ScrollView>
 
+      {/* Write a task */}
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
