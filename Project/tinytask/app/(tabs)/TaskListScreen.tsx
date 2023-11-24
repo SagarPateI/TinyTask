@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -18,6 +20,7 @@ import {
 } from "../../components/Themed";
 
 const TaskListScreen: React.FC = () => {
+  const navigation = useNavigation<StackNavigationProp<any>>();
   const [task, setTask] = useState<string>("");
   const [taskItems, setTaskItems] = useState<string[]>([]);
 
@@ -135,6 +138,7 @@ const TaskListScreen: React.FC = () => {
         </View>
       </ScrollView>
 
+      {/* Write a task */}
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
