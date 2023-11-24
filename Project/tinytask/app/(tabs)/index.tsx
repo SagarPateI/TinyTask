@@ -1,5 +1,7 @@
 // app/tabs/HomeScreen.tsx
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRoute } from "@react-navigation/native";
+import { RouteProp } from "@react-navigation/native";
 import { Text, ScrollView, StyleSheet } from "react-native";
 import {
   View as ThemedView,
@@ -9,7 +11,32 @@ import {
 } from "../../components/Themed";
 import EditScreenInfo from "../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 
-const HomeScreen = () => {
+
+type RootStackParamList = {
+  TaskList: undefined; // or any other params for TaskList screen
+  Home: { newTask?: string };
+};
+
+const HomeScreen: React.FC = () => {
+  const [tasks, setTasks] = useState([
+    { id: 1, task: "Task 1", completed: false },
+    { id: 2, task: "Task 2", completed: true },
+  ]);
+  // Receive the route and get the new task parameter
+  const route = useRoute<RouteProp<RootStackParamList, "Home">>();
+  const newTask = route.params?.newTask;
+
+
+  useEffect(() => {
+    // Update the tasks array if a new task is received
+    if (newTask) {
+      setTasks((prevTasks) => [
+        ...prevTasks,
+        { id: prevTasks.length + 1, task: newTask, completed: false },
+      ]);
+    }
+  }, [newTask]);
+
   const backgroundColor = useThemeColor(
     {
       light: "#FFFFFF", // Light gray background color
@@ -96,10 +123,7 @@ const HomeScreen = () => {
     { id: 2, title: "Gym", time: "5:00 PM" },
   ];
 
-  const tasks = [
-    { id: 1, task: "Task 1", completed: false },
-    { id: 2, task: "Task 2", completed: true },
-  ];
+
 
   return (
     <ThemedView style={styles.container}>
