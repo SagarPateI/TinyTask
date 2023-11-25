@@ -15,13 +15,13 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      initialRouteName="index"
+      initialRouteName="HomeScreen" // Set initialRouteName to the existing HomeScreen route
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="HomeScreen" // Set the route name to match the existing HomeScreen component
         options={{
           title: "Home Screen",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
@@ -42,14 +42,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="TaskListScreen"
+        name="TaskListScreen" // Set the route name to match the existing TaskListScreen component
         options={{
           title: "Task List",
           tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="CalendarScreen"
+        name="CalendarScreen" // Set the route name to match the existing CalendarScreen component
         options={{
           title: "Calendar View",
           tabBarIcon: ({ color }) => (
