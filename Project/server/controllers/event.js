@@ -1,3 +1,4 @@
+// Project\server\controllers\event.js
 const Event = require('../models/event');
 
 exports.createEvent = async (req, res) => {
@@ -29,4 +30,4 @@ exports.deleteEvent = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-// put any additional controller methods like updateEvent here
+// Additional controller methods like updateEvent can also be defined here
