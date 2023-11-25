@@ -45,6 +45,8 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
+        // Assuming login is successful
+        navigation.navigate("HomeScreen"); // Navigate to HomeScreen after successful login
       }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
