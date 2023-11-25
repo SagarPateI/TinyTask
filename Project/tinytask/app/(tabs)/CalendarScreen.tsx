@@ -1,22 +1,11 @@
-import groupBy from 'lodash/groupBy';
 import React, { Component } from 'react';
-import {
-  Button,
-  TextInput,
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import groupBy from 'lodash/groupBy';
+import {Button,TextInput,View,TouchableOpacity,Text,StyleSheet,} from 'react-native';
 import Modal from 'react-native-modal';
-import {
-  ExpandableCalendar,
-  TimelineEventProps,
-  TimelineList,
-  CalendarProvider,
-  TimelineProps,
-  CalendarUtils,
-} from 'react-native-calendars';
+import {ExpandableCalendar,TimelineEventProps,TimelineList,CalendarProvider,TimelineProps,CalendarUtils,} from 'react-native-calendars';
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import ColorPicker, { Swatches, OpacitySlider, HueSlider, SaturationSlider, BrightnessSlider, PreviewText } from 'reanimated-color-picker';
+
 
 interface State {
   currentDate: string;
@@ -25,6 +14,8 @@ interface State {
   newEventTitle: string;
   newEventSummary: string;
   isModalVisible: boolean;
+  selectedEventColor: string;
+
 }
 
 const EVENT_COLOR = '#e6add8';
@@ -33,6 +24,7 @@ const today = new Date();
 export const getDate = (offset = 0) =>
   CalendarUtils.getCalendarDateString(new Date().setDate(today.getDate() + offset));
 
+  
   const timelineEvents: TimelineEventProps[] = [
     {
       start: `${getDate(-1)} 09:20:00`,
@@ -161,6 +153,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     newEventTitle: '',
     newEventSummary: '',
     isModalVisible: false,
+    selectedEventColor: EVENT_COLOR,
   };
 
   marked = {
@@ -186,14 +179,14 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
 
   handleCreateEvent = () => {
     const { eventsByDate, currentDate, newEventTitle, newEventSummary } = this.state;
-
+    const limitedSwatches = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
     const newEvent: TimelineEventProps = {
       id: 'draft',
       start: `${currentDate} 12:00:00`,
       end: `${currentDate} 13:00:00`,
       title: newEventTitle || 'New Event',
       summary: newEventSummary || '',
-      color: 'pink', // Set color to green
+      color: this.state.selectedEventColor,
     };
 
     if (eventsByDate[currentDate]) {
@@ -211,8 +204,9 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     });
   };
 
+
+
   private timelineProps: Partial<TimelineProps> = {
-    format24h: false,
     unavailableHours: [{ start: 0, end: 6 }, { start: 22, end: 24 }],
     overlapEventsSpacing: 8,
     rightEdgeSpacing: 24,
@@ -280,6 +274,18 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
                 onChangeText={(text) => this.setState({ newEventSummary: text })}
                 style={styles.inputSummary}
               />
+              <Text style={styles.label}>Color</Text>
+<ColorPicker
+  value={this.state.selectedEventColor}
+  sliderThickness={20}
+  thumbSize={20}
+  thumbShape='circle'
+  onChange={(color) => this.setState({ selectedEventColor: color.hex })}
+>
+  <Swatches style={styles.swatchesContainer} swatchStyle={styles.swatchStyle} />
+
+  
+</ColorPicker>
             <TouchableOpacity
               style={styles.createButton}
               onPress={this.handleCreateEvent}>
@@ -355,4 +361,51 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'white',
   },
-});
+
+  sliderTitle: {
+    color: '#000',
+    fontWeight: 'bold',
+    marginBottom: 5,
+    paddingHorizontal: 4,
+  },
+  
+  sliderStyle: {
+    borderRadius: 20,
+    marginBottom: 20,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+  previewTxtContainer: {
+    paddingTop: 20,
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderColor: '#bebdbe',
+  },
+  swatchesContainer: {
+    paddingTop: 20,
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderColor: '#bebdbe',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
+    gap: 10,
+  },
+  swatchStyle: {
+    borderRadius: 20,
+    height: 30,
+    width: 30,
+    margin: 0,
+    marginBottom: 5,
+    marginHorizontal: 0,
+    marginVertical: 0,
+  },
+
+}); 
