@@ -1,3 +1,4 @@
+// Project\server\models\event.js
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
@@ -7,6 +8,7 @@ const eventSchema = new mongoose.Schema({
     },
     notes: {
         type: String,
+        required: true,
     },
     start_time: {
         type: Date,
@@ -18,6 +20,4 @@ const eventSchema = new mongoose.Schema({
     },
 });
 
-const Event = mongoose.model('Event', eventSchema);
-
-module.exports = Event;
+module.exports = mongoose.model('Event', eventSchema);
