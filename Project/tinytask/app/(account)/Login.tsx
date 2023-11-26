@@ -115,7 +115,7 @@ const Login = () => {
           <Text style={{ color: "#FFFFFF" }}>
             Don't have an account?
             <Text
-              onPress={() => navigation.navigate("Signup.tsx")}
+              onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
             >
               {" "}
