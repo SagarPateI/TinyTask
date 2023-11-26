@@ -12,12 +12,12 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import Task from "../../../../components/Task";
+import Task from "../../../components/Task";
 import {
   Text as ThemedText,
   View as ThemedView,
   useThemeColor,
-} from "../../../../components/Themed";
+} from "../../../components/Themed";
 
 const TaskListScreen: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
