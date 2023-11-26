@@ -15,15 +15,15 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      initialRouteName="HomeScreen" // Set initialRouteName to the existing HomeScreen route
+      initialRouteName="Login" // Set initialRouteName to the existing HomeScreen route
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
       }}
     >
       <Tabs.Screen
-        name="HomeScreen" // Set the route name to match the existing HomeScreen component
+        name="Login" // Set the route name to match the existing HomeScreen component
         options={{
-          title: "Home Screen",
+          title: "Login Page",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -42,19 +42,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="Login" // Set the route name to match the existing TaskListScreen component
+        name="Signup" // Set the route name to match the existing TaskListScreen component
         options={{
-          title: "Login Page",
+          title: "Signup Page",
           tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="CalendarScreen" // Set the route name to match the existing CalendarScreen component
-        options={{
-          title: "Calendar View",
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="calendar" color={color} />
-          ),
         }}
       />
     </Tabs>
