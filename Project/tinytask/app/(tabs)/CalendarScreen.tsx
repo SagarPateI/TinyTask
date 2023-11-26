@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import groupBy from 'lodash/groupBy';
 import {
-  Button,
   TextInput,
   View,
   TouchableOpacity,
@@ -34,8 +33,9 @@ interface State {
   selectedEndTime: Date;
   isStartTimePickerVisible: boolean;
   isEndTimePickerVisible: boolean;
-  newEventStart: string; 
-  newEventEnd: string; 
+  newEventStart: string;
+  newEventEnd: string;
+  marked: { [key: string]: { marked: boolean } };
 };
 
 const EVENT_COLOR = '#e6add8';
@@ -43,7 +43,6 @@ const today = new Date();
 
 export const getDate = (offset = 0) =>
   CalendarUtils.getCalendarDateString(new Date().setDate(today.getDate() + offset));
-
 
 const INITIAL_TIME = { hour: 9, minutes: 0 };
 const EVENTS: TimelineEventProps[] = [];
@@ -61,16 +60,11 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     selectedEndTime: new Date(),
     isStartTimePickerVisible: false,
     isEndTimePickerVisible: false,
-    newEventStart: '', 
-    newEventEnd: '', 
-  };
-
-  marked = {
-    [`${getDate(-1)}`]: { marked: true },
-    [`${getDate()}`]: { marked: true },
-    [`${getDate(1)}`]: { marked: true },
-    [`${getDate(2)}`]: { marked: true },
-    [`${getDate(4)}`]: { marked: true },
+    newEventStart: '',
+    newEventEnd: '',
+    marked: {
+      [`${getDate()}`]: { marked: true },
+    },
   };
 
   onDateChanged = (date: string, source: string) => {
@@ -102,10 +96,11 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       newEventStart,
       newEventEnd,
       selectedEventColor,
+      marked,
     } = this.state;
 
     const newEvent: TimelineEventProps = {
-      id: new Date().toISOString(), 
+      id: new Date().toISOString(),
       start: newEventStart,
       end: newEventEnd,
       title: newEventTitle || 'New Event',
@@ -118,8 +113,14 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     } else {
       eventsByDate[currentDate] = [newEvent];
     }
-  
+
     const updatedEvents = [...this.state.events, newEvent];
+
+    
+    const updatedMarked = {
+      ...marked,
+      [CalendarUtils.getCalendarDateString(newEventStart)]: { marked: true },
+    };
 
     this.setState({
       events: updatedEvents,
@@ -131,6 +132,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       selectedEndTime: new Date(),
       isStartTimePickerVisible: false,
       isEndTimePickerVisible: false,
+      marked: updatedMarked,
     });
   };
 
@@ -147,7 +149,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
         newEventEnd: `${this.state.currentDate} ${formattedTime}:00`,
       });
     }
-  
+
     this.hideTimePicker();
   };
 
@@ -188,7 +190,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
         <ExpandableCalendar
           firstDay={1}
           hideArrows
-          markedDates={this.marked}
+          markedDates={this.state.marked}
         />
 
         <TimelineList
@@ -263,18 +265,19 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
                 thumbShape='circle'
                 onChange={(color) => this.setState({ selectedEventColor: color.hex })}
               >
-                <Swatches
-                  style={styles.swatchesContainer}
-                  swatchStyle={styles.swatchStyle}
-                />
+               <Swatches
+                 style={styles.swatchesContainer}
+                 swatchStyle={styles.swatchStyle}
+                 colors={swatchColors}
+               />
               </ColorPicker>
-              
+
               <TouchableOpacity
                 style={styles.createButton}
                 onPress={this.handleCreateEvent}>
                 <Text style={styles.buttonText}>Create</Text>
               </TouchableOpacity>
-              
+
               <TouchableOpacity
                 style={styles.cancelButton}
                 onPress={() => this.setState({ isModalVisible: false })}>
@@ -287,7 +290,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     );
   }
 }
-
+const swatchColors = ['#fd5959', '#ff9c6d', '#fcff82', '#AFE1AF', '#cadefc', '#c3bef0', '#cca8e9'];
 const styles = StyleSheet.create({
   modal: {
     margin: 0,
@@ -296,7 +299,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     marginVertical: 8,
     padding: 8,
-    borderRadius: 16, 
+    borderRadius: 16,
     backgroundColor: "#007BFF",
   },
   modalContent: {
@@ -403,3 +406,4 @@ const styles = StyleSheet.create({
     marginVertical: 0,
   },
 });
+
