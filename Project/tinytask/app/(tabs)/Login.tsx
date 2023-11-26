@@ -6,7 +6,10 @@ import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp } from "@react-navigation/native";
 
+
 const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
+  
+  
   // State Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,16 +69,17 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   };
 
   return (
+  
     <KeyboardAwareScrollView
       contentContainerStyle={{
-        backgroundColor: "#181220",
+        backgroundColor: "#000000",
         flex: 1,
         justifyContent: "center",
       }}
     >
       <View>
         <Text
-          style={{ color: "#FFFFFF", marginBottom: 75, textAlign: "center" }}
+          style={{ color: "#FFFFFF", marginBottom: 75, textAlign: "center", fontSize: 25 }}
         >
           Login
         </Text>

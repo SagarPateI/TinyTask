@@ -18,12 +18,13 @@ export default function TabLayout() {
       initialRouteName="index"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        headerShown: false,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home Screen",
+          title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -51,7 +52,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="CalendarScreen"
         options={{
-          title: "Calendar View",
+          title: "Calendar",
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="calendar" color={color} />
           ),
