@@ -8,8 +8,8 @@ import {
   useThemeColor,
   Text as ThemedText,
   View,
-} from "../../components/Themed";
-import EditScreenInfo from "../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
+} from "../../../components/Themed";
+import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 
 
 type RootStackParamList = {
