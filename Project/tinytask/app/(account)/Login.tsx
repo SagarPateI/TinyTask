@@ -4,9 +4,11 @@ import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
-const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
+const Login = ({ navigation }: { navigation: any }) => {
+  //const Login = () => {
+  //const navigation = useNavigation();
   // State Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +33,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
 
     try {
       const { data } = await instance.post(
-        "https://dry-shrimps-tan.loca.lt/login",
+        "https://tinytask.loca.lt/auth/login",
         {
           email,
           password,
@@ -45,6 +47,8 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
+        // Assuming login is successful
+        navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
@@ -115,7 +119,6 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
             >
-              {" "}
               Register
             </Text>
           </Text>

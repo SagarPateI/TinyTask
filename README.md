@@ -1,6 +1,6 @@
 # TinyTask - Empower Your Day 🚀
 
-<a href="https://github.com/CSC-4350-FL2023/CyberPunk/stargazers"><img src="https://img.shields.io/github/stars/CSC-4350-FL2023/CyberPunk?color=yellow" alt="Stars Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/CSC-4350-FL2023/CyberPunk"></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/pulls"><img src="https://img.shields.io/github/issues-pr/CSC-4350-FL2023/CyberPunk?color=blue" alt="Pull Requests Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/pulls?q=is%3Apr+is%3Aclosed"><img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/CSC-4350-FL2023/CyberPunk"></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/issues"><img src="https://img.shields.io/github/issues/CSC-4350-FL2023/CyberPunk?color=important" alt="Issues	 Badge"/></a> <a href="http://hits.dwyl.com/CSC-4350-FL2023/CyberPunk"><img src="http://hits.dwyl.com/CSC-4350-FL2023/CyberPunk.svg?style=flat" alt="Hits Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk"><img src="https://img.shields.io/github/repo-size/CSC-4350-FL2023/CyberPunk?color=ff69b4" alt="Repo Size Badge"/></a>
+<a href="https://github.com/CSC-4350-FL2023/CyberPunk/stargazers"><img src="https://img.shields.io/github/stars/CSC-4350-FL2023/CyberPunk?color=yellow" alt="Stars Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/CSC-4350-FL2023/CyberPunk"></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/pulls"><img src="https://img.shields.io/github/issues-pr/CSC-4350-FL2023/CyberPunk?color=blue" alt="Pull Requests Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/pulls?q=is%3Apr+is%3Aclosed"><img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/CSC-4350-FL2023/CyberPunk"></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/issues"><img src="https://img.shields.io/github/issues/CSC-4350-FL2023/CyberPunk?color=important" alt="Issues	 Badge"/></a> <a href="http://hits.dwyl.com/CSC-4350-FL2023/CyberPunk"><img src="http://hits.dwyl.com/CSC-4350-FL2023/CyberPunk.svg?style=flat" alt="Hits Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk"><img src="https://img.shields.io/github/repo-size/CSC-4350-FL2023/CyberPunk?color=ff69b4" alt="Repo Size Badge"/></a> [![CodeQL](https://github.com/CSC-4350-FL2023/CyberPunk/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/CSC-4350-FL2023/CyberPunk/actions/workflows/github-code-scanning/codeql)
 
 Welcome to TinyTask, where productivity meets simplicity! Our minimalist task management application is your go-to solution for organizing daily chores, essential appointments, and everything in between. With a focus on user-friendly functionality and efficiency, TinyTask streamlines your day with a sleek and intuitive design.
 
@@ -8,7 +8,10 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ***
 
-## Version 0.1.2 - Bugfixes and UI improvements! [DOWNLOAD HERE](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2)
+## Version 0.2.0 - Our biggest update yet! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0)
+Backend implementation, authentication, complex app navigation, UI improvements, and more!
+
+## Version 0.1.2 - Bugfixes and UI improvements! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2)
 <table style="width: 100%;">
   <tr>
     <td style="text-align: center; width: 50%;">
@@ -67,13 +70,124 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 - **Voice Commands**: Incorporate voice command capabilities for hands-free task management.
 
-## Get Started 🏃‍♂️
+***
 
-1. Clone this repository and dive into the world of TinyTask.
-2. Set up Google Cloud SQL and configure it with your application.
-3. Install dependencies using `npm install` or `yarn install`.
-4. Launch the app on your emulator or real device with `npx react-native run-android` or `npx react-native run-ios`.
+## 🏃‍ Quick Start
 
+### Pre-requisites:
+
+1. **Install Microsoft Visual Studio Code:**
+   - Download and install Visual Studio Code from [here](https://code.visualstudio.com/Download).
+   
+2. **Install Node.js:**
+   - Download and install Node.js from [here](https://nodejs.org/en/download).
+   
+3. **Open Terminal in Visual Studio Code:**
+   - Open Visual Studio Code.
+   - Press `Ctrl + \` or click on View -> Terminal to open a terminal.
+   - Make sure the terminal is set to use PowerShell.
+   
+4. **Install Expo CLI:**
+   - Install Expo CLI globally by running the following command in the terminal:
+     ```bash
+     npm install -g expo-cli
+     ```
+
+#### Client Setup:
+1. **Install Git Bash:**
+   Download and install Git Bash from [here](https://git-scm.com/downloads).
+
+2. **Open Git Bash Terminals:**
+   Open Visual Studio Code and open three Git Bash terminals.
+
+3. **Client Setup:**
+   In the first terminal, navigate to the client (`tinytask`) folder:
+   ```bash
+   cd ./Project/tinyTask
+   ```
+
+4. **Install Dependencies:**
+   Install the necessary dependencies:
+   ```bash
+   npm install
+   ```
+
+5. **Run Metro:**
+   Start Metro by executing either:
+   ```bash
+   npm start
+   ```
+   or
+   ```bash
+   npx expo start
+   ```
+
+#### Server Setup:
+6. **Server Setup:**
+   In the second terminal, navigate to the server folder:
+   ```bash
+   cd ./Project/server/
+   ```
+
+7. **Install Server Dependencies:**
+   Install server dependencies:
+   ```bash
+   npm install
+   ```
+
+8. **Install Nodemon:**
+   Install nodemon globally if not installed:
+   ```bash
+   npm install -g nodemon
+   ```
+
+9. **Start the API Server:**
+   Start the API server:
+   ```bash
+   nodemon start
+   ```
+
+#### Running Locally:
+
+10. **Localtunnel Setup:**
+    In the third terminal, navigate to the client folder:
+    ```bash
+    cd ./Project/tinyTask
+    ```
+
+11. **Install Localtunnel:**
+    Install localtunnel globally:
+    ```bash
+    npm install -g localtunnel
+    ```
+
+12. **Start Localtunnel:**
+    Start localtunnel with port 8000:
+    ```bash
+    lt --port 8000 -s tinytask
+    ```
+
+13. **Access App on Phone:**
+    - Click on the generated URL in the terminal.
+    - Click the IPv4 link. Copy and paste the public IP address into the input box on the first webpage.
+    - Copy the URL from the previous step.
+
+14. **Update URL in Code:**
+    Update the URL inside `screens/Login.tsx` and `screens/Signup.tsx` (keeping the `/login` and `/signup` parts). For example:
+    ```typescript
+    const { data } = await instance.post('https://tinytask.loca.lt/login', {
+        email,
+        password,
+    });
+    ```
+
+15. **Run the Client:**
+    In the client terminal, start the client:
+    ```bash
+    npm start
+    ```
+
+***
 
 ## Meet the TinyTask Crew 🌟
 
