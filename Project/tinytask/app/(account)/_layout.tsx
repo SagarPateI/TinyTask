@@ -15,13 +15,13 @@ export default function TabLayout() {
 
   return (
     <Tabs
-      initialRouteName="Login" // Set initialRouteName to the existing HomeScreen route
+      initialRouteName="index" // Set initialRouteName to the existing HomeScreen route
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
       }}
     >
       <Tabs.Screen
-        name="Login" // Set the route name to match the existing HomeScreen component
+        name="index" // Set the route name to match the existing HomeScreen component
         options={{
           title: "Login Page",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
