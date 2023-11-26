@@ -30,11 +30,14 @@ const Signup = ({ navigation }: { navigation: any }) => {
     try {
       // ENTER URL HERE
       // URL NEEDS TO BE CHANGED EVERY TIME THE SERVER IS RESTARTED
-      const { data } = await instance.post("https://tinytask.loca.lt/signup", {
-        name,
-        email,
-        password,
-      });
+      const { data } = await instance.post(
+        "https://tinytask.loca.lt/auth/signup",
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       if (data.error) {
         Alert.alert(data.error);
