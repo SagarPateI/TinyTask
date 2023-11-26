@@ -1,53 +1,34 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
-import { Pressable, useColorScheme } from "react-native";
-import Colors from "../../constants/Colors";
+// Project\tinytask\app\(account)\_layout.tsx
 
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import TabsLayout from "./(tabs)/_layout";
+import LoginScreen from "./Login";
+import SignupScreen from "./Signup";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const Stack = createStackNavigator();
 
+const AccountLayout = () => {
   return (
-    <Tabs
-      initialRouteName="index" // Set initialRouteName to the existing HomeScreen route
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-      }}
-    >
-      <Tabs.Screen
-        name="index" // Set the route name to match the existing HomeScreen component
-        options={{
-          title: "Login Page",
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ headerShown: false }}
       />
-      <Tabs.Screen
-        name="Signup" // Set the route name to match the existing TaskListScreen component
-        options={{
-          title: "Signup Page",
-          tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
-        }}
+      <Stack.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={{ headerShown: false }}
       />
-    </Tabs>
+      <Stack.Screen
+        name="Tabs"
+        component={TabsLayout}
+        options={{ headerShown: false }}
+      />
+      {/* Add more screens or navigation configurations as needed */}
+    </Stack.Navigator>
   );
-}
+};
+
+export default AccountLayout;
