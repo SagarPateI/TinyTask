@@ -14,12 +14,17 @@ const AccountLayout = () => {
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        options={{ headerShown: false }}
+        options={{
+          title: "Login Page",
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="Signup"
         component={SignupScreen}
-        options={{ headerShown: false }}
+        options={{ 
+        title: "Signup Page", 
+        headerShown: false }}
       />
       <Stack.Screen
         name="Tabs"
