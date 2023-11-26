@@ -6,8 +6,9 @@ import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 
-const Login = () => {
-  const navigation = useNavigation();
+const Login = ({ navigation }: { navigation: any }) => {
+  //const Login = () => {
+  //const navigation = useNavigation();
   // State Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +48,7 @@ const Login = () => {
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
         // Assuming login is successful
-        navigation.navigate("HomeScreen"); // Navigate to HomeScreen after successful login
+        navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
@@ -118,7 +119,6 @@ const Login = () => {
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
             >
-              {" "}
               Register
             </Text>
           </Text>
