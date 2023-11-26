@@ -19,27 +19,29 @@ const HomeScreen = () => {
   );
 
   const styles = StyleSheet.create({
+    
     container: {
       flex: 1,
       paddingHorizontal: 20,
       paddingTop: 20,
       backgroundColor,
+      marginTop: 20
     },
     sectionTitle: {
       fontSize: 24,
       fontWeight: "bold",
-      marginBottom: 10,
+      marginBottom: 5,
     },
     dateText: {
       fontSize: 18,
       fontStyle: "italic",
-      marginBottom: 10,
+      marginBottom: 5,
     },
     eventContainer: {
-      marginBottom: 20,
+      marginBottom: 10,
     },
     taskContainer: {
-      marginBottom: 20,
+      marginBottom: 5,
     },
     taskItem: {
       flexDirection: "row",
@@ -139,7 +141,7 @@ const HomeScreen = () => {
             lightColor="#eee"
             darkColor="#121212"
           />
-          <EditScreenInfo path="app/(tabs)/HomeScreen.tsx" />
+          <EditScreenInfo path="app/(tabs)/index.tsx" />
         </View>
 
         <View style={styles.separator} />

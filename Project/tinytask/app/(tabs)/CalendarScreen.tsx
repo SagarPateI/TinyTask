@@ -107,10 +107,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    marginTop: 50
   },
   taskContainer: {
     flex: 1,
     padding: 20,
+    
   },
   taskItem: {
     borderWidth: 1,
@@ -125,6 +127,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
+    marginTop: 60,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -136,6 +139,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 5,
     width: "80%",
+   
   },
   modalTitle: {
     fontSize: 18,
