@@ -21,9 +21,9 @@ const AccountLayout = () => {
       }}
     >
       <Tabs.Screen
-        name="Login" // Set the route name to match the existing HomeScreen component
+        name="HomeScreen" // Set the route name to match the existing HomeScreen component
         options={{
-          title: "Login",
+          title: "HomeScreen",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
