@@ -9,6 +9,10 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
+// Import the font directly from the correct relative path
+//import SpaceMonoRegular from "../assets/fonts/SpaceMono-Regular.ttf";
+const SpaceMonoRegular = require("../assets/fonts/SpaceMono-Regular.ttf");
+
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -24,7 +28,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require("../../../assets/fonts/SpaceMono-Regular.ttf"),
+    SpaceMono: SpaceMonoRegular, // Use the imported font directly
     ...FontAwesome.font,
   });
 
