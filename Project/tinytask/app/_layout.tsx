@@ -10,7 +10,7 @@ const RootLayout = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Account"
+        name="(account)"
         component={AccountLayout}
         options={{ headerShown: false }}
       />
