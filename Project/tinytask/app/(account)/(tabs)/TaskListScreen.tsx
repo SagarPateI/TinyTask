@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -10,14 +12,15 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import Task from "../../components/Task";
+import Task from "../../../components/Task";
 import {
   Text as ThemedText,
   View as ThemedView,
   useThemeColor,
-} from "../../components/Themed";
+} from "../../../components/Themed";
 
 const TaskListScreen: React.FC = () => {
+  const navigation = useNavigation<StackNavigationProp<any>>();
   const [task, setTask] = useState<string>("");
   const [taskItems, setTaskItems] = useState<string[]>([]);
 
@@ -29,11 +32,32 @@ const TaskListScreen: React.FC = () => {
     "background"
   );
 
-  const handleAddTask = () => {
+  const handleAddTask = async () => {
     Keyboard.dismiss();
     if (task.trim() !== "") {
-      setTaskItems([...taskItems, task]);
-      setTask("");
+      try {
+        const response = await fetch("https://tinytask.loca.lt/tasks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: task,
+            description: "Your task description here", // Add description as needed
+          }),
+        });
+
+        if (response.ok) {
+          const newTask = await response.json();
+          setTaskItems([...taskItems, newTask.title]); // Update taskItems with the new task
+          setTask("");
+          console.log("Task added successfully:", newTask); // Log success message
+        } else {
+          console.error("Failed to add task"); // Log failure message
+        }
+      } catch (error) {
+        console.error("Error:", error); // Log error message
+      }
     }
   };
 
@@ -114,6 +138,7 @@ const TaskListScreen: React.FC = () => {
         </View>
       </ScrollView>
 
+      {/* Write a task */}
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
