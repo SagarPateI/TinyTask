@@ -10,12 +10,12 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
-const AccountLayout = () => {
+export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
-      initialRouteName="Login" // Set initialRouteName to the existing HomeScreen route
+      initialRouteName="HomeScreen" // Set initialRouteName to the existing HomeScreen route
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
       }}
@@ -23,7 +23,7 @@ const AccountLayout = () => {
       <Tabs.Screen
         name="HomeScreen" // Set the route name to match the existing HomeScreen component
         options={{
-          title: "HomeScreen",
+          title: "Home Screen",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -42,12 +42,21 @@ const AccountLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="Signup" // Set the route name to match the existing TaskListScreen component
+        name="Login" // Set the route name to match the existing TaskListScreen component
         options={{
-          title: "Signup",
+          title: "Login Page",
           tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="CalendarScreen" // Set the route name to match the existing CalendarScreen component
+        options={{
+          title: "Calendar View",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="calendar" color={color} />
+          ),
         }}
       />
     </Tabs>
   );
-};
+}
