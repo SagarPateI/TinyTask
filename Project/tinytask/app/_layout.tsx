@@ -11,7 +11,8 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const Stack = createStackNavigator();
 
@@ -21,12 +22,21 @@ const RootLayout = () => {
   }, []);
 
   const SpaceMonoRegular = require("../assets/fonts/SpaceMono-Regular.ttf");
+  const [loaded, error] = useFonts({
+    SpaceMono: SpaceMonoRegular, // Use the imported font directly
+    ...FontAwesome.font,
+  });
+  //const SpaceMonoRegular = require("../assets/fonts/SpaceMono-Regular.ttf");
 
   useEffect(() => {
-    if (SpaceMonoRegular) {
+    if (loaded) {
       SplashScreen.hideAsync();
     }
-  });
+  }, [loaded]);
+
+  if (!loaded || error) {
+    console.log("ERROR: The font was not loaded.");
+  }
 
   const colorScheme = useColorScheme();
 
