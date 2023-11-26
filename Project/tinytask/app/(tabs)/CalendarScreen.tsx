@@ -3,8 +3,9 @@ import groupBy from 'lodash/groupBy';
 import {Button,TextInput,View,TouchableOpacity,Text,StyleSheet,} from 'react-native';
 import Modal from 'react-native-modal';
 import {ExpandableCalendar,TimelineEventProps,TimelineList,CalendarProvider,TimelineProps,CalendarUtils,} from 'react-native-calendars';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
-import ColorPicker, { Swatches, OpacitySlider, HueSlider, SaturationSlider, BrightnessSlider, PreviewText } from 'reanimated-color-picker';
+import ColorPicker, { Swatches, } from 'reanimated-color-picker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 
 
 interface State {
@@ -15,7 +16,10 @@ interface State {
   newEventSummary: string;
   isModalVisible: boolean;
   selectedEventColor: string;
-
+  isStartTimePickerVisible: boolean;
+  isEndTimePickerVisible: boolean;
+  startTime: Date;
+  endTime: Date;
 }
 
 const EVENT_COLOR = '#e6add8';
@@ -154,6 +158,10 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     newEventSummary: '',
     isModalVisible: false,
     selectedEventColor: EVENT_COLOR,
+    isStartTimePickerVisible: false,
+    isEndTimePickerVisible: false,
+    startTime: new Date(),
+    endTime: new Date(),
   };
 
   marked = {
@@ -179,7 +187,6 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
 
   handleCreateEvent = () => {
     const { eventsByDate, currentDate, newEventTitle, newEventSummary } = this.state;
-    const limitedSwatches = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
     const newEvent: TimelineEventProps = {
       id: 'draft',
       start: `${currentDate} 12:00:00`,
@@ -202,6 +209,26 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       newEventTitle: '',
       newEventSummary: '',
     });
+  };
+
+  handleToggleStartTimePicker = () => {
+    this.setState((prevState) => ({
+      isStartTimePickerVisible: !prevState.isStartTimePickerVisible,
+    }));
+  };
+
+  handleToggleEndTimePicker = () => {
+    this.setState((prevState) => ({
+      isEndTimePickerVisible: !prevState.isEndTimePickerVisible,
+    }));
+  };
+
+  handleStartTimeConfirm = (selectedTime: Date) => {
+    this.setState({ startTime: selectedTime, isStartTimePickerVisible: false });
+  };
+
+  handleEndTimeConfirm = (selectedTime: Date) => {
+    this.setState({ endTime: selectedTime, isEndTimePickerVisible: false });
   };
 
 
@@ -274,6 +301,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
                 onChangeText={(text) => this.setState({ newEventSummary: text })}
                 style={styles.inputSummary}
               />
+            
               <Text style={styles.label}>Color</Text>
 <ColorPicker
   value={this.state.selectedEventColor}
