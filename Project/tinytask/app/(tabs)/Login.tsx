@@ -4,12 +4,12 @@ import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 
-const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
-  
-  
+const Login = () => {
+  const navigation = useNavigation();
+
   // State Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -69,7 +69,6 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
   };
 
   return (
-  
     <KeyboardAwareScrollView
       contentContainerStyle={{
         backgroundColor: "#000000",
@@ -79,7 +78,12 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
     >
       <View>
         <Text
-          style={{ color: "#FFFFFF", marginBottom: 75, textAlign: "center", fontSize: 25 }}
+          style={{
+            color: "#FFFFFF",
+            marginBottom: 75,
+            textAlign: "center",
+            fontSize: 25,
+          }}
         >
           Login
         </Text>
