@@ -4,9 +4,10 @@ import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
-const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
+const Login = () => {
+  const navigation = useNavigation();
   // State Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -114,7 +115,7 @@ const Login = ({ navigation }: { navigation: NavigationProp<any> }) => {
           <Text style={{ color: "#FFFFFF" }}>
             Don't have an account?
             <Text
-              onPress={() => navigation.navigate("Signup")}
+              onPress={() => navigation.navigate("Signup.tsx")}
               style={{ color: "#f28b1e" }}
             >
               {" "}
