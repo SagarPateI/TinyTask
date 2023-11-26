@@ -1,26 +1,53 @@
-// Project\tinytask\app\(account)\_layout.tsx
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import Login from "./Login";
-import Signup from "./Signup";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Link, Tabs } from "expo-router";
+import { Pressable, useColorScheme } from "react-native";
+import Colors from "../../constants/Colors";
 
-const Stack = createStackNavigator();
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof FontAwesome>["name"];
+  color: string;
+}) {
+  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+}
 
 const AccountLayout = () => {
+  const colorScheme = useColorScheme();
+
   return (
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
+    <Tabs
+      initialRouteName="Login" // Set initialRouteName to the existing HomeScreen route
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+      }}
+    >
+      <Tabs.Screen
+        name="Login" // Set the route name to match the existing HomeScreen component
+        options={{
+          title: "Login",
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors[colorScheme ?? "light"].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
       />
-      <Stack.Screen
-        name="Signup"
-        component={Signup}
-        options={{ headerShown: false }}
+      <Tabs.Screen
+        name="Signup" // Set the route name to match the existing TaskListScreen component
+        options={{
+          title: "Signup",
+          tabBarIcon: ({ color }) => <TabBarIcon name="check" color={color} />,
+        }}
       />
-    </Stack.Navigator>
+    </Tabs>
   );
 };
-
-export default AccountLayout;
