@@ -9,10 +9,25 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { SplashScreen } from "expo-router";
+import { useEffect } from "react";
 
 const Stack = createStackNavigator();
 
 const RootLayout = () => {
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+  }, []);
+
+  const SpaceMonoRegular = require("../assets/fonts/SpaceMono-Regular.ttf");
+
+  useEffect(() => {
+    if (SpaceMonoRegular) {
+      SplashScreen.hideAsync();
+    }
+  });
+
   const colorScheme = useColorScheme();
 
   return (
