@@ -119,7 +119,6 @@ const Login = ({ navigation }: { navigation: any }) => {
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
             >
-              {" "}
               Register
             </Text>
           </Text>
