@@ -1,4 +1,6 @@
 // Project\server\routes\events.js
+
+console.log('Events router reached');
 const express = require('express');
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 
@@ -8,7 +10,7 @@ const limiter = new RateLimiterMemory({
 });
 
 const router = express.Router();
-const { createEvent, getEvents, } = require('../controllers/event');
+const { createEvent, getEvents } = require('../controllers/event');
 
 router.post('/', async (req, res, next) => {
     try {
@@ -18,6 +20,5 @@ router.post('/', async (req, res, next) => {
         res.status(429).send('Too many requests');
     }
 }, createEvent);
-
 
 module.exports = router;

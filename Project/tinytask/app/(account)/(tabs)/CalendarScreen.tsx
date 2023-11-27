@@ -99,8 +99,9 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       newEventEnd,
       selectedEventColor,
     } = this.state;
-
+  
     try {
+      console.log('Before making the request'); 
       const response = await fetch('https://tinytask.loca.lt/events', {
         method: 'POST',
         headers: {
@@ -114,23 +115,24 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
           color: selectedEventColor,
         }),
       });
-
+  
+      console.log('After making the request'); 
+  
       if (response.ok) {
         const newEvent = await response.json();
-      
+  
         this.setState({
           events: [...this.state.events, newEvent],
-          isModalVisible: false, 
+          isModalVisible: false,
         });
-
+  
         Alert.alert('Event created successfully');
       } else {
-        // Handle failure
+        
         Alert.alert('Failed to create event');
       }
     } catch (error) {
       console.error('Error creating event:', error);
-  
       Alert.alert('Error creating event');
     }
   };
