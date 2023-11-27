@@ -57,7 +57,7 @@ exports.createUser = async (req, res) => {
             });
 
             await user.save();
-            const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN, {
+            const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
                 expiresIn: "7d",
             });
 
