@@ -1,7 +1,8 @@
 // Project\server\routes\events.js
 
-console.log('Events router reached');
 const express = require('express');
+const router = express.Router();
+const { createEvent, getEvents } = require('../controllers/event');
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 
 const limiter = new RateLimiterMemory({
@@ -9,16 +10,17 @@ const limiter = new RateLimiterMemory({
     duration: 1,
 });
 
-const router = express.Router();
-const { createEvent, getEvents } = require('../controllers/event');
-
-router.post('/', async (req, res, next) => {
+const rateLimiterMiddleware = async (req, res, next) => {
     try {
         await limiter.consume(req.ip);
         next();
     } catch (error) {
         res.status(429).send('Too many requests');
     }
-}, createEvent);
+};
+
+router.post('/', rateLimiterMiddleware, createEvent);
+router.get('/', getEvents);
+// Additional routes for events can be added here
 
 module.exports = router;
