@@ -1,3 +1,4 @@
+//CalendarScreen.tsx
 import React, { Component } from 'react';
 import groupBy from 'lodash/groupBy';
 import {
@@ -6,6 +7,7 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
+  Alert
 } from 'react-native';
 import Modal from 'react-native-modal';
 import {
@@ -20,6 +22,7 @@ import ColorPicker, { Swatches } from 'reanimated-color-picker';
 
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
+import axios from "axios";
 
 interface State {
   currentDate: string;
@@ -87,55 +90,52 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     });
   }
 
-  handleCreateEvent = () => {
+
+  handleCreateEvent = async () => {
     const {
-      eventsByDate,
-      currentDate,
       newEventTitle,
       newEventSummary,
       newEventStart,
       newEventEnd,
       selectedEventColor,
-      marked,
     } = this.state;
 
-    const newEvent: TimelineEventProps = {
-      id: new Date().toISOString(),
-      start: newEventStart,
-      end: newEventEnd,
-      title: newEventTitle || 'New Event',
-      summary: newEventSummary || '',
-      color: selectedEventColor,
-    };
+    try {
+      const response = await fetch('https://tinytask.loca.lt/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: newEventTitle || 'New Event',
+          summary: newEventSummary || '',
+          start: newEventStart,
+          end: newEventEnd,
+          color: selectedEventColor,
+        }),
+      });
 
-    if (eventsByDate[currentDate]) {
-      eventsByDate[currentDate] = [...eventsByDate[currentDate], newEvent];
-    } else {
-      eventsByDate[currentDate] = [newEvent];
+      if (response.ok) {
+        const newEvent = await response.json();
+      
+        this.setState({
+          events: [...this.state.events, newEvent],
+          isModalVisible: false, 
+        });
+
+        Alert.alert('Event created successfully');
+      } else {
+        // Handle failure
+        Alert.alert('Failed to create event');
+      }
+    } catch (error) {
+      console.error('Error creating event:', error);
+  
+      Alert.alert('Error creating event');
     }
-
-    const updatedEvents = [...this.state.events, newEvent];
-
-    
-    const updatedMarked = {
-      ...marked,
-      [CalendarUtils.getCalendarDateString(newEventStart)]: { marked: true },
-    };
-
-    this.setState({
-      events: updatedEvents,
-      eventsByDate,
-      isModalVisible: false,
-      newEventTitle: '',
-      newEventSummary: '',
-      selectedStartTime: new Date(),
-      selectedEndTime: new Date(),
-      isStartTimePickerVisible: false,
-      isEndTimePickerVisible: false,
-      marked: updatedMarked,
-    });
   };
 
+ 
   handleTimePickerConfirm = (date: Date, isStartTime: boolean) => {
     const formattedTime = format(date, "HH:mm");
     if (isStartTime) {
@@ -406,4 +406,3 @@ const styles = StyleSheet.create({
     marginVertical: 0,
   },
 });
-
