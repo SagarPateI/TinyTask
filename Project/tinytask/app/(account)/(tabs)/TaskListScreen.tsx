@@ -112,7 +112,7 @@ const TaskListScreen: React.FC = () => {
     input: {
       paddingVertical: 15,
       paddingHorizontal: 15,
-      borderRadius: 60,
+      borderRadius: 10,
       borderColor: "#C0C0C0",
       borderWidth: 1,
       width: 250,
@@ -121,7 +121,7 @@ const TaskListScreen: React.FC = () => {
     addWrapper: {
       width: 60,
       height: 60,
-      borderRadius: 60,
+      borderRadius: 10,
       justifyContent: "center",
       alignItems: "center",
       borderColor: "#C0C0C0",
@@ -129,6 +129,7 @@ const TaskListScreen: React.FC = () => {
     },
     addText: {
       color: textColor,
+      fontSize: 30,
     },
     scrollContainer: {
       flexGrow: 1,
