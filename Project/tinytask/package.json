@@ -15,6 +15,7 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@kaloraat/react-native-text": "^1.0.4",
+    "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/datetimepicker": "7.2.0",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.3.20",
@@ -29,6 +30,7 @@
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
     "expo-web-browser": "~12.3.2",
+    "express-rate-limit": "^7.1.4",
     "i": "^0.3.7",
     "lodash": "^4.17.21",
     "react": "18.2.0",
