@@ -1,4 +1,3 @@
-//CalendarScreen.tsx
 import React, { Component } from "react";
 import groupBy from "lodash/groupBy";
 import {
@@ -22,7 +21,6 @@ import ColorPicker, { Swatches } from "reanimated-color-picker";
 
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
-import axios from "axios";
 
 interface State {
   currentDate: string;
@@ -94,63 +92,86 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
 
   handleCreateEvent = async () => {
     const {
+      eventsByDate,
+      currentDate,
       newEventTitle,
       newEventSummary,
       newEventStart,
       newEventEnd,
       selectedEventColor,
+      marked,
     } = this.state;
-
-    console.log("Request data:", {
-      title: newEventTitle || "New Event",
-      summary: newEventSummary || "",
+  
+    const newEvent: TimelineEventProps = {
+      id: new Date().toISOString(),
       start: newEventStart,
       end: newEventEnd,
+      title: newEventTitle || 'New Event',
+      summary: newEventSummary || '',
       color: selectedEventColor,
-    });
-
+    };
+  
     try {
-      if (newEventTitle.trim() !== "") {
-        console.log("Before making the request");
-        const response = await fetch("https://tinytask.loca.lt/events", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: newEventTitle || "New Event",
-            summary: newEventSummary || "",
-            start: newEventStart,
-            end: newEventEnd,
-            color: selectedEventColor,
-          }),
-        });
-
-        if (response.ok) {
-          const newEvent = await response.json();
-
-          this.setState({
-            events: [...this.state.events, newEvent],
-            isModalVisible: false,
-          });
-
-          // Display success message
-          console.log("Event created successfully:", newEvent);
-          Alert.alert("Event created successfully");
+      
+      const response = await fetch("https://tinytask.loca.lt/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: newEventTitle || "New Event",
+          summary: newEventSummary || "",
+          start: newEventStart,
+          end: newEventEnd,
+          color: selectedEventColor,
+        }),
+      });
+  
+      if (response.ok) {
+       
+        if (eventsByDate[currentDate]) {
+          eventsByDate[currentDate] = [...eventsByDate[currentDate], newEvent];
         } else {
-          // Display failure message
-          Alert.alert("Failed to create event");
+          eventsByDate[currentDate] = [newEvent];
         }
+  
+        const updatedEvents = [...this.state.events, newEvent];
+  
+        const updatedMarked = {
+          ...marked,
+          [CalendarUtils.getCalendarDateString(newEventStart)]: { marked: true },
+        };
+  
+        // Set state with updated values
+        this.setState({
+          events: updatedEvents,
+          eventsByDate,
+          isModalVisible: false,
+          newEventTitle: '',
+          newEventSummary: '',
+          selectedStartTime: new Date(),
+          selectedEndTime: new Date(),
+          isStartTimePickerVisible: false,
+          isEndTimePickerVisible: false,
+          marked: updatedMarked,
+        });
+  
+        // Display success message
+        console.log("Event created successfully and posted to the database");
+        Alert.alert("Event created successfully");
       } else {
-        // If event title is empty, display an alert
-        Alert.alert("Event title cannot be empty");
+        // Display failure message
+        console.error("Failed to post event to the database");
+        Alert.alert("Failed to create event");
       }
     } catch (error) {
-      console.error("Error creating event:", error);
       // Display error message
+      console.error("Error creating event:", error);
       Alert.alert("Error creating event");
     }
   };
+  
+  
 
   handleTimePickerConfirm = (date: Date, isStartTime: boolean) => {
     const formattedTime = format(date, "HH:mm");
