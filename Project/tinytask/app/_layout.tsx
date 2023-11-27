@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, createContext} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import AccountLayout from "./(account)/_layout";
 import { ActivityIndicator, View, useColorScheme } from "react-native";
@@ -9,9 +9,10 @@ import {
 } from "@react-navigation/native";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
-import { QueryClient, QueryClientProvider } from "react-query";
+
 
 const Stack = createStackNavigator();
+
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -31,8 +32,9 @@ const RootLayout = () => {
   }
 
   return (
+  
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <QueryClientProvider client={new QueryClient}>
+     
       <Stack.Navigator>
         <Stack.Screen
           name="(account)"
@@ -41,8 +43,9 @@ const RootLayout = () => {
         />
         {/* Add more screens or navigation configurations as needed */}
       </Stack.Navigator>
-      </QueryClientProvider>
+     
     </ThemeProvider>
+ 
   );
 };
 
