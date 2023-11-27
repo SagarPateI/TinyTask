@@ -5,6 +5,7 @@ import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+
 const Signup = ({ navigation }: { navigation: any }) => {
   // STATE VARIABLES [VALUE, SETVALUE]
   const [name, setName] = useState("");
