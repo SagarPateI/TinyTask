@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 
-
 const taskSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-    },
     title: {
         type: String,
         required: true,
@@ -18,6 +12,11 @@ const taskSchema = new mongoose.Schema({
     completed: {
         type: Boolean,
         default: false,
+    },
+    userId: { // Adding a field to store the user ID associated with the task
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     },
 });
 
