@@ -17,7 +17,7 @@ const RootLayout = () => {
   const colorScheme = useColorScheme();
 
   const [fontsLoaded] = useFonts({
-    'SpaceMono': require("../assets/fonts/SpaceMono-Regular.ttf"),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -32,15 +32,15 @@ const RootLayout = () => {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <QueryClientProvider client={new QueryClient}>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="(account)"
-          component={AccountLayout}
-          options={{ headerShown: false }}
-        />
-        {/* Add more screens or navigation configurations as needed */}
-      </Stack.Navigator>
+      <QueryClientProvider client={new QueryClient()}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="(account)"
+            component={AccountLayout}
+            options={{ headerShown: false }}
+          />
+          {/* Add more screens or navigation configurations as needed */}
+        </Stack.Navigator>
       </QueryClientProvider>
     </ThemeProvider>
   );

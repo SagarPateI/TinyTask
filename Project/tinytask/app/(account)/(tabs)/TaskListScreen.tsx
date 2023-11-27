@@ -18,7 +18,7 @@ import {
   View as ThemedView,
   useThemeColor,
 } from "../../../components/Themed";
-import {useQuery} from 'react-query';
+import { useQuery } from "react-query";
 
 const TaskListScreen: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -34,9 +34,7 @@ const TaskListScreen: React.FC = () => {
     },
     "background"
   );
-  
 
-  
   //ADD TASK FUNCTION
   const handleAddTask = async () => {
     Keyboard.dismiss();
@@ -44,20 +42,17 @@ const TaskListScreen: React.FC = () => {
     //IF TASK IS NOT EMPTY
     if (task.trim() !== "") {
       try {
-
         //POST REQUEST TO MAKE TASK
         const response = await fetch("https://tinytask.loca.lt/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-
           },
           body: JSON.stringify({
             title: task,
             description: "Your task description here", // Add description as needed
           }),
         });
-
 
         //IF REQUEST SUCCESSFUL, UPDATE THE STATE WITH NEW TASK
         if (response.ok) {
@@ -74,7 +69,6 @@ const TaskListScreen: React.FC = () => {
     }
   };
 
-  
   //FUNCTION TO SET TASK AS COMPLETE
   const completeTask = (index: number) => {
     let itemsCopy = [...taskItems];
