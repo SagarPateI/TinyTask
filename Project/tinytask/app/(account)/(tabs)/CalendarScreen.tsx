@@ -1,3 +1,4 @@
+//CalendarScreen.tsx
 import React, { Component } from "react";
 import groupBy from "lodash/groupBy";
 import {
@@ -6,6 +7,7 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
+  Alert,
 } from "react-native";
 import Modal from "react-native-modal";
 import {
@@ -20,6 +22,7 @@ import ColorPicker, { Swatches } from "reanimated-color-picker";
 
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
+import axios from "axios";
 
 interface State {
   currentDate: string;
@@ -89,52 +92,64 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     });
   }
 
-  handleCreateEvent = () => {
+  handleCreateEvent = async () => {
     const {
-      eventsByDate,
-      currentDate,
       newEventTitle,
       newEventSummary,
       newEventStart,
       newEventEnd,
       selectedEventColor,
-      marked,
     } = this.state;
 
-    const newEvent: TimelineEventProps = {
-      id: new Date().toISOString(),
-      start: newEventStart,
-      end: newEventEnd,
+    console.log("Request data:", {
       title: newEventTitle || "New Event",
       summary: newEventSummary || "",
+      start: newEventStart,
+      end: newEventEnd,
       color: selectedEventColor,
-    };
-
-    if (eventsByDate[currentDate]) {
-      eventsByDate[currentDate] = [...eventsByDate[currentDate], newEvent];
-    } else {
-      eventsByDate[currentDate] = [newEvent];
-    }
-
-    const updatedEvents = [...this.state.events, newEvent];
-
-    const updatedMarked = {
-      ...marked,
-      [CalendarUtils.getCalendarDateString(newEventStart)]: { marked: true },
-    };
-
-    this.setState({
-      events: updatedEvents,
-      eventsByDate,
-      isModalVisible: false,
-      newEventTitle: "",
-      newEventSummary: "",
-      selectedStartTime: new Date(),
-      selectedEndTime: new Date(),
-      isStartTimePickerVisible: false,
-      isEndTimePickerVisible: false,
-      marked: updatedMarked,
     });
+
+    try {
+      if (newEventTitle.trim() !== "") {
+        console.log("Before making the request");
+        const response = await fetch("https://tinytask.loca.lt/events", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: newEventTitle || "New Event",
+            summary: newEventSummary || "",
+            start: newEventStart,
+            end: newEventEnd,
+            color: selectedEventColor,
+          }),
+        });
+
+        if (response.ok) {
+          const newEvent = await response.json();
+
+          this.setState({
+            events: [...this.state.events, newEvent],
+            isModalVisible: false,
+          });
+
+          // Display success message
+          console.log("Event created successfully:", newEvent);
+          Alert.alert("Event created successfully");
+        } else {
+          // Display failure message
+          Alert.alert("Failed to create event");
+        }
+      } else {
+        // If event title is empty, display an alert
+        Alert.alert("Event title cannot be empty");
+      }
+    } catch (error) {
+      console.error("Error creating event:", error);
+      // Display error message
+      Alert.alert("Error creating event");
+    }
   };
 
   handleTimePickerConfirm = (date: Date, isStartTime: boolean) => {
@@ -150,7 +165,6 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
         newEventEnd: `${this.state.currentDate} ${formattedTime}:00`,
       });
     }
-
     this.hideTimePicker();
   };
 
