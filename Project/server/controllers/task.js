@@ -21,9 +21,8 @@ exports.createTask = async (req, res) => {
     }
 };
 
-
-exports.updateTask = async (req,res) => {
-    const{id} = req.params;
+exports.updateTask = async (req, res) => {
+    const { id } = req.params;
     const task = await taskModel.findById(id);
     task.completed = req.body.completed;
     task.title = req.body.title;
