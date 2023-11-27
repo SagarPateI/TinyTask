@@ -7,7 +7,7 @@ const limiter = new RateLimiterMemory({
 });
 
 const router = express.Router();
-const { createTask, getTasks, deleteTask } = require('../controllers/task');
+const { createTask, getTasks, deleteTask, updateTask} = require('../controllers/task');
 
 router.post('/', async (req, res, next) => {
     try {
@@ -18,7 +18,7 @@ router.post('/', async (req, res, next) => {
     }
 }, createTask);
 
-router.get('/', async (req, res, next) => {
+router.get('/getTasks/:id', async (req, res, next) => {
     try {
         await limiter.consume(req.ip);
         next();
@@ -27,7 +27,7 @@ router.get('/', async (req, res, next) => {
     }
 }, getTasks);
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/deleteTask/:id', async (req, res, next) => {
     try {
         await limiter.consume(req.ip);
         next();
@@ -35,5 +35,15 @@ router.delete('/:id', async (req, res, next) => {
         res.status(429).send('Too many requests');
     }
 }, deleteTask);
+
+router.put('/updateTask/:id', async (req, res, next) => {
+    try {
+        await limiter.consume(req.ip);
+        next();
+    } catch (error) {
+        res.status(429).send('Too many requests');
+    }
+}, updateTask);
+
 
 module.exports = router;
