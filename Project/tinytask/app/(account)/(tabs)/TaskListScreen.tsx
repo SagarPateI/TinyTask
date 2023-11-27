@@ -1,3 +1,4 @@
+//TaskListScreen.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -18,7 +19,7 @@ import {
   View as ThemedView,
   useThemeColor,
 } from "../../../components/Themed";
-
+import { useQuery } from "react-query";
 
 const TaskListScreen: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -62,20 +63,17 @@ const TaskListScreen: React.FC = () => {
     //IF TASK IS NOT EMPTY
     if (task.trim() !== "") {
       try {
-
         //POST REQUEST TO MAKE TASK
         const response = await fetch("https://tinytask.loca.lt/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-
           },
           body: JSON.stringify({
             title: task,
             description: "Your task description here", // Add description as needed
           }),
         });
-
 
         //IF REQUEST SUCCESSFUL, UPDATE THE STATE WITH NEW TASK
         if (response.ok) {
@@ -92,7 +90,6 @@ const TaskListScreen: React.FC = () => {
     }
   };
 
-  
   //FUNCTION TO SET TASK AS COMPLETE
   const completeTask = (index: number) => {
     let itemsCopy = [...taskItems];
@@ -130,7 +127,7 @@ const TaskListScreen: React.FC = () => {
     input: {
       paddingVertical: 15,
       paddingHorizontal: 15,
-      borderRadius: 60,
+      borderRadius: 10,
       borderColor: "#C0C0C0",
       borderWidth: 1,
       width: 250,
@@ -139,7 +136,7 @@ const TaskListScreen: React.FC = () => {
     addWrapper: {
       width: 60,
       height: 60,
-      borderRadius: 60,
+      borderRadius: 10,
       justifyContent: "center",
       alignItems: "center",
       borderColor: "#C0C0C0",
@@ -147,6 +144,7 @@ const TaskListScreen: React.FC = () => {
     },
     addText: {
       color: textColor,
+      fontSize: 30,
     },
     scrollContainer: {
       flexGrow: 1,

@@ -1,3 +1,5 @@
+// Project\server\controllers\task.js
+const Task = require('../models/task');
 
 const taskModel = require('../models/task');
 
@@ -21,9 +23,8 @@ exports.createTask = async (req, res) => {
     }
 };
 
-
-exports.updateTask = async (req,res) => {
-    const{id} = req.params;
+exports.updateTask = async (req, res) => {
+    const { id } = req.params;
     const task = await taskModel.findById(id);
     task.completed = req.body.completed;
     task.description = req.body.description
