@@ -43,6 +43,7 @@
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-web": "~0.19.6",
+    "react-query": "^3.39.3",
     "reanimated-color-picker": "^2.4.1"
   },
   "devDependencies": {
