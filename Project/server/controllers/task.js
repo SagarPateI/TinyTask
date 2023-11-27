@@ -3,7 +3,9 @@ const Task = require('../models/task');
 exports.createTask = async (req, res) => {
     try {
         const { title, description } = req.body;
-        const newTask = new Task({ title, description });
+        const { userId } = req.user; // Assuming userId is available in req.user after authentication
+
+        const newTask = new Task({ title, description, userId });
         await newTask.save();
         res.status(201).json(newTask);
     } catch (error) {
