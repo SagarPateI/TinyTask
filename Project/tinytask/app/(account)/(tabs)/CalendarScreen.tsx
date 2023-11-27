@@ -110,37 +110,44 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     });
 
     try {
-      console.log("Before making the request");
-      const response = await fetch("https://tinytask.loca.lt/events", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: newEventTitle || "New Event",
-          summary: newEventSummary || "",
-          start: newEventStart,
-          end: newEventEnd,
-          color: selectedEventColor,
-        }),
-      });
-
-      console.log("After making the request");
-
-      if (response.ok) {
-        const newEvent = await response.json();
-
-        this.setState({
-          events: [...this.state.events, newEvent],
-          isModalVisible: false,
+      if (newEventTitle.trim() !== "") {
+        console.log("Before making the request");
+        const response = await fetch("https://tinytask.loca.lt/events", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: newEventTitle || "New Event",
+            summary: newEventSummary || "",
+            start: newEventStart,
+            end: newEventEnd,
+            color: selectedEventColor,
+          }),
         });
 
-        Alert.alert("Event created successfully");
+        if (response.ok) {
+          const newEvent = await response.json();
+
+          this.setState({
+            events: [...this.state.events, newEvent],
+            isModalVisible: false,
+          });
+
+          // Display success message
+          console.log("Event created successfully:", newEvent);
+          Alert.alert("Event created successfully");
+        } else {
+          // Display failure message
+          Alert.alert("Failed to create event");
+        }
       } else {
-        Alert.alert("Failed to create event");
+        // If event title is empty, display an alert
+        Alert.alert("Event title cannot be empty");
       }
     } catch (error) {
       console.error("Error creating event:", error);
+      // Display error message
       Alert.alert("Error creating event");
     }
   };
