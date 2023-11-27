@@ -7,7 +7,9 @@ export const AuthService = {
   async saveToken(token: string): Promise<void> {
     try {
       await AsyncStorage.setItem(TOKEN_KEY, token);
+      console.log('Token saved successfully:', token);
     } catch (error) {
+      console.error('Failed to save token:', error);
       throw new Error('Failed to save token');
     }
   },
@@ -16,8 +18,10 @@ export const AuthService = {
   async getToken(): Promise<string | null> {
     try {
       const token = await AsyncStorage.getItem(TOKEN_KEY);
+      console.log('Retrieved token:', token);
       return token;
     } catch (error) {
+      console.error('Failed to get token:', error);
       throw new Error('Failed to get token');
     }
   },
@@ -26,7 +30,9 @@ export const AuthService = {
   async clearToken(): Promise<void> {
     try {
       await AsyncStorage.removeItem(TOKEN_KEY);
+      console.log('Token cleared successfully');
     } catch (error) {
+      console.error('Failed to clear token:', error);
       throw new Error('Failed to clear token');
     }
   },
@@ -35,8 +41,11 @@ export const AuthService = {
   async isAuthenticated(): Promise<boolean> {
     try {
       const token = await this.getToken();
-      return !!token;
+      const authenticated = !!token;
+      console.log('User authenticated:', authenticated);
+      return authenticated;
     } catch (error) {
+      console.error('Authentication error:', error);
       return false;
     }
   },
