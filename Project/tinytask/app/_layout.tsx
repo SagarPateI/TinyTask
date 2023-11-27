@@ -18,7 +18,7 @@ const RootLayout = () => {
   const colorScheme = useColorScheme();
 
   const [fontsLoaded] = useFonts({
-    'SpaceMono': require("../assets/fonts/SpaceMono-Regular.ttf"),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
