@@ -18,6 +18,7 @@ const Login = ({ navigation }: { navigation: any }) => {
   const instance = axios.create({
     httpsAgent: {
       rejectUnauthorized: false,
+      
     },
   });
 
