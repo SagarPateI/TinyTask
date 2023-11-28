@@ -10,17 +10,70 @@ import {
   View,
 } from "../../../components/Themed";
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 
 type RootStackParamList = {
   TaskList: undefined; // or any other params for TaskList screen
   Home: { newTask?: string };
 };
 
+
 const HomeScreen: React.FC = () => {
   const [tasks, setTasks] = useState([
     { id: 1, task: "Task 1", completed: false },
     { id: 2, task: "Task 2", completed: true },
   ]);
+
+
+
+  // useEffect(() => {
+  //   // Fetch user's token from AsyncStorage
+  //   const fetchUserToken = async () => {
+  //     try {
+  //       const token = await AsyncStorage.getItem("token");
+
+  //       if (token) {
+  //         // Decode the JWT token to access user information
+  //          // Correct function name
+  //         const decode = jwtDecode<JwtPayload>(token);
+
+  //         // Assuming the token contains a 'name' property
+      
+  //       } else {
+  //         console.error("No token found");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user token:", error);
+  //     }
+  //   };
+
+  //   // Call the fetchUserToken function when the component mounts
+  //   fetchUserToken();
+  // }, []);
+
+
+  //WAS JUST CHECKING TOKEN GOT THROUGH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // useEffect(() => {
+  //   // Fetch user's token from AsyncStorage
+  //   const fetchUserToken = async () => {
+      
+  //       const token = await AsyncStorage.getItem("token");
+
+        
+  //         // Decode the JWT token to access user information
+          
+  //         const decodedToken = jwt.decode(token);
+  //         const { userId, userName } = decodedToken;
+  //         console.log('User ID:', userId);
+  //         console.log('User Name:', userName);
+  //   }
+  //   // Call the fetchUserToken function when the component mounts
+  //   fetchUserToken();
+  // }, []);
+
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
   const newTask = route.params?.newTask;
@@ -124,7 +177,7 @@ const HomeScreen: React.FC = () => {
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.container}>
-        <ThemedText style={styles.sectionTitle}>Welcome, User</ThemedText>
+        <ThemedText style={styles.sectionTitle}>{'Welcome, {name}'}</ThemedText>
         <ThemedText
           style={styles.dateText}
         >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>

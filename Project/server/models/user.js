@@ -57,6 +57,7 @@ userSchema.methods.comparePassword = async function (password) {
 };
 
 //isThisEmailInUse method checks if email is already in database 
+//focusing on email because that's the unique
 userSchema.statics.isEmailInUse = async function (email) {
 
     //error if no email is provided
@@ -73,4 +74,5 @@ userSchema.statics.isEmailInUse = async function (email) {
     }
 }
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
+module.exports = User;
