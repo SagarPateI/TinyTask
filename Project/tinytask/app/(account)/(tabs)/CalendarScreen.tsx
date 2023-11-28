@@ -112,7 +112,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     try {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
-        const response = await fetch("https://proud-pig-40.loca.lt/events", {
+        const response = await fetch("https://tinytaskapp.loca.lt/events", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
