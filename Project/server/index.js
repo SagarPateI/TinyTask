@@ -1,3 +1,5 @@
+//Project/server/index.js
+
 require('dotenv').config();
 require('./models/database');
 const cors = require('cors');
@@ -31,3 +33,4 @@ app.use('/settings', SettingsRouter); // Using settings routes
 http.listen(port, () => {
     console.log('Server is running on port:', port);
 });
+

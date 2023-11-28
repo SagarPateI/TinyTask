@@ -1,3 +1,4 @@
+//CalendarScreen.tsx
 import React, { Component } from "react";
 import groupBy from "lodash/groupBy";
 import {
@@ -48,12 +49,11 @@ export const getDate = (offset = 0) =>
   );
 
 const INITIAL_TIME = { hour: 9, minutes: 0 };
-const EVENTS: TimelineEventProps[] = [];
 
 export default class TimelineCalendarScreen extends Component<{}, State> {
   state: State = {
     currentDate: getDate(),
-    events: EVENTS,
+    events: [],
     eventsByDate: {},
     newEventTitle: "",
     newEventSummary: "",
@@ -69,6 +69,28 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       [`${getDate()}`]: { marked: true },
     },
   };
+
+  componentDidMount() {
+    this.fetchEventsFromMongoDB();
+  }
+
+  async fetchEventsFromMongoDB() {
+    try {
+      const response = await fetch("https://tinytask.loca.lt/events");
+      if (response.ok) {
+        const events = await response.json();
+        // Update state with the fetched events
+        this.setState({
+          events,
+          eventsByDate: groupBy(events, 'start'), // Assuming 'start' is the property indicating the start date
+        });
+      } else {
+        console.error("Failed to fetch events from the database");
+      }
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  }
 
   onDateChanged = (date: string, source: string) => {
     console.log("TimelineCalendarScreen onDateChanged: ", date, source);
@@ -136,16 +158,15 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
         }
   
         const updatedEvents = [...this.state.events, newEvent];
-  
         const updatedMarked = {
           ...marked,
           [CalendarUtils.getCalendarDateString(newEventStart)]: { marked: true },
         };
+
   
         // Set state with updated values
         this.setState({
           events: updatedEvents,
-          eventsByDate,
           isModalVisible: false,
           newEventTitle: '',
           newEventSummary: '',
@@ -170,8 +191,6 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       Alert.alert("Error creating event");
     }
   };
-  
-  
 
   handleTimePickerConfirm = (date: Date, isStartTime: boolean) => {
     const formattedTime = format(date, "HH:mm");
@@ -345,6 +364,7 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     );
   }
 }
+
 const swatchColors = [
   "#fd5959",
   "#ff9c6d",
