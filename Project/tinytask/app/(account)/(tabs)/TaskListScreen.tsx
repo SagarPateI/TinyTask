@@ -1,4 +1,3 @@
-//TaskListScreen.tsx
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -55,7 +54,6 @@ const TaskListScreen: React.FC = () => {
   }
 };
 
-  
   //ADD TASK FUNCTION
   const handleAddTask = async () => {
     Keyboard.dismiss();

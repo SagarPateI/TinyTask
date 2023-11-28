@@ -105,3 +105,12 @@ exports.userLogin = async (req, res) => {
     res.json({ user, token });
 }
 
+
+exports.getUsers = async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.status(201).json(users);
+    } catch (err) {
+        res.status(500).json({ error: 'Unable to fetch user data' });
+    }
+}
