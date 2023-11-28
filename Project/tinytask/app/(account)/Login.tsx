@@ -1,3 +1,4 @@
+//Login.tsx
 import React, { useState } from "react";
 import { View, Text, Alert } from "react-native";
 import UserInput from "../../components/UserInput";
@@ -13,6 +14,7 @@ const Login = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState(""); 
 
   // Axios Instance
   const instance = axios.create({
@@ -40,16 +42,25 @@ const Login = ({ navigation }: { navigation: any }) => {
         }
       );
 
+      console.log('Server Response Data:', data);
+
+
       if (data.error) {
         Alert.alert(data.error);
         setLoading(false);
-      } else {
+      } else if (data.success === false) {
+        // Handle unsuccessful login
+        Alert.alert("Login failed. Please check your email and password.");
         setLoading(false);
+      } else {
+        // Handle successful login
+        setLoading(false);
+        setToken(data.token);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-        // Assuming login is successful
-        navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
+        navigation.navigate("Tabs");
       }
+      
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.error("AxiosError:", err);
