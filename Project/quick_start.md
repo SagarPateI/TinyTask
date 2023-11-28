@@ -78,7 +78,7 @@
 10. **Localtunnel Setup:**
     In the third terminal, navigate to the client folder:
     ```bash
-    cd ./Project/tinyTask
+    cd .\Project\server\
     ```
 
 11. **Install Localtunnel:**
