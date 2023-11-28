@@ -25,6 +25,7 @@ const HomeScreen: React.FC = () => {
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
   const newTask = route.params?.newTask;
 
+  
   useEffect(() => {
     // Update the tasks array if a new task is received
     if (newTask) {
