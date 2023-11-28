@@ -22,7 +22,7 @@ const AccountLayout = () => {
     if (token) {
       // User is logged in
       setIsUserLoggedIn(true);
-      console.log("User is logged in");
+      console.log("User Token: " + token);
     } else {
       // User is not logged in
       setIsUserLoggedIn(false);

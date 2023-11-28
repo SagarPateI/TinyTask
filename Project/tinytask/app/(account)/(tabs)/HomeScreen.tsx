@@ -10,11 +10,15 @@ import {
   View,
 } from "../../../components/Themed";
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 
 type RootStackParamList = {
   TaskList: undefined; // or any other params for TaskList screen
   Home: { newTask?: string };
 };
+
 
 const HomeScreen: React.FC = () => {
   const [tasks, setTasks] = useState([
@@ -22,28 +26,7 @@ const HomeScreen: React.FC = () => {
     { id: 2, task: "Task 2", completed: true },
   ]);
 
-
-  const [name, setUserName] = useState("User"); // Default to "User" until the name is fetched
-
-  useEffect(() => {
-    // Fetch user's name from the database
-    const fetchUserName = async () => {
-      try {
-        // Make an API call or use another method to fetch the user's name
-        const response = await fetch("https://tinytask.loca.lt/auth/users");
-        const data = await response.json();
-
-        // Update the component state with the fetched user's name
-        setUserName(data.name); // Assuming the fetched data has a property 'userName'
-      } catch (error) {
-        console.error("Error fetching user's name:", error);
-      }
-    };
-
-    // Call the fetchUserName function when the component mounts
-    fetchUserName();
-  }, []);
-
+ 
 
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
@@ -148,7 +131,7 @@ const HomeScreen: React.FC = () => {
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.container}>
-        <ThemedText style={styles.sectionTitle}>Welcome,</ThemedText>
+        <ThemedText style={styles.sectionTitle}>{'Welcome, {name}'}</ThemedText>
         <ThemedText
           style={styles.dateText}
         >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>
