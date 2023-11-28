@@ -1,3 +1,4 @@
+//Project/server/index.js
 require('dotenv').config();
 require('./models/database');
 const cors = require('cors');

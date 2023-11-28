@@ -1,3 +1,4 @@
+//Signup.tsx
 import React, { useState } from "react";
 import { View, Alert, Text, TouchableOpacity } from "react-native";
 import UserInput from "../../components/UserInput";
@@ -11,6 +12,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState("");
 
   const instance = axios.create({
     httpsAgent: {
@@ -44,6 +46,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
         setLoading(false);
       } else {
         setLoading(false);
+        setToken(data.token);
         console.log("SIGNUP SUCCESSFUL =>", data);
         Alert.alert("You've successfully signed up");
       }
