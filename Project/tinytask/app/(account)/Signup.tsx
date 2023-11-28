@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Alert, Text, TouchableOpacity } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
@@ -8,7 +8,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 const Signup = ({ navigation }: { navigation: any }) => {
   // STATE VARIABLES [VALUE, SETVALUE]
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,6 +18,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
       rejectUnauthorized: false,
     },
   });
+
 
   const handleSubmit = async () => {
     // button has been pressed
@@ -47,6 +48,8 @@ const Signup = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("SIGNUP SUCCESSFUL =>", data);
         Alert.alert("You've successfully signed up");
+        navigation.navigate("Login");
+        
       }
     } catch (err) {
       console.log(err);
@@ -89,6 +92,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
           value={email}
           setValue={setEmail}
           autoCompleteType="email"
+          autoCapitalize="none"
           keyboardType="email-address"
         />
 
