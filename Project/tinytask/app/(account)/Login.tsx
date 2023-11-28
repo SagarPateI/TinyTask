@@ -28,7 +28,7 @@ const Login = ({ navigation }: { navigation: any }) => {
   }, [])
 
   const fetchUsers = async () => {
-    instance.get("https://tinytask.loca.lt/auth/users").then((response) => { console.log(response.data) 
+    instance.get("https://fresh-husky-97.loca.lt/auth/users").then((response) => { console.log(response.data) 
   })
 }
 
@@ -45,7 +45,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytask.loca.lt/auth/login",
+        "https://fresh-husky-97.loca.lt/auth/login",
         {
           email,
           password,
