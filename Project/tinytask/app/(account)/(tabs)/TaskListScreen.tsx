@@ -66,7 +66,7 @@ const TaskListScreen: React.FC = () => {
     if (task.trim() !== "") {
       try {
         //POST REQUEST TO MAKE TASK
-        const response = await fetch("https://tinytask.loca.lt/tasks", {
+        const response = await fetch("https://tinytaskapp.loca.lt/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
