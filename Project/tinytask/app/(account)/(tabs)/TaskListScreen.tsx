@@ -222,11 +222,8 @@
 //   );
 //     }
 
-
 // export default TaskListScreen;
-
-  
-
+        
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
@@ -242,7 +239,6 @@ interface TaskItem {
 
 const TaskListScreen: React.FC = () => {
   const navigation = useNavigation();
-
   const [tasks, setTasks] = useState<TaskItem[]>([]);
 
   useEffect(() => {
