@@ -11,24 +11,24 @@ import AsyncStorage from "@react-native-async-storage/async-storage"; // Import 
 const Stack = createStackNavigator();
 
 const AccountLayout = () => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  // const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  useEffect(() => {
-    checkUserLoggedIn();
-  }, []);
+  // useEffect(() => {
+  //   checkUserLoggedIn();
+  // }, []);
 
-  const checkUserLoggedIn = async () => {
-    const token = await AsyncStorage.getItem("token");
+  // const checkUserLoggedIn = async () => {
+  //   const token = await AsyncStorage.getItem("token");
 
-    if (token) {
-      // User is logged in
-      setIsUserLoggedIn(true);
-      console.log("User Token: " + token);
-    } else {
-      // User is not logged in
-      setIsUserLoggedIn(false);
-    }
-  };
+  //   if (token) {
+  //     // User is logged in
+  //     setIsUserLoggedIn(true);
+  //     console.log("User Token: " + token);
+  //   } else {
+  //     // User is not logged in
+  //     setIsUserLoggedIn(false);
+  //   }
+  // };
 
   return (
     <Stack.Navigator>
@@ -48,12 +48,12 @@ const AccountLayout = () => {
           headerShown: false,
         }}
       />
-      {isUserLoggedIn && 
+      {/* {isUserLoggedIn &&  */}
       <Stack.Screen
         name="Tabs"
         component={TabsLayout}
         options={{ headerShown: false }}
-      />}
+      />
       {/* Add more screens or navigation configurations as needed */}
     </Stack.Navigator>
   );
