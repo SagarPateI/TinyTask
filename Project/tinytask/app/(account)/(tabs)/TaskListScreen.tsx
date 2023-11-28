@@ -247,7 +247,8 @@ const TaskListScreen: React.FC = () => {
 
   useEffect(() => {
     // Fetch tasks when the component mounts
-    axios.get("https://proud-pig-40.loca.lt//tasks")
+    axios
+      .get("https://tinytaskapp.loca.lt//tasks")
       .then((res) => {
         if (res.status === 200) {
           setTasks(res.data);
