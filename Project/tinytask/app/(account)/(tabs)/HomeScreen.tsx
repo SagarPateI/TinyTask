@@ -26,7 +26,23 @@ const HomeScreen: React.FC = () => {
     { id: 2, task: "Task 2", completed: true },
   ]);
 
- 
+
+  //WAS JUST CHECKING TOKEN GOT THROUGH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // useEffect(() => {
+  //   // Fetch user's token from AsyncStorage
+  //   const fetchUserToken = async () => {
+      
+  //       const token = await AsyncStorage.getItem("token");
+
+  //       if (token) 
+  //         // Decode the JWT token to access user information
+          
+  //         console.log("The token got through!:", token);
+  //   }
+  //   // Call the fetchUserToken function when the component mounts
+  //   fetchUserToken();
+  // }, []);
 
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
