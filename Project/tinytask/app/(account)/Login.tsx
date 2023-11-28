@@ -23,15 +23,7 @@ const Login = ({ navigation }: { navigation: any }) => {
     },
   });
 
-  useEffect(() => {
-    fetchUsers();
-  }, [])
-
-  const fetchUsers = async () => {
-    instance.get("https://fresh-husky-97.loca.lt/auth/users").then((response) => { console.log(response.data) 
-  })
-}
-
+ 
 
   // Function to handle form submission
   const handleSubmit = async () => {
@@ -45,7 +37,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://fresh-husky-97.loca.lt/auth/login",
+        "https://tame-bullfrog-92.loca.lt/auth/login",
         {
           email,
           password,
@@ -54,7 +46,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
       const token = data.token;
       await AsyncStorage.setItem("token", token); 
-      fetchUsers();
+      
 
       
 
