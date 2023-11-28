@@ -1,5 +1,5 @@
 // Project\server\controllers\task.js
-const Task = require('../models/task');
+
 
 const taskModel = require('../models/task');
 
@@ -35,9 +35,21 @@ exports.updateTask = async (req, res) => {
 exports.deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await taskModel.findById(id);
-        await task.remove();
+        const task = await taskModel.findByIdAndRemove(id);
         res.status(204).json(task);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+exports.completedTask = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const task = await taskModel.findById(id);
+        task.completed = !task.completed;
+        task.save();
+        res.json(task);
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

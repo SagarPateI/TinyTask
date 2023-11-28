@@ -15,14 +15,14 @@ const SettingsRouter = require('./routes/settings'); // Importing settings route
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-const auth = require('./middleware/auth');
+// const auth = require('./middleware/auth');
 
 // User routes
 const authRouter = require('./routes/user');
 app.use('/auth', authRouter);
 
 // Task routes
-app.use('/tasks', auth, TaskRouter); // Using task routes
+app.use('/tasks', TaskRouter); // Using task routes
 
 // Event routes
 app.use('/events', EventRouter); // Using event routes

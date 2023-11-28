@@ -11,7 +11,7 @@ import {
 } from "../../../components/Themed";
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { JwtPayload, jwtDecode } from "jwt-decode";
+
 
 
 type RootStackParamList = {
@@ -56,20 +56,23 @@ const HomeScreen: React.FC = () => {
 
   //WAS JUST CHECKING TOKEN GOT THROUGH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  useEffect(() => {
-    // Fetch user's token from AsyncStorage
-    const fetchUserToken = async () => {
+  // useEffect(() => {
+  //   // Fetch user's token from AsyncStorage
+  //   const fetchUserToken = async () => {
       
-        const token = await AsyncStorage.getItem("token");
+  //       const token = await AsyncStorage.getItem("token");
 
-        if (token) 
-          // Decode the JWT token to access user information
+        
+  //         // Decode the JWT token to access user information
           
-          console.log("The token got through!:", token);
-    }
-    // Call the fetchUserToken function when the component mounts
-    fetchUserToken();
-  }, []);
+  //         const decodedToken = jwt.decode(token);
+  //         const { userId, userName } = decodedToken;
+  //         console.log('User ID:', userId);
+  //         console.log('User Name:', userName);
+  //   }
+  //   // Call the fetchUserToken function when the component mounts
+  //   fetchUserToken();
+  // }, []);
 
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
