@@ -37,7 +37,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tame-bullfrog-92.loca.lt/auth/login",
+        "https://proud-pig-40.loca.lt/auth/login",
         {
           email,
           password,
