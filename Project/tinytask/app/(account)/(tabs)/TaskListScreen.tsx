@@ -35,25 +35,6 @@ const TaskListScreen: React.FC = () => {
     "background"
   );
   
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUwNzVhYjQxODUyMDAxNDNhMTY2NjAiLCJpYXQiOjE3MDExMDY1MjksImV4cCI6MTcwMTcxMTMyOX0.MJuVyeZYZpdnqlYuJqB65YFf1KApCRsajMIiVYH0JHw';
-
-   const fetchAllTasks = async () => {
-    try{
-    const response = await fetch("https://tinytask.loca.lt/tasks", {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ${token}',
-        "Content-Type": "application/json"
-      }
-    });
-    
-    const data = await response.json();
-    setTaskItems(data);
-  } catch (error) {
-    console.error("Error fetching tasks:", error);
-  }
-};
-
   //ADD TASK FUNCTION
   const handleAddTask = async () => {
     Keyboard.dismiss();

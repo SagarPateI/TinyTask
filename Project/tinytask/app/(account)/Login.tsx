@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Alert } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage"; 
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -20,6 +21,16 @@ const Login = ({ navigation }: { navigation: any }) => {
       rejectUnauthorized: false,
     },
   });
+
+  useEffect(() => {
+    fetchUsers();
+  }, [])
+
+  const fetchUsers = async () => {
+    instance.get("https://tinytask.loca.lt/auth/users").then((response) => { console.log(response.data) 
+  })
+}
+
 
   // Function to handle form submission
   const handleSubmit = async () => {
@@ -38,7 +49,13 @@ const Login = ({ navigation }: { navigation: any }) => {
           email,
           password,
         }
-      );
+      )
+
+      const token = data.token;
+      await AsyncStorage.setItem("token", token); // Use AsyncStorage instead of localStorage
+      fetchUsers();
+
+      
 
       if (data.error) {
         Alert.alert(data.error);
