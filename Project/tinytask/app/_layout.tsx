@@ -34,7 +34,7 @@ const RootLayout = () => {
   return (
   
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-     
+      
       <Stack.Navigator>
         <Stack.Screen
           name="(account)"
@@ -43,7 +43,7 @@ const RootLayout = () => {
         />
         {/* Add more screens or navigation configurations as needed */}
       </Stack.Navigator>
-     
+      
     </ThemeProvider>
  
   );

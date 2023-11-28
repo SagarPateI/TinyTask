@@ -21,11 +21,34 @@ const HomeScreen: React.FC = () => {
     { id: 1, task: "Task 1", completed: false },
     { id: 2, task: "Task 2", completed: true },
   ]);
+
+
+  const [name, setUserName] = useState("User"); // Default to "User" until the name is fetched
+
+  useEffect(() => {
+    // Fetch user's name from the database
+    const fetchUserName = async () => {
+      try {
+        // Make an API call or use another method to fetch the user's name
+        const response = await fetch("https://tinytask.loca.lt/auth/users");
+        const data = await response.json();
+
+        // Update the component state with the fetched user's name
+        setUserName(data.name); // Assuming the fetched data has a property 'userName'
+      } catch (error) {
+        console.error("Error fetching user's name:", error);
+      }
+    };
+
+    // Call the fetchUserName function when the component mounts
+    fetchUserName();
+  }, []);
+
+
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
   const newTask = route.params?.newTask;
 
-  
   useEffect(() => {
     // Update the tasks array if a new task is received
     if (newTask) {
@@ -125,7 +148,7 @@ const HomeScreen: React.FC = () => {
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.container}>
-        <ThemedText style={styles.sectionTitle}>Welcome, User</ThemedText>
+        <ThemedText style={styles.sectionTitle}>Welcome,</ThemedText>
         <ThemedText
           style={styles.dateText}
         >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>
