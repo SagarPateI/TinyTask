@@ -5,7 +5,8 @@ import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage"; 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -52,7 +53,7 @@ const Login = ({ navigation }: { navigation: any }) => {
       )
 
       const token = data.token;
-      await AsyncStorage.setItem("token", token); // Use AsyncStorage instead of localStorage
+      await AsyncStorage.setItem("token", token); 
       fetchUsers();
 
       
