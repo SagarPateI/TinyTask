@@ -32,6 +32,7 @@
     "expo-status-bar": "~1.6.0",
     "expo-system-ui": "~2.4.0",
     "expo-web-browser": "~12.3.2",
+    "express-rate-limit": "^7.1.4",
     "i": "^0.3.7",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
