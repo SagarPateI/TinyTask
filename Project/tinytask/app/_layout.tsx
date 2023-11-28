@@ -11,6 +11,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 
 
+
 const Stack = createStackNavigator();
 
 
