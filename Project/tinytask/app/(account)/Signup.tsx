@@ -32,7 +32,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
       // ENTER URL HERE
       // URL NEEDS TO BE CHANGED EVERY TIME THE SERVER IS RESTARTED
       const { data } = await instance.post(
-        "https://fresh-husky-97.loca.lt/auth/signup",
+        "https://tame-bullfrog-92.loca.lt/auth/signup",
         {
           name,
           email,

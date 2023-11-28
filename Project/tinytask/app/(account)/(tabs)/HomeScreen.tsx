@@ -11,7 +11,7 @@ import {
 } from "../../../components/Themed";
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { JwtPayload, jwtDecode } from "jwt-decode";
 
 
 type RootStackParamList = {
@@ -27,22 +27,49 @@ const HomeScreen: React.FC = () => {
   ]);
 
 
-  //WAS JUST CHECKING TOKEN GOT THROUGH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   // useEffect(() => {
   //   // Fetch user's token from AsyncStorage
   //   const fetchUserToken = async () => {
-      
+  //     try {
   //       const token = await AsyncStorage.getItem("token");
 
-  //       if (token) 
+  //       if (token) {
   //         // Decode the JWT token to access user information
-          
-  //         console.log("The token got through!:", token);
-  //   }
+  //          // Correct function name
+  //         const decode = jwtDecode<JwtPayload>(token);
+
+  //         // Assuming the token contains a 'name' property
+      
+  //       } else {
+  //         console.error("No token found");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user token:", error);
+  //     }
+  //   };
+
   //   // Call the fetchUserToken function when the component mounts
   //   fetchUserToken();
   // }, []);
+
+
+  //WAS JUST CHECKING TOKEN GOT THROUGH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  useEffect(() => {
+    // Fetch user's token from AsyncStorage
+    const fetchUserToken = async () => {
+      
+        const token = await AsyncStorage.getItem("token");
+
+        if (token) 
+          // Decode the JWT token to access user information
+          
+          console.log("The token got through!:", token);
+    }
+    // Call the fetchUserToken function when the component mounts
+    fetchUserToken();
+  }, []);
 
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
