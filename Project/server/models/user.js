@@ -73,4 +73,5 @@ userSchema.statics.isEmailInUse = async function (email) {
     }
 }
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
+module.exports = User;
