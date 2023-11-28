@@ -57,17 +57,7 @@ exports.createUser = async (req, res) => {
             });
 
             await user.save();
-            const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
-                expiresIn: "7d",
-            });
 
-            const { password: userPassword, ...rest } = user._doc;
-
-            //sends user a token as response 
-            return res.json({
-                token,
-                user: rest,
-            });
         } catch (err) {
             console.log(err);
         }
@@ -96,19 +86,21 @@ exports.userLogin = async (req, res) => {
     }
 
     //SIGNING USER ID WITH SPECIAL TOKEN IF THEY LOGIN PROPERLY
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
-        expiresIn: "7d",
-    })
+    const token = jwt.sign({ userId: user._id, userName: user.name }, process.env.JWT_TOKEN, {
+        expiresIn: "365d",
+    });
 
-    user.password = undefined;
-    user.token = undefined;
-    res.json({ user, token });
-}
-
+    const { password: userPassword, ...rest } = user._doc;
+            //sends user a token as response 
+            return res.json({
+                token,
+                user: rest,
+        })
+    }
 
 exports.getUsers = async (req, res) => {
     try {
-        const users = await User.find({});
+        const users = await User.find({}).select('-password');
         res.status(201).json(users);
     } catch (err) {
         res.status(500).json({ error: 'Unable to fetch user data' });
