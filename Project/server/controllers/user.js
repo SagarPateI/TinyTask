@@ -98,7 +98,7 @@ exports.userLogin = async (req, res) => {
     //SIGNING USER ID WITH SPECIAL TOKEN IF THEY LOGIN PROPERLY
     const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
         expiresIn: "7d",
-    });
+    })
 
     user.password = undefined;
     user.token = undefined;
