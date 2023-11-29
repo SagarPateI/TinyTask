@@ -6,6 +6,8 @@ import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 
+import { AuthService } from "./services/AuthService";
+
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
   //const navigation = useNavigation();
@@ -33,7 +35,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytask.loca.lt/auth/login",
+        "https://tinytaskapp.loca.lt/auth/login",
         {
           email,
           password,
@@ -47,7 +49,12 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-        // Assuming login is successful
+
+        // Save the token to AsyncStorage upon successful login
+        if (data.token) {
+          await AuthService.saveToken(data.token); // Save token using AuthService
+        }
+
         navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
     } catch (err: unknown) {
