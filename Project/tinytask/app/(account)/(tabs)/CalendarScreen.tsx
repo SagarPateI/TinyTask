@@ -1,3 +1,4 @@
+//CalendarScreen.tsx
 import groupBy from 'lodash/groupBy';
 import React, { useState, useEffect } from "react";
 import {
@@ -22,7 +23,7 @@ import ColorPicker, { Swatches } from "reanimated-color-picker";
 import { format } from "date-fns";
 import axios from "axios";
 
-const EVENT_COLOR = "#e6add8";
+const EVENT_COLOR = "";
 const today = new Date();
 
 export const getDate = (offset = 0) =>
@@ -31,7 +32,7 @@ export const getDate = (offset = 0) =>
   );
 
 const INITIAL_TIME = { hour: 9, minutes: 0 };
-const EVENTS: TimelineEventProps[] = [];
+
 
 const swatchColors = [
   "#fd5959",
@@ -127,7 +128,7 @@ const CalendarScreen = () => {
 
           setEventsByDate({ ...eventsByDate, [newEventStart]: [newEvent] });
           setMarked({ ...marked, [newEventStart]: { marked: true } });
-
+          fetchData();
           // Display success message
           console.log("Event created successfully:", newEvent);
           Alert.alert("Event created successfully");
