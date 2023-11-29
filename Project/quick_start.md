@@ -78,7 +78,7 @@
 10. **Localtunnel Setup:**
     In the third terminal, navigate to the client folder:
     ```bash
-    cd ./Project/tinyTask
+    cd .\Project\server\
     ```
 
 11. **Install Localtunnel:**
@@ -90,7 +90,7 @@
 12. **Start Localtunnel:**
     Start localtunnel with port 8000:
     ```bash
-    lt --port 8000 -s tinytask
+    lt --port 8000 -s tinytaskapp
     ```
 
 13. **Access App on Phone:**
@@ -101,7 +101,7 @@
 14. **Update URL in Code:**
     Update the URL inside `screens/Login.tsx` and `screens/Signup.tsx` (keeping the `/login` and `/signup` parts). For example:
     ```typescript
-    const { data } = await instance.post('https://tinytask.loca.lt/login', {
+    const { data } = await instance.post('https://tinytaskapp.loca.lt/login', {
         email,
         password,
     });

@@ -28,7 +28,7 @@ export default class TimelineCalendarScreen extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('https://tinytask.loca.lt/events');
+      const response = await axios.get('https://tinytaskapp.loca.lt/events');
       const fetchedEvents = response.data;
 
       console.log('Fetched Events:', fetchedEvents);
