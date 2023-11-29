@@ -11,6 +11,7 @@ import {
 } from "../../../components/Themed";
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 
+
 type RootStackParamList = {
   TaskList: undefined; // or any other params for TaskList screen
   Home: { newTask?: string };
@@ -24,6 +25,7 @@ const HomeScreen: React.FC = () => {
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
   const newTask = route.params?.newTask;
+
 
   useEffect(() => {
     // Update the tasks array if a new task is received
@@ -120,6 +122,8 @@ const HomeScreen: React.FC = () => {
     { id: 1, title: "Meeting", time: "10:00 AM" },
     { id: 2, title: "Gym", time: "5:00 PM" },
   ];
+
+
 
   return (
     <ThemedView style={styles.container}>
