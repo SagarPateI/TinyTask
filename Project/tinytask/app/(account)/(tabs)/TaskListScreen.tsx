@@ -240,11 +240,13 @@ interface TaskItem {
 const TaskListScreen: React.FC = () => {
   const navigation = useNavigation();
   const [tasks, setTasks] = useState<TaskItem[]>([]);
+  const [title, setTitle] = useState<string>("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Fetch tasks when the component mounts
     axios
-      .get("https://tinytaskapp.loca.lt//tasks")
+      .get("https://soft-dog-21.loca.lt/tasks")
       .then((res) => {
         if (res.status === 200) {
           setTasks(res.data);
@@ -255,10 +257,26 @@ const TaskListScreen: React.FC = () => {
       });
   }, []);
 
-  const completeTask = (taskId: string) => {
+  const handleAddTask = () => {
    
-    console.log(`Task completed: ${taskId}`);
+    // Add logic to send a new task to the backend or update the local state
+    // For example:
+    axios.post("https://tinytaskapp.loca.lt/tasks", { title: title, completed: false })
+      .then((res) => {
+        if (res.status === 201) {
+          setLoading(false);
+          setTasks([...tasks, res.data]); 
+          setTitle(""); 
+          console.log("Task added successfully:", res.data);
+        
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Error adding task:", error);
+      });
   };
+
 
   const textColor = useThemeColor({}, "text");
 
@@ -279,6 +297,42 @@ const TaskListScreen: React.FC = () => {
     items: {
       marginTop: 30,
     },
+
+    writeTaskWrapper: {
+      position: "absolute",
+      bottom: 60,
+      width: "100%",
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
+    },
+    
+    input: {
+      paddingVertical: 15,
+      backgroundColor: 'black',
+      paddingHorizontal: 15,
+      borderRadius: 10,
+      borderColor: "#C0C0C0",
+      borderWidth: 1,
+      width: 250,
+      color: textColor, 
+    },
+
+    addWrapper: {
+      width: 60,
+      height: 60,
+      borderRadius: 10,
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: "#C0C0C0",
+      borderWidth: 1,
+    }, 
+
+    addText: {
+      color: textColor,
+      fontSize: 30,
+    },  
+    
     scrollContainer: {
       flexGrow: 1,
     },
@@ -294,7 +348,7 @@ const TaskListScreen: React.FC = () => {
           <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
           <View style={styles.items}>
           {tasks && tasks.map((task) => (
-              <TouchableOpacity key={task._id} onPress={() => completeTask(task._id)}>
+              <TouchableOpacity key={task._id}>
                 <Task text={task.title} />
               </TouchableOpacity>
             ))}
