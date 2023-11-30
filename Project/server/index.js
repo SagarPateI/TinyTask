@@ -8,6 +8,7 @@ const app = express();
 const http = require('http').createServer(app);
 const port = process.env.PORT || 8000;
 
+
 const User = require('./models/user');
 const TaskRouter = require('./routes/tasks'); // Importing task routes
 const EventRouter = require('./routes/events'); // Importing event routes
@@ -16,6 +17,7 @@ const SettingsRouter = require('./routes/settings'); // Importing settings route
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+// const auth = require('./middleware/auth');
 
 // User routes
 const authRouter = require('./routes/user');

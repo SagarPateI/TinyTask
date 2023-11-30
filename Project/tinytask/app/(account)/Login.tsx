@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Alert } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -20,6 +22,8 @@ const Login = ({ navigation }: { navigation: any }) => {
       rejectUnauthorized: false,
     },
   });
+
+ 
 
   // Function to handle form submission
   const handleSubmit = async () => {
@@ -39,6 +43,12 @@ const Login = ({ navigation }: { navigation: any }) => {
           password,
         }
       );
+
+      const token = data.token;
+      await AsyncStorage.setItem("token", token); 
+      
+
+      
 
       if (data.error) {
         Alert.alert(data.error);
