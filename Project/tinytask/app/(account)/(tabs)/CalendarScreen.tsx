@@ -210,6 +210,7 @@ const CalendarScreen = () => {
         showNowIndicator
         scrollToFirst
         initialTime={INITIAL_TIME}
+    
       />
 
       <Modal
