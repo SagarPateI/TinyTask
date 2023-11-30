@@ -8,8 +8,6 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-import { AuthService } from "./services/AuthService";
-
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
   //const navigation = useNavigation();
@@ -59,12 +57,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-
-        // Save the token to AsyncStorage upon successful login
-        if (data.token) {
-          await AuthService.saveToken(data.token); // Save token using AuthService
-        }
-
+        // Assuming login is successful
         navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
     } catch (err: unknown) {
