@@ -37,7 +37,7 @@ const TaskListScreen: React.FC = () => {
     Keyboard.dismiss();
     if (task.trim() !== "") {
       try {
-        const response = await fetch("https://tinytask.loca.lt/tasks", {
+        const response = await fetch("https://tinytaskapp.loca.lt/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
