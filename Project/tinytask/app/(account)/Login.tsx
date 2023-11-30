@@ -7,7 +7,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
   //const navigation = useNavigation();
@@ -22,8 +21,6 @@ const Login = ({ navigation }: { navigation: any }) => {
       rejectUnauthorized: false,
     },
   });
-
- 
 
   // Function to handle form submission
   const handleSubmit = async () => {
@@ -45,10 +42,7 @@ const Login = ({ navigation }: { navigation: any }) => {
       );
 
       const token = data.token;
-      await AsyncStorage.setItem("token", token); 
-      
-
-      
+      await AsyncStorage.setItem("token", token);
 
       if (data.error) {
         Alert.alert(data.error);
@@ -124,7 +118,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         {/* Navigation to Signup */}
         <View style={{ alignItems: "center" }}>
           <Text style={{ color: "#FFFFFF" }}>
-            Don't have an account?
+            Don't have an account?{" "}
             <Text
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
