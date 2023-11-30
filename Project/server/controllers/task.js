@@ -14,8 +14,8 @@ exports.getTasks = async (req, res) => {
 
 exports.createTask = async (req, res) => {
     try {
-        const { title, description} = req.body;
-        const task = new taskModel({ title, description, completed: false });
+        const { title} = req.body;
+        const task = new taskModel({ title, completed: false });
         const newTask = await task.save();
         res.json(newTask);
     } catch (error) {
