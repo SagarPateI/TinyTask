@@ -1,18 +1,17 @@
 // Project\server\controllers\task.js
 
-
-const taskModel = require('../models/task');
-
-exports.getTasks = async (req, res) => {
+exports.createTask = async (req, res) => {
     try {
-        const tasks = await taskModel.find();
-        res.json(tasks);
+        const { title, description } = req.body;
+        const newTask = new Task({ title, description });
+        await newTask.save();
+        res.status(201).json(newTask);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
-exports.createTask = async (req, res) => {
+exports.getTasks = async (req, res) => {
     try {
         const { title, description} = req.body;
         const task = new taskModel({ title, description, completed: false });
@@ -49,7 +48,6 @@ exports.completedTask = async (req, res) => {
         task.completed = !task.completed;
         task.save();
         res.json(task);
-
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
