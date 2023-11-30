@@ -1,10 +1,13 @@
 const express = require('express');
+const auth = require('../middleware/auth');
 const router = express.Router();
-const { createTask, getTasks, deleteTask } = require('../controllers/task');
 
+const { createTask, getTasks, updateTask, deleteTask, completedTask } = require('../controllers/task');
+
+router.get('/',  getTasks);
 router.post('/', createTask);
-router.get('/', getTasks);
-router.delete('/:id', deleteTask);
-// Additional routes can be added for updating tasks
+router.patch('/:id',  updateTask);
+router.delete('/:id',  deleteTask);
+router.put('/:id', completedTask );
 
 module.exports = router;
