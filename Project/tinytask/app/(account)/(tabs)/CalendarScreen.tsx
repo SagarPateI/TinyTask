@@ -23,7 +23,7 @@ import ColorPicker, { Swatches } from "reanimated-color-picker";
 import { format } from "date-fns";
 import axios from "axios";
 
-const EVENT_COLOR = "";
+const EVENT_COLOR = "#e6add8";
 const today = new Date();
 
 export const getDate = (offset = 0) =>
@@ -68,7 +68,7 @@ const CalendarScreen = () => {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://tinytask.loca.lt/events");
+      const response = await axios.get("https://tinytaskapp.loca.lt/events");
       const fetchedEvents = response.data;
 
       console.log('Fetched Events:', fetchedEvents);
@@ -115,13 +115,16 @@ const CalendarScreen = () => {
     try {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
-        const response = await axios.post("https://tinytask.loca.lt/events", {
-          title: newEventTitle || "New Event",
-          summary: newEventSummary || "",
-          start: newEventStart,
-          end: newEventEnd,
-          color: selectedEventColor,
-        });
+        const response = await axios.post(
+          "https://tinytaskapp.loca.lt/events",
+          {
+            title: newEventTitle || "New Event",
+            summary: newEventSummary || "",
+            start: newEventStart,
+            end: newEventEnd,
+            color: selectedEventColor,
+          }
+        );
 
         if (response.status === 201) {
           const newEvent = response.data;
