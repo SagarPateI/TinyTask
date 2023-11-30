@@ -1,7 +1,5 @@
 // Project\server\controllers\event.js
-
 const Event = require('../models/event');
-
 
 exports.createEvent = async (req, res) => {
   try {
