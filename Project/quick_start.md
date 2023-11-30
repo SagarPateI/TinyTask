@@ -112,3 +112,6 @@
     ```bash
     npm start
     ```
+
+    **Builds:**
+    To make an APK build, run: `eas build -p android --profile preview`
