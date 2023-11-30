@@ -34,13 +34,13 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytaskapp.loca.lt/auth/login",
+        "https://soft-dog-21.loca.lt/auth/login",
         {
           email,
           password,
         }
       );
-
+      
       const token = data.token;
       await AsyncStorage.setItem("token", token);
 
