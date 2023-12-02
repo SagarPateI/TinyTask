@@ -5,7 +5,6 @@ import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-
 const Signup = ({ navigation }: { navigation: any }) => {
   // STATE VARIABLES [VALUE, SETVALUE]
   const [name, setName] = useState('');
@@ -33,7 +32,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
       // ENTER URL HERE
       // URL NEEDS TO BE CHANGED EVERY TIME THE SERVER IS RESTARTED
       const { data } = await instance.post(
-        "https://grumpy-goose-96.loca.lt/auth/signup",
+        "https://tinytaskapp.loca.lt/auth/signup",
         {
           name,
           email,

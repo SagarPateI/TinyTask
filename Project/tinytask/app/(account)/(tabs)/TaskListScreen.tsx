@@ -247,7 +247,7 @@ const TaskListScreen: React.FC = () => {
   useEffect(() => {
     // Fetch tasks when the component mounts
     axios
-      .get("https://grumpy-goose-96.loca.lt/tasks")
+      .get("https://tinytaskapp.loca.lt//tasks")
       .then((res) => {
         if (res.status === 200) {
           setTasks(res.data);
@@ -258,10 +258,7 @@ const TaskListScreen: React.FC = () => {
       });
   }, []);
 
-  const completeTask = (taskId: string) => {
-   
-    console.log(`Task completed: ${taskId}`);
-  };
+
 
   const handleAddTask = () => {
 

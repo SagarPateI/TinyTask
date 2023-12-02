@@ -34,15 +34,15 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://grumpy-goose-96.loca.lt/auth/login",
+        "https://tinytaskapp.loca.lt/auth/login",
         {
           email,
           password,
         }
       );
-
+      
       const token = data.token;
-      //await AsyncStorage.setItem("token", token);
+      await AsyncStorage.setItem("token", token);
 
       if (data.error) {
         Alert.alert(data.error);
