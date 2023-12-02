@@ -39,7 +39,7 @@ const INITIAL_TIME = { hour: 9, minutes: 0 };
 
   async componentDidMount() {
     try {
-      const response = await axios.get('https://tinytaskapp.loca.lt/events');
+      const response = await axios.get('https://grumpy-goose-96.loca.lt/events');
       const fetchedEvents = response.data;
 
       

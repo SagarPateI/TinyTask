@@ -7,9 +7,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-import { AuthService } from "./services/AuthService";
-
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
   //const navigation = useNavigation();
@@ -25,8 +22,6 @@ const Login = ({ navigation }: { navigation: any }) => {
     },
   });
 
- 
-
   // Function to handle form submission
   const handleSubmit = async () => {
     setLoading(true);
@@ -39,7 +34,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytaskapp.loca.lt/auth/login",
+        "https://grumpy-goose-96.loca.lt/auth/login",
         {
           email,
           password,
@@ -47,10 +42,7 @@ const Login = ({ navigation }: { navigation: any }) => {
       );
 
       const token = data.token;
-      await AsyncStorage.setItem("token", token); 
-      
-
-      
+      //await AsyncStorage.setItem("token", token);
 
       if (data.error) {
         Alert.alert(data.error);
@@ -59,12 +51,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-
-        // Save the token to AsyncStorage upon successful login
-        if (data.token) {
-          await AuthService.saveToken(data.token); // Save token using AuthService
-        }
-
+        // Assuming login is successful
         navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
     } catch (err: unknown) {
@@ -131,7 +118,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         {/* Navigation to Signup */}
         <View style={{ alignItems: "center" }}>
           <Text style={{ color: "#FFFFFF" }}>
-            Don't have an account?
+            Don't have an account?{" "}
             <Text
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
