@@ -13,7 +13,7 @@ exports.createTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
     try {
-        const { title} = req.body;
+        const { title } = req.body;
         const task = new taskModel({ title, completed: false });
         const newTask = await task.save();
         res.json(newTask);
