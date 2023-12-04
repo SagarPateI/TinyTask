@@ -3,18 +3,20 @@ const Task = require('../models/task');
 
 exports.createTask = async (req, res) => {
     try {
+        console.log('Creating task...', req.body); // added a debug log
         const { title, description } = req.body;
         const userId = req.user._id; // Access user ID from req.user
 
         const newTask = new Task({ title, description, userId });
         await newTask.save();
 
+        console.log('Task created:', newTask); // added a debug log
         res.status(201).json(newTask);
     } catch (error) {
+        console.error('Error creating task:', error);
         res.status(500).json({ error: error.message });
     }
 };
-
 
 exports.getTasks = async (req, res) => {
     try {
