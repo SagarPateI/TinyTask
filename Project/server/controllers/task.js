@@ -1,22 +1,25 @@
 // Project\server\controllers\task.js
+const taskModel = require('../models/task');
 
 exports.createTask = async (req, res) => {
     try {
         const { title, description } = req.body;
-        const newTask = new Task({ title, description });
+        const userId = req.user.id; // Assuming auth middleware sets req.user with user information
+
+        const newTask = new Task({ title, description, userId });
         await newTask.save();
+
         res.status(201).json(newTask);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
+
 exports.getTasks = async (req, res) => {
     try {
-        const { title } = req.body;
-        const task = new taskModel({ title, completed: false });
-        const newTask = await task.save();
-        res.json(newTask);
+        const tasks = await taskModel.find();
+        res.json(tasks);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
