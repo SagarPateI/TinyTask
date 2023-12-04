@@ -254,10 +254,13 @@ const TaskListScreen: React.FC = () => {
     fetchTasks(); // Fetch tasks when the component mounts
   }, []);
 
+  // Inside fetchTasks function
   const fetchTasks = async () => {
     try {
+      console.log("Fetching tasks..."); // Add this log
       const response = await axios.get("https://tinytaskapp.loca.lt/tasks");
       if (response.status === 200) {
+        console.log("Tasks fetched successfully:", response.data); // Add this log
         setTasks(response.data);
       }
     } catch (error) {
@@ -265,17 +268,19 @@ const TaskListScreen: React.FC = () => {
     }
   };
 
+  // Inside handleAddTask function
   const handleAddTask = async () => {
     setLoading(true);
     try {
+      console.log("Adding task...", title); // Add this log
       const response = await axios.post("https://tinytaskapp.loca.lt/tasks", {
         title: title,
         completed: false,
       });
       if (response.status === 201) {
+        console.log("Task added successfully:", response.data); // Add this log
         setTasks([...tasks, response.data]);
         setTitle("");
-        console.log("Task added successfully:", response.data);
       }
     } catch (error) {
       setLoading(false);
