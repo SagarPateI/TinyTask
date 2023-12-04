@@ -248,39 +248,39 @@ const TaskListScreen: React.FC = () => {
   const navigation = useNavigation();
   const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [title, setTitle] = useState<string>("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    // Fetch tasks when the component mounts
-    axios
-      .get("https://tinytaskapp.loca.lt/tasks")
-      .then((res) => {
-        if (res.status === 200) {
-          setTasks(res.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching tasks:", error);
-      });
+    fetchTasks(); // Fetch tasks when the component mounts
   }, []);
 
-  const handleAddTask = () => {
-    axios
-      .post("https://tinytaskapp.loca.lt/tasks", {
+  const fetchTasks = async () => {
+    try {
+      const response = await axios.get("https://tinytaskapp.loca.lt/tasks");
+      if (response.status === 200) {
+        setTasks(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  };
+
+  const handleAddTask = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post("https://tinytaskapp.loca.lt/tasks", {
         title: title,
         completed: false,
-      })
-      .then((res) => {
-        if (res.status === 201) {
-          setTasks([...tasks, res.data]);
-          setTitle("");
-          console.log("Task added successfully:", res.data);
-        }
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error adding task:", error);
       });
+      if (response.status === 201) {
+        setTasks([...tasks, response.data]);
+        setTitle("");
+        console.log("Task added successfully:", response.data);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.error("Error adding task:", error);
+    }
   };
 
   const textColor = useThemeColor({}, "text");
@@ -344,28 +344,27 @@ const TaskListScreen: React.FC = () => {
     scrollContainer: {
       flexGrow: 1,
     },
+    addButton: {
+      backgroundColor: "blue",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+    },
   });
 
+  // JSX Component
   return (
-    <ThemedView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContainer}
-        keyboardShouldPersistTaps="handled"
-      >
-        <View style={styles.tasksWrapper}>
-          <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
-          <View style={styles.items}>
-            {tasks &&
-              tasks.map((task) => (
-                <TouchableOpacity key={task._id}>
-                  <Task text={task.title} />
-                </TouchableOpacity>
-              ))}
-          </View>
-        </View>
+    <View style={styles.container}>
+      <ScrollView>
+        <Text style={styles.sectionTitle}>Today's tasks</Text>
+        {tasks.map((task) => (
+          <TouchableOpacity key={task._id}>
+            <Text>{task.title}</Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
-
-      {/*write a task */}
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
@@ -373,7 +372,6 @@ const TaskListScreen: React.FC = () => {
         <TextInput
           style={styles.input}
           placeholder={"Write a task"}
-          placeholderTextColor={textColor}
           value={title}
           onChangeText={(text) => setTitle(text)}
         />
@@ -384,7 +382,7 @@ const TaskListScreen: React.FC = () => {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-    </ThemedView>
+    </View>
   );
 };
 

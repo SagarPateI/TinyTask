@@ -1,10 +1,10 @@
 // Project\server\controllers\task.js
-const taskModel = require('../models/task');
+const Task = require('../models/task');
 
 exports.createTask = async (req, res) => {
     try {
         const { title, description } = req.body;
-        const userId = req.user.id; // Assuming auth middleware sets req.user with user information
+        const userId = req.user._id; // Access user ID from req.user
 
         const newTask = new Task({ title, description, userId });
         await newTask.save();
@@ -18,7 +18,7 @@ exports.createTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
     try {
-        const tasks = await taskModel.find();
+        const tasks = await Task.find(); // Use Task for retrieving tasks
         res.json(tasks);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -27,17 +27,18 @@ exports.getTasks = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
     const { id } = req.params;
-    const task = await taskModel.findById(id);
+    const task = await Task.findById(id); // Use Task for finding the task
     task.completed = req.body.completed;
-    task.description = req.body.description
+    task.description = req.body.description;
     task.title = req.body.title;
+    await task.save(); // Save the updated task
     res.json(task);
-}
+};
 
 exports.deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await taskModel.findByIdAndRemove(id);
+        const task = await Task.findByIdAndRemove(id); // Use Task for finding and removing the task
         res.status(204).json(task);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -47,12 +48,11 @@ exports.deleteTask = async (req, res) => {
 exports.completedTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await taskModel.findById(id);
+        const task = await Task.findById(id); // Use Task for finding the task
         task.completed = !task.completed;
-        task.save();
+        await task.save(); // Save the updated task
         res.json(task);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-// Additional controller methods like updateTask can also be defined here
