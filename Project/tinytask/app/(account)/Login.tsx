@@ -40,7 +40,7 @@ const Login = ({ navigation }: { navigation: any }) => {
           password,
         }
       );
-      
+
       const token = data.token;
       await AsyncStorage.setItem("token", token);
 
