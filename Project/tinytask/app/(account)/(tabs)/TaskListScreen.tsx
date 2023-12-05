@@ -217,7 +217,6 @@
 //     }
 
 // export default TaskListScreen;
-
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
@@ -251,7 +250,7 @@ const TaskListScreen: React.FC = () => {
   useEffect(() => {
     // Fetch tasks when the component mounts
     axios
-      .get("https://proud-pig-40.loca.lt/tasks")
+      .get("https://tinytaskapp.loca.lt/tasks")
       .then((res) => {
         if (res.status === 200) {
           setTasks(res.data);
