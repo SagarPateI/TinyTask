@@ -3,14 +3,23 @@ const Task = require('../models/task');
 
 exports.createTask = async (req, res) => {
     try {
-        console.log('Creating task...', req.body); // added a debug log
-        const { title, description } = req.body;
-        const userId = req.user._id; // Access user ID from req.user
+        console.log('Creating task...', req.body); // Add this log
+        const { title, completed } = req.body;
+        let userId;
 
-        const newTask = new Task({ title, description, userId });
+        // Check if the user ID is in the request body
+        if (req.body.userId) {
+            userId = req.body.userId;
+        } else if (req.user && req.user._id) { // Otherwise, check if it's in req.user
+            userId = req.user._id;
+        } else {
+            throw new Error('User ID not found');
+        }
+
+        const newTask = new Task({ title, completed, userId });
         await newTask.save();
 
-        console.log('Task created:', newTask); // added a debug log
+        console.log('Task created:', newTask); // Add this log
         res.status(201).json(newTask);
     } catch (error) {
         console.error('Error creating task:', error);
