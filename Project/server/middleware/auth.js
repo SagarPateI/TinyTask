@@ -1,35 +1,35 @@
 // Project\server\middleware/auth.js
 const jwt = require('jsonwebtoken');
+module.exports = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
 
-module.exports = (req, res, next) => {
-    const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).json({ message: 'Authorization header missing' });
+  }
 
-    console.log('Auth Header:', authHeader);
+  // Splitting the header to get the token
+  const token = authHeader.split(' ')[1];
 
-    if (!authHeader) {
-        return res.status(401).send('Invalid credentials');
+  try {
+    // Verifying the token
+    const decodedToken = jwt.verify(token, process.env.JWT_TOKEN);
+
+    // Accessing user data from the decoded token
+    const { userId } = decodedToken;
+
+    // Fetching user data from the database
+    const user = await User.findOne({ _id: userId }).select('_id');
+
+    if (!user) {
+      return res.status(401).json({ message: 'User not found' });
     }
 
-    const token = authHeader.split(' ')[1];
+    req.user = user;
 
-    console.log('Token:', token);
-
-    if (!token) {
-        return res.status(401).send('Invalid credentials');
-    }
-
-    jwt.verify(token, process.env.JWT_TOKEN, (err, decoded) => {
-        if (err) {
-            console.log('JWT Verification Error:', err);
-            return res.status(401).send('Invalid credentials');
-        }
-
-        console.log('Decoded User Information:', decoded);
-
-        // Attach the decoded user information to the request object
-        req.user = decoded;
-
-        // Continue to the next middleware
-        next();
-    });
+    next();
+  } catch (error) {
+    // Token verification failed
+    console.error('Error verifying token:', error);
+    return res.status(401).json({ message: 'Invalid token' });
+  }
 };
