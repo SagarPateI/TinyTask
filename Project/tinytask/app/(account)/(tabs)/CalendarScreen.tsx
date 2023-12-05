@@ -1,5 +1,5 @@
 //CalendarScreen.tsx
-import groupBy from 'lodash/groupBy';
+import groupBy from "lodash/groupBy";
 import React, { useState, useEffect } from "react";
 import {
   TextInput,
@@ -33,7 +33,6 @@ export const getDate = (offset = 0) =>
 
 const INITIAL_TIME = { hour: 9, minutes: 0 };
 
-
 const swatchColors = [
   "#fd5959",
   "#ff9c6d",
@@ -53,9 +52,8 @@ const CalendarScreen = () => {
   const [selectedEventColor, setSelectedEventColor] = useState(EVENT_COLOR);
   const [selectedStartTime, setSelectedStartTime] = useState(new Date());
   const [selectedEndTime, setSelectedEndTime] = useState(new Date());
-  const [isStartTimePickerVisible, setIsStartTimePickerVisible] = useState(
-    false
-  );
+  const [isStartTimePickerVisible, setIsStartTimePickerVisible] =
+    useState(false);
   const [isEndTimePickerVisible, setIsEndTimePickerVisible] = useState(false);
   const [newEventStart, setNewEventStart] = useState("");
   const [newEventEnd, setNewEventEnd] = useState("");
@@ -71,7 +69,7 @@ const CalendarScreen = () => {
       const response = await axios.get("https://tinytaskapp2.loca.lt/events");
       const fetchedEvents = response.data;
 
-      console.log('Fetched Events:', fetchedEvents);
+      console.log("Fetched Events:", fetchedEvents);
 
       const eventsByDate = groupBy(fetchedEvents, (e) =>
         CalendarUtils.getCalendarDateString(e.start)
@@ -81,17 +79,17 @@ const CalendarScreen = () => {
       setEventsByDate(eventsByDate);
       setMarked(marked);
     } catch (error) {
-      console.error('Error fetching events:', error);
+      console.error("Error fetching events:", error);
     }
   };
 
   const onDateChanged = (date: string, source: string) => {
-    console.log('onDateChanged: ', date, source);
+    console.log("onDateChanged: ", date, source);
     setCurrentDate(date);
   };
 
   const onMonthChange = (month: any, updateSource: any) => {
-    console.log('onMonthChange: ', month, updateSource);
+    console.log("onMonthChange: ", month, updateSource);
   };
 
   const handleAddEventButton = () => {
@@ -201,11 +199,7 @@ const CalendarScreen = () => {
         <Text style={styles.buttonAddEvent}>Add Event</Text>
       </TouchableOpacity>
 
-      <ExpandableCalendar
-        firstDay={1}
-        hideArrows
-        markedDates={marked}
-      />
+      <ExpandableCalendar firstDay={1} hideArrows markedDates={marked} />
 
       <TimelineList
         events={eventsByDate}
@@ -213,7 +207,6 @@ const CalendarScreen = () => {
         showNowIndicator
         scrollToFirst
         initialTime={INITIAL_TIME}
-    
       />
 
       <Modal
@@ -245,9 +238,7 @@ const CalendarScreen = () => {
             />
 
             {/* Start Time */}
-            <TouchableOpacity
-              onPress={() => setIsStartTimePickerVisible(true)}
-            >
+            <TouchableOpacity onPress={() => setIsStartTimePickerVisible(true)}>
               <Text style={styles.label}>Start Time</Text>
               <Text>{format(selectedStartTime, "HH:mm a")}</Text>
             </TouchableOpacity>
@@ -261,9 +252,7 @@ const CalendarScreen = () => {
             />
 
             {/* End Time */}
-            <TouchableOpacity
-              onPress={() => setIsEndTimePickerVisible(true)}
-            >
+            <TouchableOpacity onPress={() => setIsEndTimePickerVisible(true)}>
               <Text style={styles.label}>End Time</Text>
               <Text>{format(selectedEndTime, "HH:mm a")}</Text>
             </TouchableOpacity>

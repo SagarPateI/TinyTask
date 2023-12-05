@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-    
+
     title: {
         type: String,
         required: true,
@@ -20,7 +20,7 @@ const taskSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
-      },
+    },
 });
 
 const taskModel = mongoose.model('tasks', taskSchema);
