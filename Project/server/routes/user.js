@@ -1,4 +1,3 @@
-// Project\server\routes\user.js
 const express = require('express');
 const { RateLimiterMemory } = require('rate-limiter-flexible');
 

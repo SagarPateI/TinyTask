@@ -74,7 +74,6 @@ exports.completedTask = async (req, res) => {
 
         console.log('Task with ID:', id, 'updated successfully.');
         res.json(task);
-
     } catch (error) {
         console.error('Error updating task:', error);
         res.status(500).json({ error: error.message });
