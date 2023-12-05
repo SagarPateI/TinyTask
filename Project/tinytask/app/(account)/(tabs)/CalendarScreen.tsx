@@ -66,7 +66,7 @@ const CalendarScreen = () => {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://tinytaskapp2.loca.lt/events");
+      const response = await axios.get("https://tinytaskapp.loca.lt/events");
       const fetchedEvents = response.data;
 
       console.log("Fetched Events:", fetchedEvents);
@@ -114,7 +114,7 @@ const CalendarScreen = () => {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
         const response = await axios.post(
-          "https://tinytaskapp2.loca.lt/events",
+          "https://tinytaskapp.loca.lt/events",
           {
             title: newEventTitle || "New Event",
             summary: newEventSummary || "",

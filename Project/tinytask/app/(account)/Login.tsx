@@ -14,7 +14,6 @@ const Login = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState(""); 
 
   // Axios Instance
   const instance = axios.create({
@@ -35,7 +34,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytaskapp2.loca.lt/auth/login",
+        "https://tinytaskapp.loca.lt/auth/login",
         {
           email,
           password,
@@ -44,22 +43,17 @@ const Login = ({ navigation }: { navigation: any }) => {
 
       const token = data.token;
       await AsyncStorage.setItem("token", token);
+
       if (data.error) {
         Alert.alert(data.error);
         setLoading(false);
-      } else if (data.success === false) {
-        // Handle unsuccessful login
-        Alert.alert("Login failed. Please check your email and password.");
-        setLoading(false);
       } else {
-        // Handle successful login
         setLoading(false);
-        setToken(data.token);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-        navigation.navigate("Tabs");
+        // Assuming login is successful
+        navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
-      
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.error("AxiosError:", err);

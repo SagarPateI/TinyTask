@@ -24,7 +24,6 @@
     "mongoose": "^8.0.0",
     "nodemon": "^3.0.2",
     "rate-limiter-flexible": "^3.0.4",
-    "semver": "^7.5.4",
-    "sharp": "^0.33.0"
+    "semver": "^7.5.4"
   }
 }
