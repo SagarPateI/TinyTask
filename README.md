@@ -7,39 +7,135 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 [![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactnative.dev/) [![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)](https://expo.dev/) [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/about) [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/) [![Realm](https://img.shields.io/badge/Realm-39477F?style=for-the-badge&logo=realm&logoColor=white)](https://www.mongodb.com/developer/products/realm/) [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://www.javascript.com/)
 
 ***
-## TinyTask v1.0.0 - Final Release Before Presentation! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0)
 
-## Version 0.3.0 - Unveiling Advanced Features and Enhanced Functionality! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.3.0)
-Discover powerful enhancements, refined security, revamped navigation, and real-time updates!
+<table>
+  <thead>
+    <tr>
+      <th>Version Number</th>
+      <th>Title of the Release</th>
+      <th>Downloads</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.0.0</td>
+      <td>Final Release Before Presentation!</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details>
+          <summary>Screenshots and Gifs</summary>
+          <p>
+            Placeholder
+          </p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
 
-## Version 0.2.0 - Our biggest update yet! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0)
-Backend implementation, authentication, complex app navigation, UI improvements, and more!
+  <tbody>
+    <tr>
+      <td>0.3.0</td>
+      <td>Unveiling Advanced Features and Enhanced Functionality!<br><br>Discover powerful enhancements, refined security, revamped navigation, and real-time updates!</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.3.0">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details>
+          <summary>Screenshots and Gifs</summary>
+          <p>Placeholder</p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
 
-## Version 0.1.2 - Bugfixes and UI improvements! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2)
-<table style="width: 100%;">
-  <tr>
-    <td style="text-align: center; width: 50%;">
-      <text style="font-size: 24px;"><b>🌞 Introducing a more comprehensive automatic dark mode and light mode (compared to v0.1.1) 🌓</b></text>
-      <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
-    </td>
-    <td style="text-align: center; width: 50%;">
-      <text style="font-size: 24px;"><b>📝 Introducing an improved task list screen! Lots of small changes under the hood as we build this screen out. 📚</b></text>
-      <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_tasklist.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
-    </td>
-    <!--<td style="text-align: center; width: 25%;">
-      <text>Task List</text>
-      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
-    </td>
-    <td style="text-align: center; width: 25%;">
-      <text>Calendar View</text>
-      <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
-    </td>-->
-  </tr>
+  <tbody>
+    <tr>
+      <td>0.2.0</td>
+      <td>Our biggest update yet!<br><br>Backend implementation, authentication, complex app navigation, UI improvements, and more!</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details>
+          <summary>Screenshots and Gifs</summary>
+          <p>Placeholder</p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <td>0.1.2</td>
+      <td>Bugfixes and UI improvements!</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details open>
+          <summary>Screenshots and Gifs</summary>
+          <p>
+           <table style="width: 100%;">
+            <tr>
+               <td style="text-align: center; width: 50%;">
+                  <text style="font-size: 24px;"><b>🌞 Introducing a more comprehensive<br>automatic dark mode and light mode<br>(compared to v0.1.1) 🌓</b></text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+               </td>
+               <td style="text-align: center; width: 50%;">
+                  <text style="font-size: 24px;"><b>📝 Introducing an improved task list<br>screen! Lots of small changes under<br>the hood as we build this screen out. 📚</b></text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_tasklist.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
+               </td>
+               <!--<td style="text-align: center; width: 25%;">
+                  <text>Task List</text>
+                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+               </td>
+               <td style="text-align: center; width: 25%;">
+                  <text>Calendar View</text>
+                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+               </td>-->
+            </tr>
+            </table>
+          </p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <td>0.1.1</td>
+      <td>Migration to Typescript</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details>
+          <summary>Screenshots and Gifs</summary>
+          <p>Placeholder</p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <td>0.1</td>
+      <td>Alpha Release</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details>
+          <summary>Screenshots and Gifs</summary>
+          <p>Placeholder</p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
-## Version 0.1.1 - Migration to Typescript [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1)
-
-## Version 0.1 - Alpha release [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1)
 
 ***
 
