@@ -113,7 +113,28 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td colspan="2">
         <details>
           <summary>Screenshots and Gifs</summary>
-          <p>Placeholder</p>
+          <p>
+            <table style="width: 100%;">
+              <tr>
+                <td style="text-align: center; width: 25%;">
+                  <text style="font-size: 24px;"><b>🌞 Introducing the brand new automatic<br>dark mode and light mode! 🌓</b></text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+                </td>
+                <!--<td style="text-align: center; width: 25%;">-->
+                <!--  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">-->
+                <!--  <text>Home Screen</text>-->
+                <!--</td>-->
+                <!--<td style="text-align: center; width: 25%;">
+                  <text>Task List</text>
+                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                </td>
+                <td style="text-align: center; width: 25%;">
+                  <text>Calendar View</text>
+                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                </td>-->
+              </tr>
+            </table>
+          </p>
         </details>
       </td>
     </tr>
@@ -129,7 +150,28 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td colspan="2">
         <details>
           <summary>Screenshots and Gifs</summary>
-          <p>Placeholder</p>
+          <p>
+            <table style="width: 100%;">
+              <tr>
+                <td style="text-align: center; width: 25%;">
+                  <text>Navbar</text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_navbar.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+                </td>
+                <td style="text-align: center; width: 25%;">
+                  <text>Home Screen</text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">
+                </td>
+                <td style="text-align: center; width: 25%;">
+                  <text>Task List</text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                </td>
+                <td style="text-align: center; width: 33%;">
+                  <text>Calendar View</text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                </td>
+              </tr>
+            </table>
+          </p>
         </details>
       </td>
     </tr>
