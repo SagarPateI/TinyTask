@@ -23,6 +23,7 @@
     "mongodb": "^6.2.0",
     "mongoose": "^8.0.0",
     "rate-limiter-flexible": "^3.0.4",
-    "semver": "^7.5.4"
+    "semver": "^7.5.4",
+    "sharp": "^0.33.0"
   }
 }
