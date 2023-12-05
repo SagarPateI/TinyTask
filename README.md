@@ -18,6 +18,24 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   </thead>
   <tbody>
     <tr>
+      <td>1.1.0</td>
+      <td>Enhanced User Association and Bug Fixes!</td>
+      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.1.0">Download Here</a></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <details>
+          <summary>Screenshots and Gifs</summary>
+          <p>
+            Placeholder
+          </p>
+        </details>
+      </td>
+    </tr>
+  </tbody>
+  
+  <tbody>
+    <tr>
       <td>1.0.0</td>
       <td>Final Release Before Presentation!</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0">Download Here</a></td>
