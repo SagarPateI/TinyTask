@@ -26,6 +26,7 @@ interface TaskItem {
 
 const TaskListScreen: React.FC = () => {
   const [tasks, setTasks] = useState<TaskItem[]>([]);
+  const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
     fetchTasks();
@@ -107,6 +108,7 @@ const TaskListScreen: React.FC = () => {
       alignItems: "center",
     },
     input: {
+      flex: 1,
       paddingVertical: 15,
       backgroundColor: "black",
       paddingHorizontal: 15,
@@ -135,22 +137,22 @@ const TaskListScreen: React.FC = () => {
     taskItem: {
       marginBottom: 10,
     },
-    // addButton: {
-    //   backgroundColor: "blue",
-    //   padding: 10,
-    //   alignItems: "center",
-    //   borderRadius: 5,
-    // },
     addButton: {
       backgroundColor: "blue",
       justifyContent: "center",
       alignItems: "center",
-      width: 50,
+      width: 100,
       height: 50,
       borderRadius: 25,
+      marginLeft: 10,
     },
     addButtonText: {
       color: "white",
+    },
+    inputContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 20,
     },
   });
 
@@ -171,6 +173,17 @@ const TaskListScreen: React.FC = () => {
             )
         )}
       </ScrollView>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter task"
+          value={title}
+          onChangeText={(text) => setTitle(text)}
+        />
+        <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
+          <Text style={styles.addButtonText}>Add Task</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
