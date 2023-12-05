@@ -19,7 +19,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#584277",
+    backgroundColor: "#2C643E",
     height: 50,
     justifyContent: "center",
     marginHorizontal: 45,

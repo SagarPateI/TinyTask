@@ -59,7 +59,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{
-        backgroundColor: "#181220",
+        backgroundColor: "#000000",
         flex: 1,
         justifyContent: "center",
       }}
