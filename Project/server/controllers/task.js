@@ -59,11 +59,23 @@ exports.deleteTask = async (req, res) => {
 exports.completedTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await Task.findById(id); // Use Task for finding the task
-        task.completed = !task.completed;
-        await task.save(); // Save the updated task
+        console.log('Updating task with ID:', id);
+
+        const task = await Task.findById(id);
+        if (!task) {
+            console.log('Task not found.');
+            return res.status(404).json({ error: 'Task not found' });
+        }
+
+        task.completed = true;
+        console.log('About to save the updated task with ID:', id);
+
+        await task.save();
+
+        console.log('Task with ID:', id, 'updated successfully.');
         res.json(task);
     } catch (error) {
+        console.error('Error updating task:', error);
         res.status(500).json({ error: error.message });
     }
 };
