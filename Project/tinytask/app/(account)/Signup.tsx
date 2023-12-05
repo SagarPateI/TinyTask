@@ -33,7 +33,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
       // ENTER URL HERE
       // URL NEEDS TO BE CHANGED EVERY TIME THE SERVER IS RESTARTED
       const { data } = await instance.post(
-        "https://tinytaskapp.loca.lt/auth/signup",
+        "https://tinytaskapp2.loca.lt/auth/signup",
         {
           name,
           email,
