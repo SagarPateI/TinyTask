@@ -1,6 +1,6 @@
 //CalendarScreen.tsx
-import React, { Component } from "react";
-import groupBy from "lodash/groupBy";
+import groupBy from 'lodash/groupBy';
+import React, { useState, useEffect } from "react";
 import {
   TextInput,
   View,
@@ -18,28 +18,10 @@ import {
   TimelineProps,
   CalendarUtils,
 } from "react-native-calendars";
-import ColorPicker, { Swatches } from "reanimated-color-picker";
-
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import ColorPicker, { Swatches } from "reanimated-color-picker";
 import { format } from "date-fns";
 import axios from "axios";
-
-interface State {
-  currentDate: string;
-  events: TimelineEventProps[];
-  eventsByDate: { [key: string]: TimelineEventProps[] };
-  newEventTitle: string;
-  newEventSummary: string;
-  isModalVisible: boolean;
-  selectedEventColor: string;
-  selectedStartTime: Date;
-  selectedEndTime: Date;
-  isStartTimePickerVisible: boolean;
-  isEndTimePickerVisible: boolean;
-  newEventStart: string;
-  newEventEnd: string;
-  marked: { [key: string]: { marked: boolean } };
-}
 
 const EVENT_COLOR = "#e6add8";
 const today = new Date();
@@ -50,57 +32,78 @@ export const getDate = (offset = 0) =>
   );
 
 const INITIAL_TIME = { hour: 9, minutes: 0 };
-const EVENTS: TimelineEventProps[] = [];
 
-export default class TimelineCalendarScreen extends Component<{}, State> {
-  state: State = {
-    currentDate: getDate(),
-    events: EVENTS,
-    eventsByDate: {},
-    newEventTitle: "",
-    newEventSummary: "",
-    isModalVisible: false,
-    selectedEventColor: EVENT_COLOR,
-    selectedStartTime: new Date(),
-    selectedEndTime: new Date(),
-    isStartTimePickerVisible: false,
-    isEndTimePickerVisible: false,
-    newEventStart: "",
-    newEventEnd: "",
-    marked: {
-      [`${getDate()}`]: { marked: true },
-    },
+
+const swatchColors = [
+  "#fd5959",
+  "#ff9c6d",
+  "#fcff82",
+  "#AFE1AF",
+  "#cadefc",
+  "#c3bef0",
+  "#cca8e9",
+];
+
+const CalendarScreen = () => {
+  const [currentDate, setCurrentDate] = useState(getDate());
+  const [eventsByDate, setEventsByDate] = useState({});
+  const [newEventTitle, setNewEventTitle] = useState("");
+  const [newEventSummary, setNewEventSummary] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedEventColor, setSelectedEventColor] = useState(EVENT_COLOR);
+  const [selectedStartTime, setSelectedStartTime] = useState(new Date());
+  const [selectedEndTime, setSelectedEndTime] = useState(new Date());
+  const [isStartTimePickerVisible, setIsStartTimePickerVisible] = useState(
+    false
+  );
+  const [isEndTimePickerVisible, setIsEndTimePickerVisible] = useState(false);
+  const [newEventStart, setNewEventStart] = useState("");
+  const [newEventEnd, setNewEventEnd] = useState("");
+  const [marked, setMarked] = useState({
+    [`${getDate()}`]: { marked: true },
+  });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://tinytaskapp.loca.lt/events");
+      const fetchedEvents = response.data;
+
+      console.log('Fetched Events:', fetchedEvents);
+
+      const eventsByDate = groupBy(fetchedEvents, (e) =>
+        CalendarUtils.getCalendarDateString(e.start)
+      );
+      const marked = generateMarkedObject(eventsByDate);
+
+      setEventsByDate(eventsByDate);
+      setMarked(marked);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
   };
 
-  onDateChanged = (date: string, source: string) => {
-    console.log("TimelineCalendarScreen onDateChanged: ", date, source);
-    this.setState({ currentDate: date });
+  const onDateChanged = (date: string, source: string) => {
+    console.log('onDateChanged: ', date, source);
+    setCurrentDate(date);
   };
 
-  onMonthChange = (month: any, updateSource: any) => {
-    console.log("TimelineCalendarScreen onMonthChange: ", month, updateSource);
+  const onMonthChange = (month: any, updateSource: any) => {
+    console.log('onMonthChange: ', month, updateSource);
   };
 
-  handleAddEventButton = () => {
-    this.setState({ isModalVisible: true });
+  const handleAddEventButton = () => {
+    setIsModalVisible(true);
   };
 
-  hideTimePicker() {
-    this.setState({
-      isStartTimePickerVisible: false,
-      isEndTimePickerVisible: false,
-    });
-  }
+  const hideTimePicker = () => {
+    setIsStartTimePickerVisible(false);
+    setIsEndTimePickerVisible(false);
+  };
 
-  handleCreateEvent = async () => {
-    const {
-      newEventTitle,
-      newEventSummary,
-      newEventStart,
-      newEventEnd,
-      selectedEventColor,
-    } = this.state;
-
+  const handleCreateEvent = async () => {
     console.log("Request data:", {
       title: newEventTitle || "New Event",
       summary: newEventSummary || "",
@@ -112,28 +115,23 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     try {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
-        const response = await fetch("https://proud-pig-40.loca.lt/events", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+        const response = await axios.post(
+          "https://tinytaskapp.loca.lt/events",
+          {
             title: newEventTitle || "New Event",
             summary: newEventSummary || "",
             start: newEventStart,
             end: newEventEnd,
             color: selectedEventColor,
-          }),
-        });
+          }
+        );
 
-        if (response.ok) {
-          const newEvent = await response.json();
+        if (response.status === 201) {
+          const newEvent = response.data;
 
-          this.setState({
-            events: [...this.state.events, newEvent],
-            isModalVisible: false,
-          });
-
+          setEventsByDate({ ...eventsByDate, [newEventStart]: [newEvent] });
+          setMarked({ ...marked, [newEventStart]: { marked: true } });
+          fetchData();
           // Display success message
           console.log("Event created successfully:", newEvent);
           Alert.alert("Event created successfully");
@@ -150,25 +148,24 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
       // Display error message
       Alert.alert("Error creating event");
     }
+
+    // Close the modal after creating the event
+    setIsModalVisible(false);
   };
 
-  handleTimePickerConfirm = (date: Date, isStartTime: boolean) => {
+  const handleTimePickerConfirm = (date: Date, isStartTime: boolean) => {
     const formattedTime = format(date, "HH:mm");
     if (isStartTime) {
-      this.setState({
-        selectedStartTime: date,
-        newEventStart: `${this.state.currentDate} ${formattedTime}:00`,
-      });
+      setSelectedStartTime(date);
+      setNewEventStart(`${currentDate} ${formattedTime}:00`);
     } else {
-      this.setState({
-        selectedEndTime: date,
-        newEventEnd: `${this.state.currentDate} ${formattedTime}:00`,
-      });
+      setSelectedEndTime(date);
+      setNewEventEnd(`${currentDate} ${formattedTime}:00`);
     }
-    this.hideTimePicker();
+    hideTimePicker();
   };
 
-  private timelineProps: Partial<TimelineProps> = {
+  const timelineProps: Partial<TimelineProps> = {
     unavailableHours: [
       { start: 0, end: 6 },
       { start: 22, end: 24 },
@@ -177,162 +174,143 @@ export default class TimelineCalendarScreen extends Component<{}, State> {
     rightEdgeSpacing: 24,
   };
 
-  render() {
-    const {
-      currentDate,
-      eventsByDate,
-      newEventTitle,
-      newEventSummary,
-      isModalVisible,
-      selectedStartTime,
-      selectedEndTime,
-      isStartTimePickerVisible,
-      isEndTimePickerVisible,
-    } = this.state;
+  const generateMarkedObject = (eventsByDate: {
+    [key: string]: TimelineEventProps[];
+  }): { [key: string]: { marked: boolean } } => {
+    const marked: { [key: string]: { marked: boolean } } = {};
 
-    return (
-      <CalendarProvider
-        date={currentDate}
-        onDateChanged={this.onDateChanged}
-        onMonthChange={this.onMonthChange}
-        showTodayButton
-        disabledOpacity={0.6}
+    for (const date in eventsByDate) {
+      marked[date] = { marked: true };
+    }
+
+    return marked;
+  };
+
+  return (
+    <CalendarProvider
+      date={currentDate}
+      onDateChanged={onDateChanged}
+      onMonthChange={onMonthChange}
+      showTodayButton
+      disabledOpacity={0.6}
+    >
+      <TouchableOpacity
+        style={styles.addButtonContainer}
+        onPress={handleAddEventButton}
       >
-        <TouchableOpacity
-          style={styles.addButtonContainer}
-          onPress={() => this.setState({ isModalVisible: true })}
-        >
-          <Text style={styles.buttonAddEvent}>Add Event</Text>
-        </TouchableOpacity>
+        <Text style={styles.buttonAddEvent}>Add Event</Text>
+      </TouchableOpacity>
 
-        <ExpandableCalendar
-          firstDay={1}
-          hideArrows
-          markedDates={this.state.marked}
-        />
+      <ExpandableCalendar
+        firstDay={1}
+        hideArrows
+        markedDates={marked}
+      />
 
-        <TimelineList
-          events={eventsByDate}
-          timelineProps={this.timelineProps}
-          showNowIndicator
-          scrollToFirst
-          initialTime={INITIAL_TIME}
-        />
+      <TimelineList
+        events={eventsByDate}
+        timelineProps={timelineProps}
+        showNowIndicator
+        scrollToFirst
+        initialTime={INITIAL_TIME}
+    
+      />
 
-        <Modal
-          testID={"modal"}
-          isVisible={isModalVisible}
-          backdropColor="#B4B3DB"
-          backdropOpacity={0.8}
-          animationIn="zoomInDown"
-          animationOut="zoomOutUp"
-          animationInTiming={600}
-          animationOutTiming={600}
-          backdropTransitionInTiming={600}
-          backdropTransitionOutTiming={600}
-          style={styles.modal}
-        >
-          <View style={styles.modalContent}>
-            <View style={styles.formGroup}>
-              <Text style={styles.label}>Title</Text>
-              <TextInput
-                value={newEventTitle}
-                onChangeText={(text) => this.setState({ newEventTitle: text })}
-                style={styles.inputEvent}
+      <Modal
+        testID={"modal"}
+        isVisible={isModalVisible}
+        backdropColor="#B4B3DB"
+        backdropOpacity={0.8}
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        animationInTiming={600}
+        animationOutTiming={600}
+        backdropTransitionInTiming={600}
+        backdropTransitionOutTiming={600}
+        style={styles.modal}
+      >
+        <View style={styles.modalContent}>
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Title</Text>
+            <TextInput
+              value={newEventTitle}
+              onChangeText={(text) => setNewEventTitle(text)}
+              style={styles.inputEvent}
+            />
+            <Text style={styles.label}>Description</Text>
+            <TextInput
+              value={newEventSummary}
+              onChangeText={(text) => setNewEventSummary(text)}
+              style={styles.inputSummary}
+            />
+
+            {/* Start Time */}
+            <TouchableOpacity
+              onPress={() => setIsStartTimePickerVisible(true)}
+            >
+              <Text style={styles.label}>Start Time</Text>
+              <Text>{format(selectedStartTime, "HH:mm a")}</Text>
+            </TouchableOpacity>
+
+            {/* Start Time Picker */}
+            <DateTimePickerModal
+              isVisible={isStartTimePickerVisible}
+              mode="time"
+              onConfirm={(date) => handleTimePickerConfirm(date, true)}
+              onCancel={() => setIsStartTimePickerVisible(false)}
+            />
+
+            {/* End Time */}
+            <TouchableOpacity
+              onPress={() => setIsEndTimePickerVisible(true)}
+            >
+              <Text style={styles.label}>End Time</Text>
+              <Text>{format(selectedEndTime, "HH:mm a")}</Text>
+            </TouchableOpacity>
+
+            {/* End Time Picker */}
+            <DateTimePickerModal
+              isVisible={isEndTimePickerVisible}
+              mode="time"
+              onConfirm={(date) => handleTimePickerConfirm(date, false)}
+              onCancel={() => setIsEndTimePickerVisible(false)}
+            />
+
+            <Text style={styles.label}>Color</Text>
+            <ColorPicker
+              value={selectedEventColor}
+              sliderThickness={20}
+              thumbSize={20}
+              thumbShape="circle"
+              onChange={(color) => setSelectedEventColor(color.hex)}
+            >
+              <Swatches
+                style={styles.swatchesContainer}
+                swatchStyle={styles.swatchStyle}
+                colors={swatchColors}
               />
-              <Text style={styles.label}>Description</Text>
-              <TextInput
-                value={newEventSummary}
-                onChangeText={(text) =>
-                  this.setState({ newEventSummary: text })
-                }
-                style={styles.inputSummary}
-              />
+            </ColorPicker>
 
-              {/* Start Time */}
-              <TouchableOpacity
-                onPress={() =>
-                  this.setState({ isStartTimePickerVisible: true })
-                }
-              >
-                <Text style={styles.label}>Start Time</Text>
-                <Text>{format(selectedStartTime, "HH:mm a")}</Text>
-              </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.createButton}
+              onPress={handleCreateEvent}
+            >
+              <Text style={styles.buttonText}>Create</Text>
+            </TouchableOpacity>
 
-              {/* Start Time Picker */}
-              <DateTimePickerModal
-                isVisible={isStartTimePickerVisible}
-                mode="time"
-                onConfirm={(date) => this.handleTimePickerConfirm(date, true)}
-                onCancel={() =>
-                  this.setState({ isStartTimePickerVisible: false })
-                }
-              />
-
-              {/* End Time */}
-              <TouchableOpacity
-                onPress={() => this.setState({ isEndTimePickerVisible: true })}
-              >
-                <Text style={styles.label}>End Time</Text>
-                <Text>{format(selectedEndTime, "HH:mm a")}</Text>
-              </TouchableOpacity>
-
-              {/* End Time Picker */}
-              <DateTimePickerModal
-                isVisible={isEndTimePickerVisible}
-                mode="time"
-                onConfirm={(date) => this.handleTimePickerConfirm(date, false)}
-                onCancel={() =>
-                  this.setState({ isEndTimePickerVisible: false })
-                }
-              />
-
-              <Text style={styles.label}>Color</Text>
-              <ColorPicker
-                value={this.state.selectedEventColor}
-                sliderThickness={20}
-                thumbSize={20}
-                thumbShape="circle"
-                onChange={(color) =>
-                  this.setState({ selectedEventColor: color.hex })
-                }
-              >
-                <Swatches
-                  style={styles.swatchesContainer}
-                  swatchStyle={styles.swatchStyle}
-                  colors={swatchColors}
-                />
-              </ColorPicker>
-
-              <TouchableOpacity
-                style={styles.createButton}
-                onPress={this.handleCreateEvent}
-              >
-                <Text style={styles.buttonText}>Create</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.cancelButton}
-                onPress={() => this.setState({ isModalVisible: false })}
-              >
-                <Text style={styles.buttonText}>Cancel</Text>
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              style={styles.cancelButton}
+              onPress={() => setIsModalVisible(false)}
+            >
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
           </View>
-        </Modal>
-      </CalendarProvider>
-    );
-  }
-}
-const swatchColors = [
-  "#fd5959",
-  "#ff9c6d",
-  "#fcff82",
-  "#AFE1AF",
-  "#cadefc",
-  "#c3bef0",
-  "#cca8e9",
-];
+        </View>
+      </Modal>
+    </CalendarProvider>
+  );
+};
+
 const styles = StyleSheet.create({
   modal: {
     margin: 0,
@@ -403,32 +381,6 @@ const styles = StyleSheet.create({
     padding: 4,
     fontSize: 16,
   },
-  sliderTitle: {
-    color: "#000",
-    fontWeight: "bold",
-    marginBottom: 5,
-    paddingHorizontal: 4,
-  },
-  sliderStyle: {
-    borderRadius: 20,
-    marginBottom: 20,
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-  },
-  previewTxtContainer: {
-    paddingTop: 20,
-    marginTop: 20,
-    borderTopWidth: 1,
-    borderColor: "#bebdbe",
-  },
   swatchesContainer: {
     paddingTop: 20,
     marginTop: 20,
@@ -448,3 +400,5 @@ const styles = StyleSheet.create({
     marginVertical: 0,
   },
 });
+
+export default CalendarScreen;
