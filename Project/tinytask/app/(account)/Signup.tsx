@@ -11,6 +11,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState("");
 
   const instance = axios.create({
     httpsAgent: {
@@ -31,7 +32,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
       // ENTER URL HERE
       // URL NEEDS TO BE CHANGED EVERY TIME THE SERVER IS RESTARTED
       const { data } = await instance.post(
-        "https://tinytaskapp.loca.lt/auth/signup",
+        "https://tinytaskapp2.loca.lt/auth/signup",
         {
           name,
           email,
@@ -44,6 +45,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
         setLoading(false);
       } else {
         setLoading(false);
+        setToken(data.token);
         console.log("SIGNUP SUCCESSFUL =>", data);
         Alert.alert("You've successfully signed up");
         navigation.navigate("Login");
