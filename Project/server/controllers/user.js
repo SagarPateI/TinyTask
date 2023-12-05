@@ -1,4 +1,3 @@
-// Project\server\controllers\user.js
 /*
     this files has important components related to user information in the database
 
@@ -11,8 +10,10 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
-// Handles the creation of new users
+
+//handles the creation of new users
 exports.createUser = async (req, res) => {
+
     console.log('User hit sign up button');
 
     try {
@@ -36,17 +37,19 @@ exports.createUser = async (req, res) => {
             });
         }
 
-        // Searching if the email has already been used
+        //searching if the email has already been used
         const isNewUser = await User.isEmailInUse(email);
         if (!isNewUser) {
             return res.json({
                 success: false,
                 message: 'Email is taken',
+
             });
         }
 
         try {
-            // Saves user sign-up information to the database
+
+            //saves user sign-up information to the database 
             const user = await new User({
                 name,
                 email,
@@ -54,50 +57,34 @@ exports.createUser = async (req, res) => {
             });
 
             await user.save();
+
         } catch (err) {
-            console.log('Error during user creation:', err);
-            return res.status(500).json({
-                success: false,
-                message: 'Internal server error during user creation',
-            });
+            console.log(err);
         }
     } catch (err) {
-        console.log('Error in createUser:', err);
-        return res.status(500).json({
-            success: false,
-            message: 'Internal server error',
-        });
+        console.log(err);
     }
 };
 
-// Handles user logins
+//handles user logins 
 exports.userLogin = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ email });
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
 
-        if (!user) {
-            console.log('User not found with the given email');
-            return res.json({
-                success: false,
-                message: 'User not found with the given email',
-            });
-        }
+    if (!user) {
 
-        const passwordMatch = await user.comparePassword(password);
-
-        if (!passwordMatch) {
-            console.log('Password does not match');
-            return res.status(401).json({
-                success: false,
-                message: 'Email/password is incorrect',
-            });
-        }
-
-        // Signing USER ID WITH SPECIAL TOKEN IF THEY LOG IN PROPERLY
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, {
-            expiresIn: "7d",
+        return res.json({
+            success: false, message: 'user not found with given email'
         });
+    }
+
+    const passwordMatch = await user.comparePassword(password)
+    if (!passwordMatch) {
+        return res.json({
+            success: false, message: 'email/password is incorrect'
+        });
+    }
+
     //SIGNING USER ID WITH SPECIAL TOKEN IF THEY LOGIN PROPERLY
     const token = jwt.sign({ userId: user._id, name: user.name }, process.env.JWT_TOKEN, {
         expiresIn: "365d",
