@@ -1,5 +1,6 @@
 // Project\server\models\event.js
 const mongoose = require('mongoose');
+const User = require('./user'); // Import the User model (Update the path as needed)
 
 const eventSchema = new mongoose.Schema({
 
@@ -17,6 +18,11 @@ const eventSchema = new mongoose.Schema({
   },
   summary: String,
   color: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Referring to the User model
+  },
 });
 
-module.exports = mongoose.model('Event', eventSchema);
+const eventModel = mongoose.model('Event', eventSchema);
+module.exports = eventModel;
