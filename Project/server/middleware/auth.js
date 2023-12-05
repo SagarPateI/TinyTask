@@ -26,7 +26,6 @@ module.exports = async (req, res, next) => {
 
     req.user = user;
 
-   
     next();
   } catch (error) {
     // Token verification failed
