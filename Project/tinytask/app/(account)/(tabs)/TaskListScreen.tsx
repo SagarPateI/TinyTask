@@ -200,46 +200,66 @@ completed: boolean;
 }
 
 const TaskListScreen: React.FC = () => {
-  const navigation = useNavigation();
   const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [title, setTitle] = useState<string>("");
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-  // Fetch tasks when the component mounts
-  axios
-  .get("https://tinytaskapp.loca.lt/tasks")
-  .then((res) => {
-  if (res.status === 200) {
-  setTasks(res.data);
-  }
-  })
-  .catch((error) => {
-  console.error("Error fetching tasks:", error);
-  });
+    fetchTasks();
   }, []);
 
-  const handleAddTask = () => {
-    // Add logic to send a new task to the backend or update the local state
-    // For example:
-    axios
-      .post("https://proud-pig-40.loca.lt/tasks", {
+  const fetchTasks = async () => {
+    try {
+      const response = await axios.get("https://tinytaskapp.loca.lt/tasks");
+      if (response.status === 200) {
+        setTasks(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  };
+
+  const handleAddTask = async () => {
+    try {
+      const userId = "6553cbce9c2e8667ef0ce643";
+      const response = await axios.post("https://tinytaskapp.loca.lt/tasks", {
         title: title,
         completed: false,
-      })
-      .then((res) => {
-        if (res.status === 201) {
-          setLoading(false);
-          setTasks([...tasks, res.data]);
-          setTitle("");
-          console.log("Task added successfully:", res.data);
-        }
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error adding task:", error);
+        userId: userId,
       });
+      if (response.status === 201) {
+        setTasks([...tasks, response.data]);
+        setTitle("");
+      }
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
+
+const handleTaskPress = async (taskId: string) => {
+  try {
+    console.log("Updating task with ID:", taskId);
+
+    const updatedTasks = tasks.map((task) => {
+      if (task._id === taskId) {
+        // Update the local task completion status
+        return { ...task, completed: true };
+      }
+      return task;
+    });
+
+    setTasks(updatedTasks);
+
+    // Send a PATCH request to update task completion status on the server
+    await axios.patch(`https://tinytaskapp.loca.lt/tasks/${taskId}`, {
+      completed: true,
+      title: "Task Title", // Replace 'Task Title' with the appropriate title
+    });
+
+    console.log("Task with ID:", taskId, "updated successfully.");
+  } catch (error) {
+    console.error("Error updating task:", error);
+  }
+};
 
   const textColor = useThemeColor({}, "text");
 
@@ -247,6 +267,7 @@ const TaskListScreen: React.FC = () => {
     container: {
       flex: 1,
       paddingHorizontal: 20,
+      paddingTop: 40,
       backgroundColor: useThemeColor(
         { light: "#FFFFFF", dark: "#121212" },
         "background"
@@ -263,7 +284,6 @@ const TaskListScreen: React.FC = () => {
     items: {
       marginTop: 30,
     },
-
     writeTaskWrapper: {
       position: "absolute",
       bottom: 60,
@@ -272,8 +292,8 @@ const TaskListScreen: React.FC = () => {
       justifyContent: "space-around",
       alignItems: "center",
     },
-
     input: {
+      flex: 1,
       paddingVertical: 15,
       backgroundColor: "black",
       paddingHorizontal: 15,
@@ -283,7 +303,6 @@ const TaskListScreen: React.FC = () => {
       width: 250,
       color: textColor,
     },
-
     addWrapper: {
       width: 60,
       height: 60,
@@ -293,59 +312,65 @@ const TaskListScreen: React.FC = () => {
       borderColor: "#C0C0C0",
       borderWidth: 1,
     },
-
     addText: {
       color: textColor,
       fontSize: 30,
     },
-
     scrollContainer: {
       flexGrow: 1,
     },
+    taskItem: {
+      marginBottom: 10,
+    },
+    addButton: {
+      backgroundColor: "blue",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 100,
+      height: 50,
+      borderRadius: 25,
+      marginLeft: 10,
+    },
+    addButtonText: {
+      color: "white",
+    },
+    inputContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 20,
+    },
   });
 
+  // JSX Component
   return (
-    <ThemedView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContainer}
-        keyboardShouldPersistTaps="handled"
-      >
-        <View style={styles.tasksWrapper}>
-          <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
-          <View style={styles.items}>
-            {tasks &&
-              tasks.map((task) => (
-                <TouchableOpacity key={task._id}>
-                  <Text>{task.title}</Text>
-                </TouchableOpacity>
-              ))}
-          </View>
-        </View>
+    <View style={styles.container}>
+      <ScrollView>
+        {tasks.map(
+          (task) =>
+            !task.completed && (
+              <TouchableOpacity
+                key={task._id}
+                style={styles.taskItem}
+                onPress={() => handleTaskPress(task._id)}
+              >
+                <Task text={task.title} />
+              </TouchableOpacity>
+            )
+        )}
       </ScrollView>
-
-      {/* write a task */}
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.writeTaskWrapper}
-      >
+      <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Write a task"
-          placeholderTextColor={textColor}
+          placeholder="Enter task"
           value={title}
           onChangeText={(text) => setTitle(text)}
         />
-
-        <TouchableOpacity onPress={handleAddTask}>
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
-          </View>
+        <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
+          <Text style={styles.addButtonText}>Add Task</Text>
         </TouchableOpacity>
-
-       
-      </KeyboardAvoidingView>
-    </ThemedView>
+      </View>
+    </View>
   );
   };
 
-  export default TaskListScreen;
+export default TaskListScreen;

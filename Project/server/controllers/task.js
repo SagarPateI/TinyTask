@@ -1,24 +1,36 @@
 // Project\server\controllers\task.js
-const taskModel = require('../models/task');
+const Task = require('../models/task');
 
-
-const taskModel = require('../models/task');
-
-exports.getTasks = async (req, res) => {
+exports.createTask = async (req, res) => {
     try {
-        const tasks = await taskModel.find();
-        res.json(tasks);
+        console.log('Creating task...', req.body); // Add this log
+        const { title, completed } = req.body;
+        let userId;
+
+        // Check if the user ID is in the request body
+        if (req.body.userId) {
+            userId = req.body.userId;
+        } else if (req.user && req.user._id) { // Otherwise, check if it's in req.user
+            userId = req.user._id;
+        } else {
+            throw new Error('User ID not found');
+        }
+
+        const newTask = new Task({ title, completed, userId });
+        await newTask.save();
+
+        console.log('Task created:', newTask); // Add this log
+        res.status(201).json(newTask);
     } catch (error) {
+        console.error('Error creating task:', error);
         res.status(500).json({ error: error.message });
     }
 };
 
-exports.createTask = async (req, res) => {
+exports.getTasks = async (req, res) => {
     try {
-        const { title} = req.body;
-        const task = new taskModel({ title, completed: false });
-        const newTask = await task.save();
-        res.json(newTask);
+        const tasks = await Task.find(); // Use Task for retrieving tasks
+        res.json(tasks);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -26,17 +38,18 @@ exports.createTask = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
     const { id } = req.params;
-    const task = await taskModel.findById(id);
+    const task = await Task.findById(id); // Use Task for finding the task
     task.completed = req.body.completed;
-    task.description = req.body.description
+    task.description = req.body.description;
     task.title = req.body.title;
+    await task.save(); // Save the updated task
     res.json(task);
-}
+};
 
 exports.deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await taskModel.findByIdAndRemove(id);
+        const task = await Task.findByIdAndRemove(id); // Use Task for finding and removing the task
         res.status(204).json(task);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -46,13 +59,24 @@ exports.deleteTask = async (req, res) => {
 exports.completedTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await taskModel.findById(id);
-        task.completed = !task.completed;
-        task.save();
+        console.log('Updating task with ID:', id);
+
+        const task = await Task.findById(id);
+        if (!task) {
+            console.log('Task not found.');
+            return res.status(404).json({ error: 'Task not found' });
+        }
+
+        task.completed = true;
+        console.log('About to save the updated task with ID:', id);
+
+        await task.save();
+
+        console.log('Task with ID:', id, 'updated successfully.');
         res.json(task);
 
     } catch (error) {
+        console.error('Error updating task:', error);
         res.status(500).json({ error: error.message });
     }
 };
-// Additional controller methods like updateTask can also be defined here
