@@ -168,7 +168,16 @@
 // export default TaskListScreen;
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+  TextInput,
+} from "react-native";
 import Task from "../../../components/Task";
 import {
   Text as ThemedText,

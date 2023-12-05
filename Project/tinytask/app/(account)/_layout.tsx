@@ -1,12 +1,11 @@
 // Project\tinytask\app\(account)\_layout.tsx
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabsLayout from "./(tabs)/_layout";
 import LoginScreen from "./Login";
 import SignupScreen from "./Signup";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
-
 
 const Stack = createStackNavigator();
 
@@ -43,9 +42,10 @@ const AccountLayout = () => {
       <Stack.Screen
         name="Signup"
         component={SignupScreen}
-        options={{ 
-        title: "Signup Page", 
-        headerShown: false }}
+        options={{
+          title: "Signup Page",
+          headerShown: false,
+        }}
       />
       {/* {isUserLoggedIn &&  */}
       <Stack.Screen

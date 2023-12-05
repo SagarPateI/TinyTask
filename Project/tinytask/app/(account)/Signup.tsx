@@ -7,7 +7,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 const Signup = ({ navigation }: { navigation: any }) => {
   // STATE VARIABLES [VALUE, SETVALUE]
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,6 @@ const Signup = ({ navigation }: { navigation: any }) => {
       rejectUnauthorized: false,
     },
   });
-
 
   const handleSubmit = async () => {
     // button has been pressed
@@ -50,7 +49,6 @@ const Signup = ({ navigation }: { navigation: any }) => {
         console.log("SIGNUP SUCCESSFUL =>", data);
         Alert.alert("You've successfully signed up");
         navigation.navigate("Login");
-        
       }
     } catch (err) {
       console.log(err);
