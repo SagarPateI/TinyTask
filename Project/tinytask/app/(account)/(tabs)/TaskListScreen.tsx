@@ -269,24 +269,25 @@ const TaskListScreen: React.FC = () => {
   };
 
   // Inside handleAddTask function
-  const handleAddTask = async () => {
-    setLoading(true);
-    try {
-      console.log("Adding task...", title); // Add this log
-      const response = await axios.post("https://tinytaskapp.loca.lt/tasks", {
-        title: title,
-        completed: false,
-      });
-      if (response.status === 201) {
-        console.log("Task added successfully:", response.data); // Add this log
-        setTasks([...tasks, response.data]);
-        setTitle("");
-      }
-    } catch (error) {
-      setLoading(false);
-      console.error("Error adding task:", error);
+const handleAddTask = async () => {
+  setLoading(true);
+  try {
+    const userId = "6553cbce9c2e8667ef0ce643"; // Replace this with the actual user ID
+    const response = await axios.post("https://tinytaskapp.loca.lt/tasks", {
+      title: title,
+      completed: false,
+      userId: userId, // Include the user ID in the request body
+    });
+    if (response.status === 201) {
+      setTasks([...tasks, response.data]);
+      setTitle("");
+      console.log("Task added successfully:", response.data);
     }
-  };
+  } catch (error) {
+    setLoading(false);
+    console.error("Error adding task:", error);
+  }
+};
 
   const textColor = useThemeColor({}, "text");
 
