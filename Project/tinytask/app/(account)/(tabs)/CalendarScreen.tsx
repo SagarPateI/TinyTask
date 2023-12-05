@@ -113,6 +113,7 @@ const CalendarScreen = () => {
     try {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
+        const userId = "6553cbce9c2e8667ef0ce643";
         const response = await axios.post(
           "https://tinytaskapp.loca.lt/events",
           {
@@ -121,6 +122,7 @@ const CalendarScreen = () => {
             start: newEventStart,
             end: newEventEnd,
             color: selectedEventColor,
+            userId: userId,
           }
         );
 
