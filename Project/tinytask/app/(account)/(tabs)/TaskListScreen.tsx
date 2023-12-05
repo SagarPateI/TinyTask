@@ -1,3 +1,171 @@
+// import React, { useState, useEffect } from "react";
+// import { useNavigation } from "@react-navigation/native";
+// import { StackNavigationProp } from "@react-navigation/stack";
+// import {
+// Keyboard,
+// KeyboardAvoidingView,
+// StyleSheet,
+// Text,
+// View,
+// TextInput,
+// TouchableOpacity,
+// Platform,
+// ScrollView,
+// } from "react-native";
+// import Task from "../../../components/Task";
+// import {
+// Text as ThemedText,
+// View as ThemedView,
+// useThemeColor,
+// } from "../../../components/Themed";
+// import { useQuery } from "react-query";
+// import axios from 'axios';
+
+// interface Task {
+// _id: string;
+// title: string;
+// completed: boolean;
+// }
+
+// interface TaskListProps {
+// task: Task[];
+// }
+
+// const TaskListScreen: React.FC = () => {
+// const navigation = useNavigation<StackNavigationProp<any>>();
+
+//   const [task, setTask] = useState<Task[]>([]);
+
+    // useEffect(() => {
+    // axios
+    // .get("https://tinytask.loca.lt/tasks", {
+    // headers: {
+    // "Content-Type": "application/json",
+    // },
+    // })
+    // .then((res) => {
+    // if (res.status === 200) {
+    // setTask(res.data.task);
+    // }
+    // });
+    // }, []);
+
+    // const TaskList = ({task}: TaskListProp) => {
+
+    // }
+    // // const GetTasks = async () => {
+    // // try {
+    // // const response = await fetch("https://tinytask.loca.lt/tasks", {
+    // // method: "GET",
+    // // headers: {
+    // // "Content-Type": "application/json",
+    // // },
+    // // });
+    // // const data = await response.json();
+    // // setTask(data);
+    // // } catch (error) {
+    // // console.error("Error fetching tasks:", error);
+    // // }
+    // // };
+    // //STATE VARIABLES
+    // // const [task, setTask] = useState([]);
+    // // const [taskItems, setTaskItems] = useState<string[]>([]);
+
+      // const backgroundColor = useThemeColor(
+      // {
+      // light: "#FFFFFF", // Light gray background color
+      // dark: "#121212", // Dark gray background color
+      // },
+      // "background"
+      // );
+
+//   // //ADD TASK FUNCTION
+//   // const handleAddTask = async () => {
+//   //   Keyboard.dismiss();
+
+      // // //IF TASK IS NOT EMPTY
+      // // if (task () !== "") {
+      // // try {
+      // // //POST REQUEST TO MAKE TASK
+      // // const response = await fetch("http://localhost:8000/tasks", {
+      // // method: "POST",
+      // // headers: {
+      // // "Content-Type": "application/json",
+      // // },
+      // // body: JSON.stringify({
+      // // title: task,
+      // // description: "Your task description here", // Add description as needed
+      // // }),
+      // // });
+
+      // // //IF REQUEST SUCCESSFUL, UPDATE THE STATE WITH NEW TASK
+      // // if (response.ok) {
+      // // const newTask = await response.json();
+      // // setTaskItems([...taskItems, newTask.title]); // Update taskItems with the new task
+      // // setTask("");
+      // // console.log("Task added successfully:", newTask); // Log success message
+      // // } else {
+      // // console.error("Failed to add task"); // Log failure message
+      // // }
+      // // } catch (error) {
+      // // console.error("Error:", error); // Log error message
+      // // }
+      // // }
+      // // };
+
+//   // //FUNCTION TO SET TASK AS COMPLETE
+//   // const completeTask = (index: number) => {
+//   //   let itemsCopy = [...task];
+//   //   itemsCopy.splice(index, 1);
+//   //   setTask(itemsCopy);
+//   // };
+
+//   const textColor = useThemeColor({}, "text");
+      // const textColor = useThemeColor({}, "text");
+
+//   const TaskListComponent = ({task}: TaskListProps) => {
+
+//   return (
+//     <ThemedView style={styles.container}>
+//       <ScrollView
+//         contentContainerStyle={styles.scrollContainer}
+//         keyboardShouldPersistTaps="handled"
+//       >
+//         <View style={styles.tasksWrapper}>
+//           <ThemedText style={styles.sectionTitle}>Today's tasks</ThemedText>
+//           <View style={styles.items}>
+//             {task.map((item, index) => (
+//               <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+//                 <Task text={item} />
+//               </TouchableOpacity>
+//             ))}
+//           </View>
+//         </View>
+//       </ScrollView>
+
+//       {/* Write a task */}
+//       {/* <KeyboardAvoidingView
+//         behavior={Platform.OS === "ios" ? "padding" : "height"}
+//         style={styles.writeTaskWrapper}
+//       >
+//         <TextInput
+//           style={styles.input}
+//           placeholder={"Write a task"}
+//           placeholderTextColor={textColor}
+//           value={task}
+//           onChangeText={(text) => setTask(text)}
+//         />
+//         <TouchableOpacity onPress={handleAddTask}>
+//           <View style={styles.addWrapper}>
+//             <Text style={styles.addText}>+</Text>
+//           </View>
+//         </TouchableOpacity>
+//       </KeyboardAvoidingView> */}
+//     </ThemedView>
+//   );
+//     }
+
+// export default TaskListScreen;
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
@@ -17,11 +185,18 @@ import {
   useThemeColor,
 } from "../../../components/Themed";
 import axios from "axios";
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Text,
+  TextInput,
+  Platform,
+} from "react-native";
 
 interface TaskItem {
-  _id: string;
-  title: string;
-  completed: boolean;
+_id: string;
+title: string;
+completed: boolean;
 }
 
 const TaskListScreen: React.FC = () => {
@@ -196,6 +371,6 @@ const handleTaskPress = async (taskId: string) => {
       </View>
     </View>
   );
-};
+  };
 
 export default TaskListScreen;

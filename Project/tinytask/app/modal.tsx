@@ -22,6 +22,11 @@ export default function ModalScreen() {
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    marginTop: 80, // Adjust the margin as needed
+  },
+
   container: {
     flex: 1,
     alignItems: "center",
