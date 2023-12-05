@@ -1,3 +1,4 @@
+// Project\server\models\user.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -8,14 +9,14 @@ const userSchema = new mongoose.Schema({
 
         type: String,
         trim: true,
-        required: true,
+        required: true, 
     },
 
     email: {
 
         type: String,
         trim: true,
-        required: true,
+        required: true, 
         unique: true,
     },
 
@@ -46,33 +47,35 @@ userSchema.pre('save', function (next) {
 
 //checking hashed password from userSchema
 userSchema.methods.comparePassword = async function (password) {
-    if (!password) throw new Error('Password is missing, can not compare');
+    if (!password) throw new Error('Password is missing, cannot compare');
 
     try {
         const result = await bcrypt.compare(password, this.password);
+
+        console.log('Password Comparison Result:', result);
+
         return result;
     } catch (error) {
         console.log('Error while comparing password', error.message);
     }
 };
-
 //isThisEmailInUse method checks if email is already in database 
 //focusing on email because that's the unique
 userSchema.statics.isEmailInUse = async function (email) {
-
-    //error if no email is provided
-    if (!email) throw new Error('Invalid Email')
+    if (!email) throw new Error('Invalid Email');
 
     try {
-        //'this' is referring to the current User; checking if email has already been used
-        const user = await this.findOne({ email })
-        if (user) return false
+        const user = await this.findOne({ email });
+
+        console.log('isEmailInUse Result:', !!user);
+
+        if (user) return false;
         return true;
     } catch (error) {
-        console.log('isEmailInUse method error', error.message)
-        return false
+        console.log('isEmailInUse Method Error:', error.message);
+        return false;
     }
-}
+};
 
 const User = mongoose.model('user', userSchema);
 module.exports = User;
