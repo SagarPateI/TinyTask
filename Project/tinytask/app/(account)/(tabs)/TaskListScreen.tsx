@@ -60,31 +60,31 @@ const TaskListScreen: React.FC = () => {
     }
   };
 
-const handleTaskPress = async (taskId: string) => {
-  try {
-    console.log("Updating task with ID:", taskId);
+  const handleTaskPress = async (taskId: string) => {
+    try {
+      console.log("Updating task with ID:", taskId);
 
-    const updatedTasks = tasks.map((task) => {
-      if (task._id === taskId) {
-        // Update the local task completion status
-        return { ...task, completed: true };
-      }
-      return task;
-    });
+      const updatedTasks = tasks.map((task) => {
+        if (task._id === taskId) {
+          // Update the local task completion status
+          return { ...task, completed: true };
+        }
+        return task;
+      });
 
-    setTasks(updatedTasks);
+      setTasks(updatedTasks);
 
-    // Send a PATCH request to update task completion status on the server
-    await axios.patch(`https://tinytaskapp.loca.lt/tasks/${taskId}`, {
-      completed: true,
-      title: "Task Title", // Replace 'Task Title' with the appropriate title
-    });
+      // Send a PATCH request to update task completion status on the server
+      await axios.patch(`https://tinytaskapp.loca.lt/tasks/${taskId}`, {
+        completed: true,
+        title: "Task Title", // Replace 'Task Title' with the appropriate title
+      });
 
-    console.log("Task with ID:", taskId, "updated successfully.");
-  } catch (error) {
-    console.error("Error updating task:", error);
-  }
-};
+      console.log("Task with ID:", taskId, "updated successfully.");
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
+  };
 
   const textColor = useThemeColor({}, "text");
 
