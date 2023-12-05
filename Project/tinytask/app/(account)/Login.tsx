@@ -35,7 +35,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytaskapp.loca.lt/auth/login",
+        "https://tinytaskapp2.loca.lt/auth/login",
         {
           email,
           password,
