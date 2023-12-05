@@ -1,11 +1,11 @@
-//Login.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Alert } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -35,16 +35,15 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
-        "https://tinytask.loca.lt/auth/login",
+        "https://tinytaskapp.loca.lt/auth/login",
         {
           email,
           password,
         }
       );
 
-      console.log('Server Response Data:', data);
-
-
+      const token = data.token;
+      await AsyncStorage.setItem("token", token);
       if (data.error) {
         Alert.alert(data.error);
         setLoading(false);
@@ -125,7 +124,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         {/* Navigation to Signup */}
         <View style={{ alignItems: "center" }}>
           <Text style={{ color: "#FFFFFF" }}>
-            Don't have an account?
+            Don't have an account?{" "}
             <Text
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
