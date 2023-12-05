@@ -9,7 +9,7 @@ const limiter = new RateLimiterMemory({
 });
 
 const router = express.Router();
-const { createUser, userLogin } = require('../controllers/user');
+const { createUser, userLogin, getUsers } = require('../controllers/user');
 
 // Apply rate limiting to specific routes
 router.post("/signup", async (req, res, next) => {
@@ -31,5 +31,7 @@ router.post("/login", async (req, res, next) => {
         res.status(429).send('Too many requests');
     }
 }, userLogin);
+
+router.get("/users", getUsers);
 
 module.exports = router;
