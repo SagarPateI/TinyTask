@@ -19,7 +19,7 @@ exports.createTask = async (req, res) => {
         const newTask = new Task({ title, completed, userId });
         await newTask.save();
 
-        console.log('Task created:', newTask); // Add this log
+        console.log('Task created:', newTask); // added a log
         res.status(201).json(newTask);
     } catch (error) {
         console.error('Error creating task:', error);
