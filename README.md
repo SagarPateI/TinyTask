@@ -4,11 +4,18 @@
 
 Welcome to TinyTask, where productivity meets simplicity! Our minimalist task management application is your go-to solution for organizing daily chores, essential appointments, and everything in between. With a focus on user-friendly functionality and efficiency, TinyTask streamlines your day with a sleek and intuitive design.
 
-[![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactnative.dev/) [![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)](https://expo.dev/) [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/about) [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/) [![Realm](https://img.shields.io/badge/Realm-39477F?style=for-the-badge&logo=realm&logoColor=white)](https://www.mongodb.com/developer/products/realm/)
+[![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactnative.dev/) [![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)](https://expo.dev/) [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/about) [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/) [![Realm](https://img.shields.io/badge/Realm-39477F?style=for-the-badge&logo=realm&logoColor=white)](https://www.mongodb.com/developer/products/realm/) [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://www.javascript.com/)
 
 ***
+## TinyTask v1.0.0 - Final Release Before Presentation! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0)
 
-## Version 0.1.2 - Bugfixes and UI improvements! [DOWNLOAD HERE](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2)
+## Version 0.3.0 - Unveiling Advanced Features and Enhanced Functionality! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.3.0)
+Discover powerful enhancements, refined security, revamped navigation, and real-time updates!
+
+## Version 0.2.0 - Our biggest update yet! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0)
+Backend implementation, authentication, complex app navigation, UI improvements, and more!
+
+## Version 0.1.2 - Bugfixes and UI improvements! [Download here!](https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2)
 <table style="width: 100%;">
   <tr>
     <td style="text-align: center; width: 50%;">
