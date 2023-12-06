@@ -62,8 +62,9 @@ const Login = ({ navigation }: { navigation: any }) => {
           await AuthService.saveID(data.user._id); // Save token using AuthService
         }
         
-        const userId = await AuthService.getID();
-        console.log('Retrieved User ID:', userId);
+        // Example of how to get the userID from any file
+        //const userId = await AuthService.getID();
+        //console.log('Retrieved User ID:', userId);
 
         // Assuming login is successful
         navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
