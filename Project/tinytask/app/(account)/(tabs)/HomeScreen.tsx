@@ -12,6 +12,7 @@ import {
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
 type RootStackParamList = {
   TaskList: undefined; // or any other params for TaskList screen
   Home: { newTask?: string };
@@ -22,6 +23,30 @@ const HomeScreen: React.FC = () => {
     { id: 1, task: "Task 1", completed: false },
     { id: 2, task: "Task 2", completed: true },
   ]);
+
+
+  const [name, setName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        
+        //fetching the user's name that is stored in AsyncStorage using the key "USER_NAME"
+        const userName = await AsyncStorage.getItem("USER_NAME");
+
+        if (userName) {
+          
+          setName(userName);
+        }
+      } catch (error) {
+        console.error("Error fetching user name:", error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
+
+  
 
   // useEffect(() => {
   //   // Fetch user's token from AsyncStorage
@@ -170,7 +195,7 @@ const HomeScreen: React.FC = () => {
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.container}>
-        <ThemedText style={styles.sectionTitle}>{"Welcome, {name}"}</ThemedText>
+        <ThemedText style={styles.sectionTitle}>{`Welcome, ${name || ""} !`}</ThemedText>
         <ThemedText
           style={styles.dateText}
         >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>
