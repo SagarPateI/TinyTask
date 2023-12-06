@@ -6,6 +6,7 @@ import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthService } from "./services/AuthService";
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -51,6 +52,20 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
+
+        // Save the token to AsyncStorage upon successful login
+        if (data.token) {
+          await AuthService.saveToken(data.token); // Save token using AuthService
+        }
+        // Save the user ID to AsyncStorage upon successful login
+        if (data.user._id) {
+          await AuthService.saveID(data.user._id); // Save token using AuthService
+        }
+        
+        // Example of how to get the userID from any file
+        //const userId = await AuthService.getID();
+        //console.log('Retrieved User ID:', userId);
+
         // Assuming login is successful
         navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
