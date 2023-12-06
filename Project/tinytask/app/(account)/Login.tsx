@@ -57,7 +57,14 @@ const Login = ({ navigation }: { navigation: any }) => {
         if (data.token) {
           await AuthService.saveToken(data.token); // Save token using AuthService
         }
+        // Save the user ID to AsyncStorage upon successful login
+        if (data.user._id) {
+          await AuthService.saveID(data.user._id); // Save token using AuthService
+        }
         
+        const userId = await AuthService.getID();
+        console.log('Retrieved User ID:', userId);
+
         // Assuming login is successful
         navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
       }
