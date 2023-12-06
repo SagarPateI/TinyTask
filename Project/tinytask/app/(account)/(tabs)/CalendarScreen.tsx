@@ -22,6 +22,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import ColorPicker, { Swatches } from "reanimated-color-picker";
 import { format } from "date-fns";
 import axios from "axios";
+import { AuthService } from "../services/AuthService";
 
 const EVENT_COLOR = "#e6add8";
 const today = new Date();
@@ -113,7 +114,11 @@ const CalendarScreen = () => {
     try {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
-        const userId = "6553cbce9c2e8667ef0ce643";
+        //const userId = "6553cbce9c2e8667ef0ce643";
+        
+        const userId = await AuthService.getID();
+        console.log("Retrieved User ID:", userId);
+      
         const response = await axios.post(
           "https://tinytaskapp.loca.lt/events",
           {
