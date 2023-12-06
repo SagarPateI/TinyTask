@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { TouchableOpacity, StyleSheet, Text } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, ActivityIndicator, View } from "react-native";
 
 interface SubmitButtonProps {
   title: string;
@@ -13,7 +13,12 @@ const SubmitButton: FC<SubmitButtonProps> = ({
   loading,
 }) => (
   <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-    <Text style={styles.buttonText}>{loading ? "Please wait..." : title}</Text>
+    <View style = {styles.buttonContent}>{loading ? (
+        <ActivityIndicator size="small" color="#ffffff"/>
+      ) : (
+            <Text style = {styles.buttonText}>{title}</Text>
+          )}
+    </View>
   </TouchableOpacity>
 );
 
@@ -26,6 +31,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 10,
   },
+
+  buttonContent: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   buttonText: {
     color: "#FFFFFF",
     fontWeight: "bold", // Adjust styles here as per your requirements

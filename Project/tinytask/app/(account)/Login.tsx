@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Alert } from "react-native";
+import { View, Text, Alert,  ActivityIndicator } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthService } from "./services/AuthService";
 
@@ -131,7 +130,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         <SubmitButton
           title="Login"
           handleSubmit={handleSubmit}
-          loading={loading}
+          loading = {loading}
         />
 
         {/* Navigation to Signup */}
