@@ -35,10 +35,12 @@ app.use('/events', EventRouter); // Using event routes
 // Settings routes
 app.use('/settings', SettingsRouter); // Using settings routes
 
+// OLD
 // http.listen(port, () => {
 //     console.log('Server is running on port:', port);
 // });
 
+// NEW
 app.listen(PORT, HOST, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
