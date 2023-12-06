@@ -19,6 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // const auth = require('./middleware/auth');
 
+const PORT = 8000;
+const HOST = '0.0.0.0'; // Listen on all network interfaces
+
 // User routes
 const authRouter = require('./routes/user');
 app.use('/auth', authRouter);
@@ -32,7 +35,11 @@ app.use('/events', EventRouter); // Using event routes
 // Settings routes
 app.use('/settings', SettingsRouter); // Using settings routes
 
-http.listen(port, () => {
-    console.log('Server is running on port:', port);
+// http.listen(port, () => {
+//     console.log('Server is running on port:', port);
+// });
+
+app.listen(PORT, HOST, () => {
+    console.log(`Server is running on port: ${PORT}`);
 });
 
