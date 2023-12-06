@@ -53,7 +53,7 @@ export const AuthService = {
   async getID(): Promise<string | null> {
     try {
       const userId = await AsyncStorage.getItem(USER_ID);
-      console.log('Retrieved user ID:', userId);
+      console.log('Auth has a user ID:', userId);
       return userId;
     } catch (error) {
       console.error('Failed to get user ID:', error);
