@@ -351,11 +351,11 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ## Meet the TinyTask Crew 🌟
 
-- [Alexis Cruz-Aboytes](https://github.com/ChicoQuemador1)
-- [Cristal Cervantes](https://github.com/cristalc13)
-- [Joseph Paxton](https://github.com/jpaxton7)
-- [Kyle Laxamana](https://github.com/kyleLaxamana)
 - [Sagar Patel](https://github.com/SagarPateI)
+- [Cristal Cervantes](https://github.com/cristalc12)
+- [Alexis Cruz-Aboytes](https://github.com/ChicoQuemador1)
+
+
 
 ## Licensing Information 🔒
 
