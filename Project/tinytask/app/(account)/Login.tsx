@@ -35,6 +35,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
     try {
       const { data } = await instance.post(
+        // "http://141.148.73.253:8000/auth/login",
         "https://tinytaskapp.loca.lt/auth/login",
         {
           email,
