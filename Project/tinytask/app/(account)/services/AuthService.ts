@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TOKEN_KEY = 'user_token';
 const USER_ID = 'user_id';
+const USER_NAME = 'user_name';
 
 export const AuthService = {
   // Saves user token to AsyncStorage
@@ -69,6 +70,29 @@ export const AuthService = {
     } catch (error) {
       console.error('Failed to clear user ID:', error);
       throw new Error('Failed to clear user ID');
+    }
+  },
+
+  //Save user's name to AsyncStorage
+  async saveUserName(name: string): Promise<void> {
+    try {
+      await AsyncStorage.setItem(USER_NAME, name);
+      console.log('User name saved successfully:', name);
+    } catch (error) {
+      console.error('Failed to save user name:', error);
+      throw new Error('Failed to save user name');
+    }
+  },
+
+  //Retrieve user's name from AsyncStorage
+  async getUserName(): Promise<string | null> {
+    try {
+      const name = await AsyncStorage.getItem(USER_NAME);
+      console.log('Auth has a user with the name: ', name);
+      return name;
+    } catch (error) {
+      console.error('Failed to get user name:', error);
+      throw new Error('Failed to get user name');
     }
   },
 

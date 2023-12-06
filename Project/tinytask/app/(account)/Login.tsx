@@ -62,7 +62,11 @@ const Login = ({ navigation }: { navigation: any }) => {
         if (data.user._id) {
           await AuthService.saveID(data.user._id); // Save token using AuthService
         }
-
+        // Save the user name to AsyncStorage upon successful login
+        if (data.user.name) {
+          await AuthService.saveUserName(data.user.name);
+        }
+        
         // Example of how to get the userID from any file
         //const userId = await AuthService.getID();
         //console.log('Retrieved User ID:', userId);

@@ -12,6 +12,7 @@ import {
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
 type RootStackParamList = {
   TaskList: undefined; // or any other params for TaskList screen
   Home: { newTask?: string };
@@ -23,49 +24,27 @@ const HomeScreen: React.FC = () => {
     { id: 2, task: "Task 2", completed: true },
   ]);
 
-  // useEffect(() => {
-  //   // Fetch user's token from AsyncStorage
-  //   const fetchUserToken = async () => {
-  //     try {
-  //       const token = await AsyncStorage.getItem("token");
 
-  //       if (token) {
-  //         // Decode the JWT token to access user information
-  //          // Correct function name
-  //         const decode = jwtDecode<JwtPayload>(token);
+  const [name, setName] = useState<string | null>(null);
 
-  //         // Assuming the token contains a 'name' property
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        
+        //fetching the user's name that is stored in AsyncStorage using the key "USER_NAME"
+        const userName = await AsyncStorage.getItem("USER_NAME");
 
-  //       } else {
-  //         console.error("No token found");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user token:", error);
-  //     }
-  //   };
+        if (userName) {
+          
+          setName(userName);
+        }
+      } catch (error) {
+        console.error("Error fetching user name:", error);
+      }
+    };
 
-  //   // Call the fetchUserToken function when the component mounts
-  //   fetchUserToken();
-  // }, []);
-
-  //WAS JUST CHECKING TOKEN GOT THROUGH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-  // useEffect(() => {
-  //   // Fetch user's token from AsyncStorage
-  //   const fetchUserToken = async () => {
-
-  //       const token = await AsyncStorage.getItem("token");
-
-  //         // Decode the JWT token to access user information
-
-  //         const decodedToken = jwt.decode(token);
-  //         const { userId, userName } = decodedToken;
-  //         console.log('User ID:', userId);
-  //         console.log('User Name:', userName);
-  //   }
-  //   // Call the fetchUserToken function when the component mounts
-  //   fetchUserToken();
-  // }, []);
+    fetchUserName();
+  }, []);
 
   // Receive the route and get the new task parameter
   const route = useRoute<RouteProp<RootStackParamList, "Home">>();
@@ -170,7 +149,7 @@ const HomeScreen: React.FC = () => {
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.container}>
-        <ThemedText style={styles.sectionTitle}>{"Welcome, {name}"}</ThemedText>
+        <ThemedText style={styles.sectionTitle}>{`Welcome, ${name || ""} !`}</ThemedText>
         <ThemedText
           style={styles.dateText}
         >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>
