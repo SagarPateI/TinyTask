@@ -10,7 +10,7 @@ import {
   View,
 } from "../../../components/Themed";
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthService } from "../services/AuthService";
 
 
 type RootStackParamList = {
@@ -27,22 +27,18 @@ const HomeScreen: React.FC = () => {
 
   const [name, setName] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchUserName = async () => {
-      try {
-        
-        //fetching the user's name that is stored in AsyncStorage using the key "USER_NAME"
-        const userName = await AsyncStorage.getItem("USER_NAME");
-
-        if (userName) {
-          
-          setName(userName);
-        }
-      } catch (error) {
-        console.error("Error fetching user name:", error);
+  const fetchUserName = async () => {
+    try {
+      const userName = await AuthService.getUserName();
+      if (userName) {
+        setName(userName);
       }
-    };
-
+    } catch (error) {
+      console.error("Error fetching user name:", error);
+    }
+  };
+  
+  useEffect(() => {
     fetchUserName();
   }, []);
 

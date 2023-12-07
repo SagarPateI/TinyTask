@@ -41,8 +41,9 @@ exports.createUser = async (req, res) => {
         const isNewUser = await User.isEmailInUse(email);
         if (!isNewUser) {
             return res.json({
-                success: false,
-                message: 'Email is taken',
+                
+                message: 'User attempted to use a taken email',
+                error: 'Email is taken. Try another email'
 
             });
         }
@@ -74,19 +75,24 @@ exports.userLogin = async (req, res) => {
     if (!user) {
 
         return res.json({
-            success: false, message: 'user not found with given email'
+            message: 'The given email was not found',
+            error: 'Email was not found. Try again'
         });
     }
 
     const passwordMatch = await user.comparePassword(password)
     if (!passwordMatch) {
         return res.json({
-            success: false, message: 'email/password is incorrect'
+
+            message: 'The user entered the wrong password',
+            error: 'Email/Password is incorrect. Try again'
+            
         });
     }
 
     //SIGNING USER ID WITH SPECIAL TOKEN IF THEY LOGIN PROPERLY
     const token = jwt.sign({ userId: user._id, name: user.name }, process.env.JWT_TOKEN, {
+
         expiresIn: "365d",
     });
 
