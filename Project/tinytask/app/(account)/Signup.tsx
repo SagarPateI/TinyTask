@@ -41,6 +41,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
 
       if (data.error) {
         Alert.alert(data.error);
+        console.log("SIGNUP ERROR =>", data.message);
         setLoading(false);
       } else {
         setLoading(false);
