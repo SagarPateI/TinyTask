@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Alert } from "react-native";
+import { View, Text, Alert,  ActivityIndicator } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthService } from "./services/AuthService";
 
@@ -43,8 +42,6 @@ const Login = ({ navigation }: { navigation: any }) => {
         }
       );
 
-      const token = data.token;
-      await AsyncStorage.setItem("token", token);
 
       if (data.error) {
         Alert.alert(data.error);
@@ -53,27 +50,35 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-
-        // Save the token to AsyncStorage upon successful login
+        
+        //After successful login, saving token, user._id, and user.name to AsyncStorage
         if (data.token) {
-          await AuthService.saveToken(data.token); // Save token using AuthService
+          await AuthService.saveToken(data.token); 
         }
-        // Save the user ID to AsyncStorage upon successful login
-        if (data.user._id) {
-          await AuthService.saveID(data.user._id); // Save token using AuthService
+  
+      
+        if (data.user && data.user._id) {
+          await AuthService.saveID(data.user._id);
         }
-        // Save the user name to AsyncStorage upon successful login
-        if (data.user.name) {
+      
+        if (data.user && data.user.name) {
           await AuthService.saveUserName(data.user.name);
         }
-        
-        // Example of how to get the userID from any file
-        //const userId = await AuthService.getID();
-        //console.log('Retrieved User ID:', userId);
 
-        // Assuming login is successful
-        navigation.navigate("Tabs"); // Navigate to HomeScreen after successful login
+        //navigating to Tabs after successful login
+        
+        navigation.navigate("Tabs"); 
       }
+        
+        /* 
+            Example of how to get the userID from any file:
+
+              const userId = await AuthService.getID();
+              console.log('Retrieved User ID:', userId);
+              
+        */
+ 
+      
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.error("AxiosError:", err);
@@ -132,7 +137,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         <SubmitButton
           title="Login"
           handleSubmit={handleSubmit}
-          loading={loading}
+          loading = {loading}
         />
 
         {/* Navigation to Signup */}
