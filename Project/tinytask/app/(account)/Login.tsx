@@ -5,6 +5,11 @@ import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  Text as ThemedText,
+  View as ThemedView,
+  useThemeColor,
+} from "../../components/Themed";
 import { AuthService } from "./services/AuthService";
 
 const Login = ({ navigation }: { navigation: any }) => {

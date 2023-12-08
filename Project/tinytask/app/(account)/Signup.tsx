@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import { View, Alert, Text, TouchableOpacity } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
+import {
+  Text as ThemedText,
+  View as ThemedView,
+  useThemeColor,
+} from "../../components/Themed";
 import axios from "axios";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
