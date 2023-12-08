@@ -12,17 +12,17 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 <table>
   <thead>
-    <tr>
+    <tr align="left">
       <th>Version Number</th>
-      <th>Title of the Release</th>
       <th>Downloads</th>
+      <th>Title of the Release</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1.1.0</td>
-      <td>Enhanced User Association and Bug Fixes!</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.1.0">Download Here</a></td>
+      <td>Enhanced User Association and Bug Fixes!</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -58,8 +58,8 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>1.0.0</td>
-      <td>Final Release Before Presentation!</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0">Download Here</a></td>
+      <td>Final Release Before Presentation!</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -76,8 +76,9 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.3.0</td>
-      <td>Unveiling Advanced Features and Enhanced Functionality!<br><br>Discover powerful enhancements, refined security, revamped navigation, and real-time updates!</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.3.0">Download Here</a></td>
+      <td>Unveiling Advanced Features and Enhanced Functionality!<br>
+    ➢&nbsp;&nbsp;&nbsp;Discover powerful enhancements, refined security, revamped navigation, and real-time updates!</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -92,8 +93,9 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.2.0</td>
-      <td>Our biggest update yet!<br><br>Backend implementation, authentication, complex app navigation, UI improvements, and more!</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0">Download Here</a></td>
+      <td>Our biggest update yet!<br>
+    ➢&nbsp;&nbsp;&nbsp;Backend implementation, authentication, complex app navigation, UI improvements, and more!</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -108,8 +110,8 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.1.2</td>
-      <td>Bugfixes and UI improvements!</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2">Download Here</a></td>
+      <td>Bugfixes and UI improvements!</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -145,8 +147,8 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.1.1</td>
-      <td>Migration to Typescript</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1">Download Here</a></td>
+      <td>Migration to Typescript</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -182,8 +184,8 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.1</td>
-      <td>Alpha Release</td>
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1">Download Here</a></td>
+      <td>Alpha Release</td>
     </tr>
     <tr>
       <td colspan="3">
