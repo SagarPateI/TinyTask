@@ -23,11 +23,30 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.1.0">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
-        <details>
+      <td colspan="3">
+        <details open>
           <summary>Screenshots and Gifs</summary>
           <p>
-            Placeholder
+            <table style="width: 100%;">
+            <tr>
+               <td style="text-align: center; width: 33%;">
+                  <text style="font-size: 24px;"><b>🔐 Level Up Your Login: We've totally<br>revamped the login! It's slicker, safer,<br>and more user-friendly. Say hello to a<br>smoother login experience with extra<br>layers of security.</b></text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_0_login.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+               </td>
+               <td style="text-align: center; width: 33%;">
+                  <text style="font-size: 24px;"><b>📅 Event Boss Mode: Manage your events<br>like a pro! Our new events feature lets you<br>create, organize, and stay on top of all<br>your important dates. It's your personal<br>events assistant!</b></text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_0_events.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
+               </td>
+               <td style="text-align: center; width: 33%;">
+                  <text style="font-size: 24px;"><b>✅ Turbocharged Task Manager: Task<br>management just got a major upgrade!<br>We've added cool new features and made<br>it super easy to create, organize, and track<br>tasks. It's the task manager you've been<br>waiting for!</b></text>
+                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_0_tasks.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+               </td>
+               <!--<td style="text-align: center; width: 25%;">
+                  <text>Calendar View</text>
+                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+               </td>-->
+            </tr>
+            </table>
           </p>
         </details>
       </td>
@@ -41,7 +60,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <details>
           <summary>Screenshots and Gifs</summary>
           <p>
@@ -59,7 +78,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.3.0">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <details>
           <summary>Screenshots and Gifs</summary>
           <p>Placeholder</p>
@@ -75,7 +94,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <details>
           <summary>Screenshots and Gifs</summary>
           <p>Placeholder</p>
@@ -91,7 +110,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <details open>
           <summary>Screenshots and Gifs</summary>
           <p>
@@ -128,7 +147,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <details>
           <summary>Screenshots and Gifs</summary>
           <p>
@@ -165,7 +184,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
       <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1">Download Here</a></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <details>
           <summary>Screenshots and Gifs</summary>
           <p>
