@@ -8,6 +8,8 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 
 ***
 
+## [Scroll left and right to explore the table below]
+
 <table>
   <thead>
     <tr>
