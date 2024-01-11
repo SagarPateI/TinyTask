@@ -15,7 +15,9 @@
     "expo-router": "^2.0.14",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-native": "0.72.6",
+    "react-native-web": "^0.19.10",
     "typescript": "^5.1.3"
   },
   "devDependencies": {
