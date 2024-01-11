@@ -2,6 +2,7 @@
  * Learn more about Light and Dark modes:
  * https://docs.expo.io/guides/color-schemes/
  */
+
 import {
   Text as DefaultText,
   useColorScheme,
@@ -10,26 +11,18 @@ import {
 
 import Colors from "../constants/Colors";
 
-type ThemeColors = {
-  text: string;
-  background: string;
-  tint: string;
-  tabIconDefault: string;
-  tabIconSelected: string;
-  borderColor?: string; // Add borderColor to the type
-};
-
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
-} & ThemeColors;
+  borderColor?: string;
+};
 
 export type TextProps = ThemeProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
-  colorName: keyof ThemeColors
+  colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
   const theme = useColorScheme() ?? "light";
   const colorFromProps = props[theme];
@@ -43,53 +36,43 @@ export function useThemeColor(
 
 export function useBorderColor(
   props: { light?: string; dark?: string; borderColor?: string },
-  colorName: "borderColor"
+  colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
   const theme = useColorScheme() ?? "light";
+  const colorFromProps = props[theme];
 
-  // Use a type assertion to narrow down the type
-  const borderColor =
-    (props[theme] as ThemeColors)?.[colorName] ||
-    Colors[theme]?.[colorName] ||
-    "";
-
-  return borderColor;
+  if (colorFromProps) {
+    return colorFromProps;
+  } else {
+    return Colors[theme][colorName];
+  }
 }
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+  const color = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    "background"
+  );
 
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
-  const {
-    style,
-    lightColor,
-    darkColor,
-    borderColor: borderColorProp,
-    ...otherProps
-  } = props;
+  const { style, lightColor, darkColor, borderColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    "background"
+  );
 
-  // Extracting borderColor from props or using the default if not provided
-  const borderColor = useBorderColor(
-    { light: lightColor, dark: darkColor, borderColor: borderColorProp },
-    "borderColor"
+  const border = useBorderColor(
+    { light: borderColor, dark: borderColor },
+    "border"
   );
 
   return (
     <DefaultView
-      style={[
-        {
-          backgroundColor: useThemeColor(
-            { light: lightColor, dark: darkColor },
-            "background"
-          ),
-          borderColor,
-        },
-        style,
-      ]}
+      style={[{ backgroundColor, borderColor: border }, style]}
       {...otherProps}
     />
   );
