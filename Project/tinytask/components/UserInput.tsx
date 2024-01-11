@@ -1,11 +1,15 @@
 import React, { FC } from "react";
 import {
-  View,
   TextInput,
   StyleSheet,
   TextInputProps,
-  Text,
 } from "react-native";
+import {
+  Text as ThemedText,
+  View as ThemedView,
+  useThemeColor,
+} from "./Themed";
+
 
 {
   /* ACCESSING AND SENDING VALUES TO TEXT INPUT*/
@@ -28,19 +32,37 @@ const UserInput: FC<UserInputProps> = ({
   keyboardType = "default",
   secureTextEntry = false,
 }) => {
+  const textColor = useThemeColor(
+    {
+      light: "#FFFFFF", // Set text color for light mode
+      dark: "#000000", // Set text color for dark mode
+    },
+    "text" // Accessing text color from theme
+  );
+
+  const borderBottomColor = useThemeColor(
+    {
+      light: "#8e93a1", // Set border color for light mode
+      dark: "#8e93a1", // Set border color for dark mode
+    },
+    "borderColor" // Accessing border color from theme
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>{name}</Text>
+    <ThemedView style={styles.container}>
+      <ThemedText style={[styles.label, { color: textColor }]}>
+        {name}
+      </ThemedText>
       <TextInput
         autoCorrect={false}
         keyboardType={keyboardType as any}
         secureTextEntry={secureTextEntry}
-        style={styles.input}
+        style={[styles.input, { borderBottomColor, color: textColor }]}
         value={value}
         onChangeText={(text) => setValue(text)}
       />
       {/* USER INPUT (TEXT) WILL BE SENT TO setValue FUNCTION TO SET VALUE FOR THE STATE */}
-    </View>
+    </ThemedView>
   );
 };
 
@@ -49,14 +71,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   label: {
-    color: "#FFFFFF",
+    marginBottom: 5,
   },
   input: {
     borderBottomWidth: 0.5,
     height: 48,
-    borderBottomColor: "#8e93a1",
     marginBottom: 30,
-    color: "#ffffff",
   },
 });
 
