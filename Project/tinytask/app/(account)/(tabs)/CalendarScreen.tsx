@@ -115,10 +115,10 @@ const CalendarScreen = () => {
       if (newEventTitle.trim() !== "") {
         console.log("Before making the request");
         //const userId = "6553cbce9c2e8667ef0ce643";
-        
+
         const userId = await AuthService.getID();
         console.log("Retrieved User ID:", userId);
-      
+
         const response = await axios.post(
           "https://tinytaskapp.loca.lt/events",
           {

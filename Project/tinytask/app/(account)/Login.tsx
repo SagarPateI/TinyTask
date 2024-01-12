@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Alert,  ActivityIndicator } from "react-native";
+import { View, Text, Alert, ActivityIndicator } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
@@ -47,7 +47,6 @@ const Login = ({ navigation }: { navigation: any }) => {
         }
       );
 
-
       if (data.error) {
         Alert.alert(data.error);
         setLoading(false);
@@ -55,35 +54,32 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-        
+
         //After successful login, saving token, user._id, and user.name to AsyncStorage
         if (data.token) {
-          await AuthService.saveToken(data.token); 
+          await AuthService.saveToken(data.token);
         }
-  
-      
+
         if (data.user && data.user._id) {
           await AuthService.saveID(data.user._id);
         }
-      
+
         if (data.user && data.user.name) {
           await AuthService.saveUserName(data.user.name);
         }
 
         //navigating to Tabs after successful login
-        
-        navigation.navigate("Tabs"); 
+
+        navigation.navigate("Tabs");
       }
-        
-        /* 
+
+      /* 
             Example of how to get the userID from any file:
 
               const userId = await AuthService.getID();
               console.log('Retrieved User ID:', userId);
               
         */
- 
-      
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.error("AxiosError:", err);
@@ -142,7 +138,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         <SubmitButton
           title="Login"
           handleSubmit={handleSubmit}
-          loading = {loading}
+          loading={loading}
         />
 
         {/* Navigation to Signup */}

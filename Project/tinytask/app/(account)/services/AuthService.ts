@@ -1,18 +1,18 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const TOKEN_KEY = 'user_token';
-const USER_ID = 'user_id';
-const USER_NAME = 'user_name';
+const TOKEN_KEY = "user_token";
+const USER_ID = "user_id";
+const USER_NAME = "user_name";
 
 export const AuthService = {
   // Saves user token to AsyncStorage
   async saveToken(token: string): Promise<void> {
     try {
       await AsyncStorage.setItem(TOKEN_KEY, token);
-      console.log('Token saved successfully:', token);
+      console.log("Token saved successfully:", token);
     } catch (error) {
-      console.error('Failed to save token:', error);
-      throw new Error('Failed to save token');
+      console.error("Failed to save token:", error);
+      throw new Error("Failed to save token");
     }
   },
 
@@ -20,11 +20,11 @@ export const AuthService = {
   async getToken(): Promise<string | null> {
     try {
       const token = await AsyncStorage.getItem(TOKEN_KEY);
-      console.log('Retrieved token:', token);
+      console.log("Retrieved token:", token);
       return token;
     } catch (error) {
-      console.error('Failed to get token:', error);
-      throw new Error('Failed to get token');
+      console.error("Failed to get token:", error);
+      throw new Error("Failed to get token");
     }
   },
 
@@ -32,10 +32,10 @@ export const AuthService = {
   async clearToken(): Promise<void> {
     try {
       await AsyncStorage.removeItem(TOKEN_KEY);
-      console.log('Token cleared successfully');
+      console.log("Token cleared successfully");
     } catch (error) {
-      console.error('Failed to clear token:', error);
-      throw new Error('Failed to clear token');
+      console.error("Failed to clear token:", error);
+      throw new Error("Failed to clear token");
     }
   },
 
@@ -43,10 +43,10 @@ export const AuthService = {
   async saveID(userId: string): Promise<void> {
     try {
       await AsyncStorage.setItem(USER_ID, userId);
-      console.log('User ID saved successfully:', userId);
+      console.log("User ID saved successfully:", userId);
     } catch (error) {
-      console.error('Failed to save user ID:', error);
-      throw new Error('Failed to save user ID');
+      console.error("Failed to save user ID:", error);
+      throw new Error("Failed to save user ID");
     }
   },
 
@@ -54,11 +54,11 @@ export const AuthService = {
   async getID(): Promise<string | null> {
     try {
       const userId = await AsyncStorage.getItem(USER_ID);
-      console.log('Auth has a user ID:', userId);
+      console.log("Auth has a user ID:", userId);
       return userId;
     } catch (error) {
-      console.error('Failed to get user ID:', error);
-      throw new Error('Failed to get user ID');
+      console.error("Failed to get user ID:", error);
+      throw new Error("Failed to get user ID");
     }
   },
 
@@ -66,10 +66,10 @@ export const AuthService = {
   async clearID(): Promise<void> {
     try {
       await AsyncStorage.removeItem(USER_ID);
-      console.log('User ID cleared successfully');
+      console.log("User ID cleared successfully");
     } catch (error) {
-      console.error('Failed to clear user ID:', error);
-      throw new Error('Failed to clear user ID');
+      console.error("Failed to clear user ID:", error);
+      throw new Error("Failed to clear user ID");
     }
   },
 
@@ -77,10 +77,10 @@ export const AuthService = {
   async saveUserName(name: string): Promise<void> {
     try {
       await AsyncStorage.setItem(USER_NAME, name);
-      console.log('User name saved successfully:', name);
+      console.log("User name saved successfully:", name);
     } catch (error) {
-      console.error('Failed to save user name:', error);
-      throw new Error('Failed to save user name');
+      console.error("Failed to save user name:", error);
+      throw new Error("Failed to save user name");
     }
   },
 
@@ -88,11 +88,11 @@ export const AuthService = {
   async getUserName(): Promise<string | null> {
     try {
       const name = await AsyncStorage.getItem(USER_NAME);
-      console.log('Auth has a user with the name: ', name);
+      console.log("Auth has a user with the name: ", name);
       return name;
     } catch (error) {
-      console.error('Failed to get user name:', error);
-      throw new Error('Failed to get user name');
+      console.error("Failed to get user name:", error);
+      throw new Error("Failed to get user name");
     }
   },
 
@@ -101,10 +101,10 @@ export const AuthService = {
     try {
       const token = await this.getToken();
       const authenticated = !!token;
-      console.log('User authenticated:', authenticated);
+      console.log("User authenticated:", authenticated);
       return authenticated;
     } catch (error) {
-      console.error('Authentication error:', error);
+      console.error("Authentication error:", error);
       return false;
     }
   },

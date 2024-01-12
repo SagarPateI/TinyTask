@@ -12,7 +12,6 @@ import {
 import EditScreenInfo from "../../../components/EditScreenInfo"; // Delete this after we delete the "Tab One" section
 import { AuthService } from "../services/AuthService";
 
-
 type RootStackParamList = {
   TaskList: undefined; // or any other params for TaskList screen
   Home: { newTask?: string };
@@ -23,7 +22,6 @@ const HomeScreen: React.FC = () => {
     { id: 1, task: "Task 1", completed: false },
     { id: 2, task: "Task 2", completed: true },
   ]);
-
 
   const [name, setName] = useState<string | null>(null);
 
@@ -37,7 +35,7 @@ const HomeScreen: React.FC = () => {
       console.error("Error fetching user name:", error);
     }
   };
-  
+
   useEffect(() => {
     fetchUserName();
   }, []);
@@ -145,7 +143,9 @@ const HomeScreen: React.FC = () => {
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.container}>
-        <ThemedText style={styles.sectionTitle}>{`Welcome, ${name || ""} !`}</ThemedText>
+        <ThemedText style={styles.sectionTitle}>{`Welcome, ${
+          name || ""
+        } !`}</ThemedText>
         <ThemedText
           style={styles.dateText}
         >{`${dayOfWeek}, ${month} ${dayOfMonth}`}</ThemedText>

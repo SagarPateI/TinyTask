@@ -1,6 +1,6 @@
 # TinyTask - Empower Your Day 🚀
 
-<a href="https://github.com/CSC-4350-FL2023/CyberPunk/stargazers"><img src="https://img.shields.io/github/stars/CSC-4350-FL2023/CyberPunk?color=yellow" alt="Stars Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/CSC-4350-FL2023/CyberPunk"></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/pulls"><img src="https://img.shields.io/github/issues-pr/CSC-4350-FL2023/CyberPunk?color=blue" alt="Pull Requests Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/pulls?q=is%3Apr+is%3Aclosed"><img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/CSC-4350-FL2023/CyberPunk"></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk/issues"><img src="https://img.shields.io/github/issues/CSC-4350-FL2023/CyberPunk?color=important" alt="Issues	 Badge"/></a> <a href="http://hits.dwyl.com/CSC-4350-FL2023/CyberPunk"><img src="http://hits.dwyl.com/CSC-4350-FL2023/CyberPunk.svg?style=flat" alt="Hits Badge"/></a> <a href="https://github.com/CSC-4350-FL2023/CyberPunk"><img src="https://img.shields.io/github/repo-size/CSC-4350-FL2023/CyberPunk?color=ff69b4" alt="Repo Size Badge"/></a> [![CodeQL](https://github.com/CSC-4350-FL2023/CyberPunk/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/CSC-4350-FL2023/CyberPunk/actions/workflows/github-code-scanning/codeql)
+<a href="https://github.com/SagarPateI/TinyTask/stargazers"><img src="https://img.shields.io/github/stars/SagarPateI/TinyTask?color=yellow" alt="Stars Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/SagarPateI/TinyTask"></a> <a href="https://github.com/SagarPateI/TinyTask/pulls"><img src="https://img.shields.io/github/issues-pr/SagarPateI/TinyTask?color=blue" alt="Pull Requests Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask/pulls?q=is%3Apr+is%3Aclosed"><img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/SagarPateI/TinyTask"></a> <a href="https://github.com/SagarPateI/TinyTask/issues"><img src="https://img.shields.io/github/issues/SagarPateI/TinyTask?color=important" alt="Issues	 Badge"/></a> <a href="http://hits.dwyl.com/SagarPateI/TinyTask"><img src="http://hits.dwyl.com/SagarPateI/TinyTask.svg?style=flat" alt="Hits Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask"><img src="https://img.shields.io/github/repo-size/SagarPateI/TinyTask?color=ff69b4" alt="Repo Size Badge"/></a> [![CodeQL](https://github.com/SagarPateI/TinyTask/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/SagarPateI/TinyTask/actions/workflows/github-code-scanning/codeql) [![DevSkim](https://github.com/SagarPateI/TinyTask/actions/workflows/devskim.yml/badge.svg)](https://github.com/SagarPateI/TinyTask/actions/workflows/devskim.yml) [![njsscan sarif](https://github.com/SagarPateI/TinyTask/actions/workflows/njsscan.yml/badge.svg)](https://github.com/SagarPateI/TinyTask/actions/workflows/njsscan.yml)
 
 Welcome to TinyTask, where productivity meets simplicity! Our minimalist task management application is your go-to solution for organizing daily chores, essential appointments, and everything in between. With a focus on user-friendly functionality and efficiency, TinyTask streamlines your day with a sleek and intuitive design.
 
@@ -21,7 +21,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>1.1.0</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.1.0">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v1.1.0">Download Here</a></td>
       <td>Enhanced User Association and Bug Fixes!</td>
     </tr>
     <tr>
@@ -33,19 +33,19 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
             <tr>
                <td style="text-align: center; width: 33%;">
                   <text style="font-size: 24px;"><b>🔐 Level Up Your Login: We've totally<br>revamped the login! It's slicker, safer,<br>and more user-friendly. Say hello to a<br>smoother login experience with extra<br>layers of security.</b></text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_0_login.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_1_0_login.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
                </td>
                <td style="text-align: center; width: 33%;">
                   <text style="font-size: 24px;"><b>📅 Event Boss Mode: Manage your events<br>like a pro! Our new events feature lets you<br>create, organize, and stay on top of all<br>your important dates. It's your personal<br>events assistant!</b></text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_0_events.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_1_0_events.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
                </td>
                <td style="text-align: center; width: 33%;">
                   <text style="font-size: 24px;"><b>✅ Turbocharged Task Manager: Task<br>management just got a major upgrade!<br>We've added cool new features and made<br>it super easy to create, organize, and track<br>tasks. It's the task manager you've been<br>waiting for!</b></text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_0_tasks.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_1_0_tasks.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                </td>
                <!--<td style="text-align: center; width: 25%;">
                   <text>Calendar View</text>
-                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                </td>-->
             </tr>
             </table>
@@ -58,7 +58,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>1.0.0</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v1.0.0">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v1.0.0">Download Here</a></td>
       <td>Final Release Before Presentation!</td>
     </tr>
     <tr>
@@ -76,7 +76,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.3.0</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.3.0">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v0.3.0">Download Here</a></td>
       <td>Unveiling Advanced Features and Enhanced Functionality!<br>
     ➢&nbsp;&nbsp;&nbsp;Discover powerful enhancements, refined security, revamped navigation, and real-time updates!</td>
     </tr>
@@ -93,7 +93,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.2.0</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.2.0">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v0.2.0">Download Here</a></td>
       <td>Our biggest update yet!<br>
     ➢&nbsp;&nbsp;&nbsp;Backend implementation, authentication, complex app navigation, UI improvements, and more!</td>
     </tr>
@@ -110,7 +110,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.1.2</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.2">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v0.1.2">Download Here</a></td>
       <td>Bugfixes and UI improvements!</td>
     </tr>
     <tr>
@@ -122,19 +122,19 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
             <tr>
                <td style="text-align: center; width: 50%;">
                   <text style="font-size: 24px;"><b>🌞 Introducing a more comprehensive<br>automatic dark mode and light mode<br>(compared to v0.1.1) 🌓</b></text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_2_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
                </td>
                <td style="text-align: center; width: 50%;">
                   <text style="font-size: 24px;"><b>📝 Introducing an improved task list<br>screen! Lots of small changes under<br>the hood as we build this screen out. 📚</b></text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_2_tasklist.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_2_tasklist.gif" alt="Screenshot 2" width="300" style="padding: 5px;">
                </td>
                <!--<td style="text-align: center; width: 25%;">
                   <text>Task List</text>
-                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                </td>
                <td style="text-align: center; width: 25%;">
                   <text>Calendar View</text>
-                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                </td>-->
             </tr>
             </table>
@@ -147,7 +147,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.1.1</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1.1">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v0.1.1">Download Here</a></td>
       <td>Migration to Typescript</td>
     </tr>
     <tr>
@@ -159,19 +159,19 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
               <tr>
                 <td style="text-align: center; width: 25%;">
                   <text style="font-size: 24px;"><b>🌞 Introducing the brand new automatic<br>dark mode and light mode! 🌓</b></text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_1_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_1_darkmode.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
                 </td>
                 <!--<td style="text-align: center; width: 25%;">-->
-                <!--  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">-->
+                <!--  <img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">-->
                 <!--  <text>Home Screen</text>-->
                 <!--</td>-->
                 <!--<td style="text-align: center; width: 25%;">
                   <text>Task List</text>
-                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                 </td>
                 <td style="text-align: center; width: 25%;">
                   <text>Calendar View</text>
-                  <img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                 </td>-->
               </tr>
             </table>
@@ -184,7 +184,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
   <tbody>
     <tr>
       <td>0.1</td>
-      <td><a href="https://github.com/CSC-4350-FL2023/CyberPunk/releases/tag/v0.1">Download Here</a></td>
+      <td><a href="https://github.com/SagarPateI/TinyTask/releases/tag/v0.1">Download Here</a></td>
       <td>Alpha Release</td>
     </tr>
     <tr>
@@ -196,19 +196,19 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
               <tr>
                 <td style="text-align: center; width: 25%;">
                   <text>Navbar</text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_navbar.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_navbar.gif" alt="Screenshot 1" width="300" style="padding: 5px;">
                 </td>
                 <td style="text-align: center; width: 25%;">
                   <text>Home Screen</text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_homescreen.png" alt="Screenshot 2" width="300" style="padding: 5px;">
                 </td>
                 <td style="text-align: center; width: 25%;">
                   <text>Task List</text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_tasklist.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                 </td>
                 <td style="text-align: center; width: 33%;">
                   <text>Calendar View</text>
-                  <br><br><img src="https://github.com/CSC-4350-FL2023/CyberPunk/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
+                  <br><br><img src="https://github.com/SagarPateI/TinyTask/blob/main/README/1_calendarview.gif" alt="Screenshot 3" width="300" style="padding: 5px;">
                 </td>
               </tr>
             </table>
@@ -262,8 +262,12 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 1. **Install Microsoft Visual Studio Code:**
    - Download and install Visual Studio Code from [here](https://code.visualstudio.com/Download).
    
-2. **Install Node.js:**
+2. **Install Node.js and Yarn:**
    - Download and install Node.js from [here](https://nodejs.org/en/download).
+   - Install Yarn by running the following command in the terminal:
+     ```bash
+     npm install -g yarn
+     ```
    
 3. **Open Terminal in Visual Studio Code:**
    - Open Visual Studio Code.
@@ -273,9 +277,9 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 4. **Install Expo CLI:**
    - Install Expo CLI globally by running the following command in the terminal:
      ```bash
-     npm install -g expo-cli
+     yarn global add expo-cli
      ```
-
+     
 #### Client Setup:
 1. **Install Git Bash:**
    Download and install Git Bash from [here](https://git-scm.com/downloads).
@@ -292,13 +296,13 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 4. **Install Dependencies:**
    Install the necessary dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 5. **Run Metro:**
    Start Metro by executing either:
    ```bash
-   npm start
+   yarn start
    ```
    or
    ```bash
@@ -315,13 +319,13 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 7. **Install Server Dependencies:**
    Install server dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 8. **Install Nodemon:**
    Install nodemon globally if not installed:
    ```bash
-   npm install -g nodemon
+   yarn global add nodemon
    ```
 
 9. **Start the API Server:**
@@ -335,13 +339,13 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 10. **Localtunnel Setup:**
     In the third terminal, navigate to the client folder:
     ```bash
-    cd ./Project/tinyTask
+    cd ./Project/server
     ```
 
 11. **Install Localtunnel:**
     Install localtunnel globally:
     ```bash
-    npm install -g localtunnel
+    yarn global add localtunnel
     ```
 
 12. **Start Localtunnel:**
@@ -367,7 +371,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 15. **Run the Client:**
     In the client terminal, start the client:
     ```bash
-    npm start
+    yarn start
     ```
 
 ***
