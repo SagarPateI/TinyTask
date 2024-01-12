@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Alert, ActivityIndicator } from "react-native";
+import { View, Text, Alert, ActivityIndicator } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
@@ -11,7 +11,6 @@ import {
   useThemeColor,
 } from "../../components/Themed";
 import { AuthService } from "./services/AuthService";
-import { View } from '../../components/Themed';
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -103,44 +102,28 @@ const Login = ({ navigation }: { navigation: any }) => {
     }
   };
 
-  const backgroundColor = useThemeColor(
-    {
-      light: "#FFFFFF", // Light gray background color
-      dark: "#000000", // Dark gray background color
-    },
-    "background"
-  );
-
-  const textColor = useThemeColor(
-    {
-      light: "#000000", 
-      dark: "#FFFFFF", 
-    },
-    "text"
-  );
-
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{
-        backgroundColor,
+        backgroundColor: "#181220",
         flex: 1,
         justifyContent: "center",
       }}
     >
-      <ThemedView>
-        <ThemedText
-          style={{ color: textColor, marginBottom: 75, textAlign: "center" }}
+      <View>
+        <Text
+          style={{ color: "#FFFFFF", marginBottom: 75, textAlign: "center" }}
         >
           Login
-        </ThemedText>
+        </Text>
 
+        {/* User Input Fields */}
         <UserInput
           name="Email"
           value={email}
           setValue={setEmail}
           autoCompleteType="email"
           keyboardType="email-address"
-          style={{ color: "#000000" }}
         />
 
         <UserInput
@@ -149,27 +132,28 @@ const Login = ({ navigation }: { navigation: any }) => {
           setValue={setPassword}
           secureTextEntry={true}
           autoCompleteType="password"
-          style={{ color: "#000000" }}
         />
 
+        {/* Submit Button */}
         <SubmitButton
           title="Login"
           handleSubmit={handleSubmit}
           loading={loading}
         />
 
-        <ThemedView style={{ alignItems: "center" }}>
-          <ThemedText style={{ color: textColor }}>
+        {/* Navigation to Signup */}
+        <View style={{ alignItems: "center" }}>
+          <Text style={{ color: "#FFFFFF" }}>
             Don't have an account?{" "}
-            <ThemedText
+            <Text
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
             >
               Register
-            </ThemedText>
-          </ThemedText>
-        </ThemedView>
-      </ThemedView>
+            </Text>
+          </Text>
+        </View>
+      </View>
     </KeyboardAwareScrollView>
   );
 };

@@ -47,10 +47,10 @@ const TaskListScreen: React.FC = () => {
   const handleAddTask = async () => {
     try {
       //const userId = "6553cbce9c2e8667ef0ce643";
-      
+
       const userId = await AuthService.getID();
-      console.log('Retrieved User ID:', userId);
-      
+      console.log("Retrieved User ID:", userId);
+
       const response = await axios.post("https://tinytaskapp.loca.lt/tasks", {
         title: title,
         completed: false,

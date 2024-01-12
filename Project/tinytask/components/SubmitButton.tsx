@@ -1,5 +1,11 @@
 import React, { FC } from "react";
-import { TouchableOpacity, StyleSheet, Text, ActivityIndicator, View } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  ActivityIndicator,
+  View,
+} from "react-native";
 
 interface SubmitButtonProps {
   title: string;
@@ -13,11 +19,12 @@ const SubmitButton: FC<SubmitButtonProps> = ({
   loading,
 }) => (
   <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-    <View style = {styles.buttonContent}>{loading ? (
-        <ActivityIndicator size="small" color="#ffffff"/>
+    <View style={styles.buttonContent}>
+      {loading ? (
+        <ActivityIndicator size="small" color="#ffffff" />
       ) : (
-            <Text style = {styles.buttonText}>{title}</Text>
-          )}
+        <Text style={styles.buttonText}>{title}</Text>
+      )}
     </View>
   </TouchableOpacity>
 );
