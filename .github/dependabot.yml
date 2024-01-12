@@ -6,9 +6,17 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "Project/server"
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    commit-message:
+      prefix: chore
+      include: scope
+
+  - package-ecosystem: "npm"
+    directory: "Project/tinytask"
+    schedule:
+      interval: "daily"
     commit-message:
       prefix: chore
       include: scope
