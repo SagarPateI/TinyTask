@@ -35,7 +35,7 @@ export function useThemeColor(
 }
 
 export function useBorderColor(
-  props: { light?: string; dark?: string; borderColor?: string },
+  props: { light?: string; dark?: string },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
   const theme = useColorScheme() ?? "light";
@@ -50,16 +50,13 @@ export function useBorderColor(
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor(
-    { light: lightColor, dark: darkColor },
-    "background"
-  );
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
-  const { style, lightColor, darkColor, borderColor, ...otherProps } = props;
+  const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor(
     { light: lightColor, dark: darkColor },
     "background"
@@ -67,7 +64,7 @@ export function View(props: ViewProps) {
 
   const border = useBorderColor(
     { light: borderColor, dark: borderColor },
-    "border"
+    "borderColor"
   );
 
   return (
