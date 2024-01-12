@@ -1,6 +1,6 @@
 # TinyTask - Empower Your Day 🚀
 
-<a href="https://github.com/SagarPateI/TinyTask/stargazers"><img src="https://img.shields.io/github/stars/SagarPateI/TinyTask?color=yellow" alt="Stars Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/SagarPateI/TinyTask"></a> <a href="https://github.com/SagarPateI/TinyTask/pulls"><img src="https://img.shields.io/github/issues-pr/SagarPateI/TinyTask?color=blue" alt="Pull Requests Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask/pulls?q=is%3Apr+is%3Aclosed"><img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/SagarPateI/TinyTask"></a> <a href="https://github.com/SagarPateI/TinyTask/issues"><img src="https://img.shields.io/github/issues/SagarPateI/TinyTask?color=important" alt="Issues	 Badge"/></a> <a href="http://hits.dwyl.com/SagarPateI/TinyTask"><img src="http://hits.dwyl.com/SagarPateI/TinyTask.svg?style=flat" alt="Hits Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask"><img src="https://img.shields.io/github/repo-size/SagarPateI/TinyTask?color=ff69b4" alt="Repo Size Badge"/></a> [![CodeQL](https://github.com/SagarPateI/TinyTask/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/SagarPateI/TinyTask/actions/workflows/github-code-scanning/codeql)
+<a href="https://github.com/SagarPateI/TinyTask/stargazers"><img src="https://img.shields.io/github/stars/SagarPateI/TinyTask?color=yellow" alt="Stars Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/SagarPateI/TinyTask"></a> <a href="https://github.com/SagarPateI/TinyTask/pulls"><img src="https://img.shields.io/github/issues-pr/SagarPateI/TinyTask?color=blue" alt="Pull Requests Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask/pulls?q=is%3Apr+is%3Aclosed"><img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed-raw/SagarPateI/TinyTask"></a> <a href="https://github.com/SagarPateI/TinyTask/issues"><img src="https://img.shields.io/github/issues/SagarPateI/TinyTask?color=important" alt="Issues	 Badge"/></a> <a href="http://hits.dwyl.com/SagarPateI/TinyTask"><img src="http://hits.dwyl.com/SagarPateI/TinyTask.svg?style=flat" alt="Hits Badge"/></a> <a href="https://github.com/SagarPateI/TinyTask"><img src="https://img.shields.io/github/repo-size/SagarPateI/TinyTask?color=ff69b4" alt="Repo Size Badge"/></a> [![CodeQL](https://github.com/SagarPateI/TinyTask/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/SagarPateI/TinyTask/actions/workflows/github-code-scanning/codeql) [![DevSkim](https://github.com/SagarPateI/TinyTask/actions/workflows/devskim.yml/badge.svg)](https://github.com/SagarPateI/TinyTask/actions/workflows/devskim.yml) [![njsscan sarif](https://github.com/SagarPateI/TinyTask/actions/workflows/njsscan.yml/badge.svg)](https://github.com/SagarPateI/TinyTask/actions/workflows/njsscan.yml)
 
 Welcome to TinyTask, where productivity meets simplicity! Our minimalist task management application is your go-to solution for organizing daily chores, essential appointments, and everything in between. With a focus on user-friendly functionality and efficiency, TinyTask streamlines your day with a sleek and intuitive design.
 
@@ -262,8 +262,12 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 1. **Install Microsoft Visual Studio Code:**
    - Download and install Visual Studio Code from [here](https://code.visualstudio.com/Download).
    
-2. **Install Node.js:**
+2. **Install Node.js and Yarn:**
    - Download and install Node.js from [here](https://nodejs.org/en/download).
+   - Install Yarn by running the following command in the terminal:
+     ```bash
+     npm install -g yarn
+     ```
    
 3. **Open Terminal in Visual Studio Code:**
    - Open Visual Studio Code.
@@ -273,9 +277,9 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 4. **Install Expo CLI:**
    - Install Expo CLI globally by running the following command in the terminal:
      ```bash
-     npm install -g expo-cli
+     yarn global add expo-cli
      ```
-
+     
 #### Client Setup:
 1. **Install Git Bash:**
    Download and install Git Bash from [here](https://git-scm.com/downloads).
@@ -292,13 +296,13 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 4. **Install Dependencies:**
    Install the necessary dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 5. **Run Metro:**
    Start Metro by executing either:
    ```bash
-   npm start
+   yarn start
    ```
    or
    ```bash
@@ -315,13 +319,13 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 7. **Install Server Dependencies:**
    Install server dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 8. **Install Nodemon:**
    Install nodemon globally if not installed:
    ```bash
-   npm install -g nodemon
+   yarn global add nodemon
    ```
 
 9. **Start the API Server:**
@@ -335,13 +339,13 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 10. **Localtunnel Setup:**
     In the third terminal, navigate to the client folder:
     ```bash
-    cd ./Project/tinyTask
+    cd ./Project/server
     ```
 
 11. **Install Localtunnel:**
     Install localtunnel globally:
     ```bash
-    npm install -g localtunnel
+    yarn global add localtunnel
     ```
 
 12. **Start Localtunnel:**
@@ -367,7 +371,7 @@ Welcome to TinyTask, where productivity meets simplicity! Our minimalist task ma
 15. **Run the Client:**
     In the client terminal, start the client:
     ```bash
-    npm start
+    yarn start
     ```
 
 ***

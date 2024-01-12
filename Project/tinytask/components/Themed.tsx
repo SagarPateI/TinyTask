@@ -14,12 +14,27 @@ import Colors from "../constants/Colors";
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
+  borderColor?: string;
 };
 
 export type TextProps = ThemeProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
 
 export function useThemeColor(
+  props: { light?: string; dark?: string },
+  colorName: keyof typeof Colors.light & keyof typeof Colors.dark
+) {
+  const theme = useColorScheme() ?? "light";
+  const colorFromProps = props[theme];
+
+  if (colorFromProps) {
+    return colorFromProps;
+  } else {
+    return Colors[theme][colorName];
+  }
+}
+
+export function useBorderColor(
   props: { light?: string; dark?: string },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
@@ -47,5 +62,15 @@ export function View(props: ViewProps) {
     "background"
   );
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  const border = useBorderColor(
+    { light: borderColor, dark: borderColor },
+    "borderColor"
+  );
+
+  return (
+    <DefaultView
+      style={[{ backgroundColor, borderColor: border }, style]}
+      {...otherProps}
+    />
+  );
 }

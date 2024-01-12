@@ -5,8 +5,12 @@
 1. **Install Microsoft Visual Studio Code:**
    - Download and install Visual Studio Code from [here](https://code.visualstudio.com/Download).
    
-2. **Install Node.js:**
+2. **Install Node.js and Yarn:**
    - Download and install Node.js from [here](https://nodejs.org/en/download).
+   - Install Yarn by running the following command in the terminal:
+     ```bash
+     npm install -g yarn
+     ```
    
 3. **Open Terminal in Visual Studio Code:**
    - Open Visual Studio Code.
@@ -16,7 +20,7 @@
 4. **Install Expo CLI:**
    - Install Expo CLI globally by running the following command in the terminal:
      ```bash
-     npm install -g expo-cli
+     yarn global add expo-cli
      ```
      
 #### Client Setup:
@@ -35,13 +39,13 @@
 4. **Install Dependencies:**
    Install the necessary dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 5. **Run Metro:**
    Start Metro by executing either:
    ```bash
-   npm start
+   yarn start
    ```
    or
    ```bash
@@ -58,13 +62,13 @@
 7. **Install Server Dependencies:**
    Install server dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 8. **Install Nodemon:**
    Install nodemon globally if not installed:
    ```bash
-   npm install -g nodemon
+   yarn global add nodemon
    ```
 
 9. **Start the API Server:**
@@ -84,7 +88,7 @@
 11. **Install Localtunnel:**
     Install localtunnel globally:
     ```bash
-    npm install -g localtunnel
+    yarn global add localtunnel
     ```
 
 12. **Start Localtunnel:**
@@ -110,7 +114,7 @@
 15. **Run the Client:**
     In the client terminal, start the client:
     ```bash
-    npm start
+    yarn start
     ```
 
     **Builds:**

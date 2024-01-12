@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Alert,  ActivityIndicator } from "react-native";
+import { Alert, ActivityIndicator } from "react-native";
 import UserInput from "../../components/UserInput";
 import SubmitButton from "../../components/SubmitButton";
 import axios from "axios";
@@ -11,6 +11,7 @@ import {
   useThemeColor,
 } from "../../components/Themed";
 import { AuthService } from "./services/AuthService";
+import { View } from '../../components/Themed';
 
 const Login = ({ navigation }: { navigation: any }) => {
   //const Login = () => {
@@ -47,7 +48,6 @@ const Login = ({ navigation }: { navigation: any }) => {
         }
       );
 
-
       if (data.error) {
         Alert.alert(data.error);
         setLoading(false);
@@ -55,35 +55,32 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
         console.log("LOGIN SUCCESSFUL =>", data);
         Alert.alert("You have successfully logged in");
-        
+
         //After successful login, saving token, user._id, and user.name to AsyncStorage
         if (data.token) {
-          await AuthService.saveToken(data.token); 
+          await AuthService.saveToken(data.token);
         }
-  
-      
+
         if (data.user && data.user._id) {
           await AuthService.saveID(data.user._id);
         }
-      
+
         if (data.user && data.user.name) {
           await AuthService.saveUserName(data.user.name);
         }
 
         //navigating to Tabs after successful login
-        
-        navigation.navigate("Tabs"); 
+
+        navigation.navigate("Tabs");
       }
-        
-        /* 
+
+      /* 
             Example of how to get the userID from any file:
 
               const userId = await AuthService.getID();
               console.log('Retrieved User ID:', userId);
               
         */
- 
-      
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.error("AxiosError:", err);
@@ -106,28 +103,44 @@ const Login = ({ navigation }: { navigation: any }) => {
     }
   };
 
+  const backgroundColor = useThemeColor(
+    {
+      light: "#FFFFFF", // Light gray background color
+      dark: "#000000", // Dark gray background color
+    },
+    "background"
+  );
+
+  const textColor = useThemeColor(
+    {
+      light: "#000000", 
+      dark: "#FFFFFF", 
+    },
+    "text"
+  );
+
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{
-        backgroundColor: "#181220",
+        backgroundColor,
         flex: 1,
         justifyContent: "center",
       }}
     >
-      <View>
-        <Text
-          style={{ color: "#FFFFFF", marginBottom: 75, textAlign: "center" }}
+      <ThemedView>
+        <ThemedText
+          style={{ color: textColor, marginBottom: 75, textAlign: "center" }}
         >
           Login
-        </Text>
+        </ThemedText>
 
-        {/* User Input Fields */}
         <UserInput
           name="Email"
           value={email}
           setValue={setEmail}
           autoCompleteType="email"
           keyboardType="email-address"
+          style={{ color: "#000000" }}
         />
 
         <UserInput
@@ -136,28 +149,27 @@ const Login = ({ navigation }: { navigation: any }) => {
           setValue={setPassword}
           secureTextEntry={true}
           autoCompleteType="password"
+          style={{ color: "#000000" }}
         />
 
-        {/* Submit Button */}
         <SubmitButton
           title="Login"
           handleSubmit={handleSubmit}
-          loading = {loading}
+          loading={loading}
         />
 
-        {/* Navigation to Signup */}
-        <View style={{ alignItems: "center" }}>
-          <Text style={{ color: "#FFFFFF" }}>
+        <ThemedView style={{ alignItems: "center" }}>
+          <ThemedText style={{ color: textColor }}>
             Don't have an account?{" "}
-            <Text
+            <ThemedText
               onPress={() => navigation.navigate("Signup")}
               style={{ color: "#f28b1e" }}
             >
               Register
-            </Text>
-          </Text>
-        </View>
-      </View>
+            </ThemedText>
+          </ThemedText>
+        </ThemedView>
+      </ThemedView>
     </KeyboardAwareScrollView>
   );
 };
