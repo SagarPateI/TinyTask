@@ -52,7 +52,7 @@ const Login = ({ navigation }: { navigation: any }) => {
         setLoading(false);
       } else {
         setLoading(false);
-        console.log("LOGIN SUCCESSFUL =>", data);
+        console.log("LOGIN SUCCESSFUL =>", data.user);
         Alert.alert("You have successfully logged in");
 
         //After successful login, saving token, user._id, and user.name to AsyncStorage
