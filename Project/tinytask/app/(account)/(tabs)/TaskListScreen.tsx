@@ -18,6 +18,7 @@ import {
 } from "../../../components/Themed";
 import axios from "axios";
 import { AuthService } from "../services/AuthService";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface TaskItem {
   _id: string;
@@ -128,7 +129,7 @@ const TaskListScreen: React.FC = () => {
       backgroundColor: "black",
       paddingHorizontal: 15,
       borderRadius: 10,
-      borderColor: "#C0C0C0",
+      borderColor: "#645394",
       borderWidth: 1,
       width: 250,
       color: textColor,
@@ -153,7 +154,7 @@ const TaskListScreen: React.FC = () => {
       marginBottom: 10,
     },
     addButton: {
-      backgroundColor: "blue",
+      backgroundColor: "#645394",
       justifyContent: "center",
       alignItems: "center",
       width: 100,
@@ -173,8 +174,11 @@ const TaskListScreen: React.FC = () => {
 
   // JSX Component
   return (
+    
     <View style={styles.container}>
+      
       <ScrollView>
+        
         {tasks.map(
           (task) =>
             !task.completed && (
@@ -187,7 +191,9 @@ const TaskListScreen: React.FC = () => {
               </TouchableOpacity>
             )
         )}
+      
       </ScrollView>
+      
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -199,7 +205,9 @@ const TaskListScreen: React.FC = () => {
           <Text style={styles.addButtonText}>Add Task</Text>
         </TouchableOpacity>
       </View>
+      
     </View>
+   
   );
 };
 
