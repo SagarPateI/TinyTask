@@ -1,5 +1,5 @@
-import { ExportedConfig, ModPlatform } from '../Plugin.types';
 import { ForwardedBaseModOptions } from './createBaseMod';
+import { ExportedConfig, ModPlatform } from '../Plugin.types';
 export declare function withDefaultBaseMods(config: ExportedConfig, props?: ForwardedBaseModOptions): ExportedConfig;
 /**
  * Get a prebuild config that safely evaluates mods without persisting any changes to the file system.
@@ -19,6 +19,7 @@ export declare function compileModsAsync(config: ExportedConfig, props: {
     assertMissingModProviders?: boolean;
     ignoreExistingNativeFiles?: boolean;
 }): Promise<ExportedConfig>;
+export declare function sortMods(commands: [string, any][], precedences: Record<string, number>): [string, any][];
 /**
  * A generic plugin compiler.
  *
