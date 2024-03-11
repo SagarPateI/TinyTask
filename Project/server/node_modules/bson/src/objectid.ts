@@ -1,7 +1,8 @@
 import { BSONValue } from './bson_value';
 import { BSONError } from './error';
 import { type InspectFn, defaultInspect } from './parser/utils';
-import { BSONDataView, ByteUtils } from './utils/byte_utils';
+import { ByteUtils } from './utils/byte_utils';
+import { NumberUtils } from './utils/number_utils';
 
 // Regular expression that checks for hex value
 const checkForHexRegExp = new RegExp('^[0-9a-fA-F]{24}$');
@@ -21,8 +22,6 @@ export interface ObjectIdExtended {
   $oid: string;
 }
 
-const kId = Symbol('id');
-
 /**
  * A class representation of the BSON ObjectId type.
  * @public
@@ -39,14 +38,53 @@ export class ObjectId extends BSONValue {
   static cacheHexString: boolean;
 
   /** ObjectId Bytes @internal */
-  private [kId]!: Uint8Array;
+  private buffer!: Uint8Array;
   /** ObjectId hexString cache @internal */
   private __id?: string;
 
   /**
-   * Create an ObjectId type
+   * Create ObjectId from a number.
    *
-   * @param inputId - Can be a 24 character hex string, 12 byte binary Buffer, or a number.
+   * @param inputId - A number.
+   * @deprecated Instead, use `static createFromTime()` to set a numeric value for the new ObjectId.
+   */
+  constructor(inputId: number);
+  /**
+   * Create ObjectId from a 24 character hex string.
+   *
+   * @param inputId - A 24 character hex string.
+   */
+  constructor(inputId: string);
+  /**
+   * Create ObjectId from the BSON ObjectId type.
+   *
+   * @param inputId - The BSON ObjectId type.
+   */
+  constructor(inputId: ObjectId);
+  /**
+   * Create ObjectId from the object type that has the toHexString method.
+   *
+   * @param inputId - The ObjectIdLike type.
+   */
+  constructor(inputId: ObjectIdLike);
+  /**
+   * Create ObjectId from a 12 byte binary Buffer.
+   *
+   * @param inputId - A 12 byte binary Buffer.
+   */
+  constructor(inputId: Uint8Array);
+  /** To generate a new ObjectId, use ObjectId() with no argument. */
+  constructor();
+  /**
+   * Implementation overload.
+   *
+   * @param inputId - All input types that are used in the constructor implementation.
+   */
+  constructor(inputId?: string | number | ObjectId | ObjectIdLike | Uint8Array);
+  /**
+   * Create a new ObjectId.
+   *
+   * @param inputId - An input value to create a new ObjectId from.
    */
   constructor(inputId?: string | number | ObjectId | ObjectIdLike | Uint8Array) {
     super();
@@ -65,17 +103,17 @@ export class ObjectId extends BSONValue {
       workingId = inputId;
     }
 
-    // the following cases use workingId to construct an ObjectId
+    // The following cases use workingId to construct an ObjectId
     if (workingId == null || typeof workingId === 'number') {
       // The most common use case (blank id, new objectId instance)
       // Generate a new id
-      this[kId] = ObjectId.generate(typeof workingId === 'number' ? workingId : undefined);
+      this.buffer = ObjectId.generate(typeof workingId === 'number' ? workingId : undefined);
     } else if (ArrayBuffer.isView(workingId) && workingId.byteLength === 12) {
       // If intstanceof matches we can escape calling ensure buffer in Node.js environments
-      this[kId] = ByteUtils.toLocalBufferType(workingId);
+      this.buffer = ByteUtils.toLocalBufferType(workingId);
     } else if (typeof workingId === 'string') {
       if (workingId.length === 24 && checkForHexRegExp.test(workingId)) {
-        this[kId] = ByteUtils.fromHex(workingId);
+        this.buffer = ByteUtils.fromHex(workingId);
       } else {
         throw new BSONError(
           'input must be a 24 character hex string, 12 byte Uint8Array, or an integer'
@@ -95,11 +133,11 @@ export class ObjectId extends BSONValue {
    * @readonly
    */
   get id(): Uint8Array {
-    return this[kId];
+    return this.buffer;
   }
 
   set id(value: Uint8Array) {
-    this[kId] = value;
+    this.buffer = value;
     if (ObjectId.cacheHexString) {
       this.__id = ByteUtils.toHex(value);
     }
@@ -139,10 +177,10 @@ export class ObjectId extends BSONValue {
     }
 
     const inc = ObjectId.getInc();
-    const buffer = ByteUtils.allocate(12);
+    const buffer = ByteUtils.allocateUnsafe(12);
 
     // 4-byte timestamp
-    BSONDataView.fromUint8Array(buffer).setUint32(0, time, false);
+    NumberUtils.setInt32BE(buffer, 0, time);
 
     // set PROCESS_UNIQUE if yet not initialized
     if (PROCESS_UNIQUE === null) {
@@ -201,7 +239,9 @@ export class ObjectId extends BSONValue {
     }
 
     if (ObjectId.is(otherId)) {
-      return this[kId][11] === otherId[kId][11] && ByteUtils.equals(this[kId], otherId[kId]);
+      return (
+        this.buffer[11] === otherId.buffer[11] && ByteUtils.equals(this.buffer, otherId.buffer)
+      );
     }
 
     if (typeof otherId === 'string') {
@@ -220,7 +260,7 @@ export class ObjectId extends BSONValue {
   /** Returns the generation date (accurate up to the second) that this ID was generated. */
   getTimestamp(): Date {
     const timestamp = new Date();
-    const time = BSONDataView.fromUint8Array(this.id).getUint32(0, false);
+    const time = NumberUtils.getUint32BE(this.buffer, 0);
     timestamp.setTime(Math.floor(time) * 1000);
     return timestamp;
   }
@@ -230,15 +270,33 @@ export class ObjectId extends BSONValue {
     return new ObjectId();
   }
 
+  /** @internal */
+  serializeInto(uint8array: Uint8Array, index: number): 12 {
+    uint8array[index] = this.buffer[0];
+    uint8array[index + 1] = this.buffer[1];
+    uint8array[index + 2] = this.buffer[2];
+    uint8array[index + 3] = this.buffer[3];
+    uint8array[index + 4] = this.buffer[4];
+    uint8array[index + 5] = this.buffer[5];
+    uint8array[index + 6] = this.buffer[6];
+    uint8array[index + 7] = this.buffer[7];
+    uint8array[index + 8] = this.buffer[8];
+    uint8array[index + 9] = this.buffer[9];
+    uint8array[index + 10] = this.buffer[10];
+    uint8array[index + 11] = this.buffer[11];
+    return 12;
+  }
+
   /**
    * Creates an ObjectId from a second based number, with the rest of the ObjectId zeroed out. Used for comparisons or sorting the ObjectId.
    *
    * @param time - an integer number representing a number of seconds.
    */
   static createFromTime(time: number): ObjectId {
-    const buffer = ByteUtils.fromNumberArray([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    const buffer = ByteUtils.allocate(12);
+    for (let i = 11; i >= 4; i--) buffer[i] = 0;
     // Encode time into first 4 bytes
-    BSONDataView.fromUint8Array(buffer).setUint32(0, time, false);
+    NumberUtils.setInt32BE(buffer, 0, time);
     // Return the new objectId
     return new ObjectId(buffer);
   }
