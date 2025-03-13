@@ -24,7 +24,7 @@
     "localtunnel": "^2.0.2",
     "mongodb": "^6.2.0",
     "mongoose": "^8.0.0",
-    "rate-limiter-flexible": "^5.0.0",
+    "rate-limiter-flexible": "^6.1.0",
     "semver": "^7.5.4",
     "yarn": "^1.22.22"
   },
