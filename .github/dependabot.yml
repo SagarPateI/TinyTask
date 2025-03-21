@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "Project/server"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     commit-message:
       prefix: chore
       include: scope
@@ -16,7 +16,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "Project/tinytask"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     commit-message:
       prefix: chore
       include: scope
