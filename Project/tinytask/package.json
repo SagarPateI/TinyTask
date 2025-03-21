@@ -42,7 +42,7 @@
     "react-dom": "18.2.0",
     "react-native": "0.74.3",
     "react-native-calendars": "^1.1302.0",
-    "react-native-gesture-handler": "~2.16.1",
+    "react-native-gesture-handler": "~2.24.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-modal": "^13.0.1",
     "react-native-modal-datetime-picker": "^17.1.0",
